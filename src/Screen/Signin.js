@@ -13,15 +13,15 @@ function Signin() {
     // <div>Signin</div>
     <>
     <Head />
-    <VStack  h="100vh" p="50">
-      <Box boxShadow='dark-lg' w="full"  rounded='md'  >
-        <HStack w="full">
-          <VStack w="50%" h="80vh"  bg="#FFB87A" spacing="10vh" >
+    <VStack  h="100vh"  p="50">
+      <Box boxShadow='dark-lg' w="full" pb={["20","0","0"]} rounded='md'  >
+        <Stack direction={["column","row","row"]}  w="full">
+          <VStack w={["full","50%","50%"]} h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="10vh" >
               <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" pt="10vh" ></Image>
               <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
               <Button rounded='md' w="20%" bg="#20BC7E" > Signin</Button>
           </VStack>
-          <VStack w="50%" h="80vh"   spacing="5vh" >
+          <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} spacing="5vh" >
               <Heading pt="10vh"> Create Account</Heading>
               <Input w="70%"  placeholder='First Name' variant='filled' size='md'></Input>
               <Input w="70%"  placeholder='Last Name' variant='filled' size='md'></Input>
@@ -40,9 +40,13 @@ function Signin() {
                 </InputRightElement>
               </InputGroup>
               {/* Button */}
-              <Button rounded='md' w="20%" bg="#20BC7E"  > SignUp</Button>
+              <Button rounded='md' w="20%" bg="#20BC7E">SignUp</Button>
+              <HStack>
+                <Text>alredy have account ?</Text>
+                <Text color="#20BC7E" > Sigin</Text>
+              </HStack>
           </VStack>
-        </HStack>
+        </Stack>
       </Box>
     </VStack>
     </>
