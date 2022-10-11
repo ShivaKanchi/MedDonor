@@ -1,8 +1,10 @@
-import Signin from "./Screen/Signin";
+import SignIn from "./Screen/SignIn";
+import SignUp from "./Screen/SignUp";
 
 function App() {
   return (
-    <Signin/>
+    // <SignUp/>
+   <SignIn />
   );
 }
 

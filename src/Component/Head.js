@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Flex, Heading, IconButton, VStack, Spacer, Tooltip, Link, Button, Box, Icon, Divider, Text, Image  } from "@chakra-ui/react";
+import { Flex, IconButton, VStack, Spacer, Tooltip, Link, Button, Box, Icon, Divider, Text, Image  } from "@chakra-ui/react";
 import {FaGithub, FaLinkedin, FaInstagram, FaMoon, FaSun } from 'react-icons/fa'
 import {useColorMode, useColorModeValue} from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
