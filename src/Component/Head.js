@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Flex, IconButton, VStack, Spacer, Tooltip, Link, Button, Box, Icon, Divider, Text, Image  } from "@chakra-ui/react";
-import {FaGithub, FaLinkedin, FaInstagram, FaMoon, FaSun } from 'react-icons/fa'
+import {FaGithub, FaMoon, FaSun } from 'react-icons/fa'
 import {useColorMode, useColorModeValue} from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 
@@ -24,14 +24,19 @@ function Head() {
                 Home
               </Button>
             </Link>
-          <Link href='/work' _focus="none" >
-              <Button as="a"  variant='ghost' >
-                Work
-              </Button>
-            </Link>
-            <Link href='/services' _focus="none" >
+          <Link href='/services' _focus="none" >
               <Button as="a"  variant='ghost' >
                 Services
+              </Button>
+            </Link>
+            <Link href='/donner' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Donner
+              </Button>
+            </Link>
+            <Link href='/event' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Event
               </Button>
             </Link>
             <Link href='/contact' _focus="none" >
@@ -41,17 +46,6 @@ function Head() {
             </Link>
         </Flex>
         <Flex alignSelf="flex-end" pl={15}>
-          
-          <Tooltip label='Instagram'>
-            <Link href='https://www.instagram.com/ss_devloper/' _focus="none" isExternal>
-              <IconButton ml={2}  icon={<FaInstagram />} isRound='true' ></IconButton>
-            </Link>
-          </Tooltip>
-          <Tooltip label='Linkedin'>
-            <Link href='https://www.linkedin.com/in/saurabh-shinde-5a40b5174/' _focus="none" isExternal>
-              <IconButton ml={2} icon={<FaLinkedin />} isRound='true' ></IconButton>
-            </Link>
-          </Tooltip>
           <Tooltip label='Github' >
             <Link href='https://github.com/saurabh7582' _focus="none" isExternal>
               <IconButton ml={2} icon={<FaGithub />} isRound='true' ></IconButton>
@@ -59,7 +53,6 @@ function Head() {
           </Tooltip>
           <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
         </Flex>
-        
        </Flex>
 
        {/* Mobile Navigation */}
@@ -91,7 +84,7 @@ function Head() {
             <Box
               mt="10"
               borderRadius="50%"
-              bg={"cyan.400"}
+              bg={"#20BC7E"}
               mr={10}
               p="25"
             >
@@ -119,51 +112,30 @@ function Head() {
             ml="5"
           >
               <Link href='/' _focus="none" >
-                <Button as="a"  variant='ghost' fontSize='4xl' pt='10' pb="5" >
-                    Home
-                  </Button>
-              </Link>
-              <Link href='/work' _focus="none" >
-                <Button as="a"  variant='ghost' fontSize='4xl' pt='10' pb="5" >
-                    Work
-                  </Button>
-              </Link>
-              <Link href='/services' _focus="none" >
-                <Button as="a"  variant='ghost' fontSize='4xl' pt='10' pb="5">
-                  Services
-                </Button>
-              </Link>
-              <Link href='/contact' _focus="none" >
-                <Button as="a"  variant='ghost' fontSize='4xl' pt='10'>
-                  Contact
-                </Button>
-              </Link>
-          </Flex>
-          {/* social part */}
-          <Flex mt="20" pt="5">
-            <Divider ml="5" mr="5" orientation='horizontal' />
-          </Flex>
-          {/* social Divider */}
-          <Flex ml="5">
-            <Text fontWeight="450" fontStyle="normal" fontFamily="Dennis Sans', sans-serif" fontSize='xs' >Social</Text>
-          </Flex>
-          {/* social icon */}
-          <Flex flexDirection="row" justifyContent="center" pb="20"> 
-            <Tooltip label='Instagram'>
-              <Link href='https://www.instagram.com/ss_devloper/' _focus="none" isExternal>
-                <IconButton alignself={["center","flex-end"]}  ml={2} size='lg' icon={<FaInstagram />} isRound='true' ></IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip label='Linkedin'>
-              <Link href='https://www.linkedin.com/in/saurabh-shinde-5a40b5174/' _focus="none" isExternal>
-                <IconButton alignself={["center","flex-end"]} ml={2} size='lg' icon={<FaLinkedin />} isRound='true' ></IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip label='Github' >
-              <Link href='https://github.com/saurabh7582' _focus="none" isExternal>
-                <IconButton alignself={["center","flex-end"]} ml={2} size='lg' icon={<FaGithub />} isRound='true' ></IconButton>
-              </Link>
-            </Tooltip>
+              <Button as="a"  variant='ghost'  >
+                Home
+              </Button>
+            </Link>
+          <Link href='/services' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Services
+              </Button>
+            </Link>
+            <Link href='/donner' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Donner
+              </Button>
+            </Link>
+            <Link href='/event' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Event
+              </Button>
+            </Link>
+            <Link href='/contact' _focus="none" >
+              <Button as="a"  variant='ghost' >
+                Contact
+              </Button>
+            </Link>
           </Flex>
        </Flex>
     </VStack>

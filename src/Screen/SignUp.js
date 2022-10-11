@@ -7,7 +7,8 @@ import {
   Button, 
   Heading, 
   Input,
-  HStack  
+  HStack,  
+  Link
 } from '@chakra-ui/react'
 
 import React,{useState} from 'react'
@@ -57,7 +58,9 @@ function SignUp() {
           <VStack w={["full","50%","50%"]} h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="10vh" >
               <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" pt="10vh" ></Image>
               <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
-              <Button rounded='md' w="20%" bg="#20BC7E" > Signin</Button>
+              <Link href="/signin" w="20%" >
+                <Button rounded='md'  bg="#20BC7E" > Signin</Button>
+              </Link>
           </VStack>
           <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} spacing="5vh" >
               <Heading pt="10vh"> Create Account</Heading>

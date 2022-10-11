@@ -9,7 +9,8 @@ import {
     Button, 
     Heading, 
     Input,
-    HStack  
+    HStack,  
+    Link
   } from '@chakra-ui/react'
 
 import Head from '../Component/Head'
@@ -49,10 +50,10 @@ function SignIn() {
     <VStack  h="100vh"  p="50">
       <Box boxShadow='dark-lg' w="full" pb={["20","0","0"]} rounded='md'  >
         <Stack direction={["column","row","row"]}  w="full">
-          <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} spacing="5vh" >
+          <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} pt={["5%","5%","5%"]} spacing="5vh" >
               <Heading pt="10vh">Login Account</Heading>
               <form className={styles.form_container} onSubmit={handleSubmit}>
-              <input
+              <Input
 				type="email"
 				placeholder="Email"
 				name="email"
@@ -61,7 +62,7 @@ function SignIn() {
 				required
 				className={styles.input}
 			   />
-				<input
+				<Input
 					type="password"
 					placeholder="Password"
 					name="password"
@@ -76,14 +77,16 @@ function SignIn() {
                 </Button>
 				    	</form>
               <HStack display={['flex','none','none']}>
-                <Text>alredy have account ?</Text>
+                <Text>Want to create account?</Text>
                 <Text color="#20BC7E" > SignUp</Text>
               </HStack>
             </VStack>
             <VStack w={["full","50%","50%"]} h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="10vh" >
                 <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" pt="10vh" ></Image>
                 <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
-                <Button rounded='md' w="20%" bg="#20BC7E" > SignUp</Button>
+                <Link href='/signup' w="20%" >
+                    <Button rounded='md'  bg="#20BC7E"  > SignUp</Button>
+                </Link>
             </VStack>
         </Stack>
       </Box>
