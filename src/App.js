@@ -9,7 +9,6 @@ import Event from "./Screen/Event";
 import Home from "./Screen/Home";
 import PageNotFound from "./Screen/PageNotFound";
 import Services from "./Screen/Services";
-import SignIn from "./Screen/SignIn";
 import SignUp from "./Screen/SignUp";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/donner" element={<Donner />} />
           <Route path="/event" element={<Event />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin"  />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<PageNotFound />} />
       </Routes>
