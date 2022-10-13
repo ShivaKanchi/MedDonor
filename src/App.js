@@ -10,7 +10,7 @@ import Home from "./Screen/Home";
 import PageNotFound from "./Screen/PageNotFound";
 import Services from "./Screen/Services";
 // import SignIn from "./Screen/SignIn";
-import Signin_final from "./Screen/Signin_final";
+import Signin from "./Screen/Signin";
 import SignUp from "./Screen/SignUp";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/donner" element={<Donner />} />
           <Route path="/event" element={<Event />} />
-          <Route path="/signin" element={<Signin_final />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<PageNotFound />} />
       </Routes>

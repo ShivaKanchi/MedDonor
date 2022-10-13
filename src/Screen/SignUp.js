@@ -9,7 +9,7 @@ import {
   Input,
   HStack,  
   Link,
-  Center
+  Center,
 } from '@chakra-ui/react'
 
 import React,{useState} from 'react'
@@ -27,6 +27,7 @@ function SignUp() {
 		password: "",
 	});
 	const [error, setError] = useState("");
+  // const { isOpen } = useDisclosure({isOpen})
 
 	const handleChange = ({ currentTarget: Input }) => {
 		setData({ ...data, [Input.name]: Input.value });
@@ -35,7 +36,8 @@ function SignUp() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
+			// const url = "http://localhost:8080/api/users";
+			const url = "https://med-donner.herokuapp.com/api/users";
 			const { data: res } = await axios.post(url, data);
 			// navigate("/login");
 			console.log(res.message);
@@ -57,13 +59,15 @@ function SignUp() {
       <Box boxShadow='dark-lg' w="full" pb={["20","0","0"]} rounded='md'  >
         <Stack direction={["column","row","row"]}  w="full">
           <VStack w={["full","50%","50%"]}  alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
+                
               <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
-              <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
-              <Center>  
-                <Link href="/signin" w="full" >
-                  <Button rounded='md'  bg="#20BC7E" > Signin</Button>
-                </Link>
-              </Center>
+                <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
+                <Center>  
+                  <Link href="/signin" w="full" >
+                    <Button rounded='md'  bg="#20BC7E" > Signin</Button>
+                  </Link>
+                </Center>
+             
           </VStack>
           <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} spacing="5vh" >
               <Heading pt="10vh"> Create Account</Heading>
@@ -120,7 +124,9 @@ function SignUp() {
 				    	</form>
               <HStack display={['flex','none','none']}>
                 <Text>alredy have account ?</Text>
-                <Text color="#20BC7E" > Sigin</Text>
+                <Link href="/signin" >
+                  <Text color="#20BC7E" > Sigin</Text>
+                </Link>
               </HStack>
             </VStack>
         </Stack>

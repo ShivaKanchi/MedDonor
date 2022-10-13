@@ -18,7 +18,7 @@ import Head from '../Component/Head'
 import axios from 'axios'
 import styles from "./styles.module.css";
 
-function Signin_final() {
+function Signin() {
 
     const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
@@ -30,7 +30,8 @@ function Signin_final() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/auth";
+			// const url = "http://localhost:8080/api/auth";
+			const url = "https://med-donner.herokuapp.com/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			window.location = "/";
@@ -79,7 +80,9 @@ function Signin_final() {
 				    	</form>
               <HStack display={['flex','none','none']}>
                 <Text>Want to create account?</Text>
-                <Text color="#20BC7E" > SignUp</Text>
+                <Link href="/signup">
+                  <Text color="#20BC7E" > SignUp</Text>
+                </Link>
               </HStack>
             </VStack>
             <VStack w={["full","50%","50%"]} alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
@@ -99,4 +102,4 @@ function Signin_final() {
   )
 }
 
-export default Signin_final
+export default Signin
