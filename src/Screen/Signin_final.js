@@ -10,7 +10,8 @@ import {
     Heading, 
     Input,
     HStack,  
-    Link
+    Link,
+    Center
   } from '@chakra-ui/react'
 
 import Head from '../Component/Head'
@@ -81,12 +82,14 @@ function Signin_final() {
                 <Text color="#20BC7E" > SignUp</Text>
               </HStack>
             </VStack>
-            <VStack w={["full","50%","50%"]} h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="10vh" >
-                <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" pt="10vh" ></Image>
+            <VStack w={["full","50%","50%"]} alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
+                <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
                 <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
-                <Link href='/signup' w="20%" >
-                    <Button rounded='md'  bg="#20BC7E"  > SignUp</Button>
-                </Link>
+                <Center>
+                    <Link href='/signup' w="full"  >
+                        <Button rounded='md' bg="#20BC7E"  > SignUp</Button>
+                    </Link>
+                </Center>
             </VStack>
         </Stack>
       </Box>

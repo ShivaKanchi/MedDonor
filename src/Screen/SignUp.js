@@ -8,7 +8,8 @@ import {
   Heading, 
   Input,
   HStack,  
-  Link
+  Link,
+  Center
 } from '@chakra-ui/react'
 
 import React,{useState} from 'react'
@@ -55,12 +56,14 @@ function SignUp() {
     <VStack  h="100vh"  p="50">
       <Box boxShadow='dark-lg' w="full" pb={["20","0","0"]} rounded='md'  >
         <Stack direction={["column","row","row"]}  w="full">
-          <VStack w={["full","50%","50%"]} h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="10vh" >
-              <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" pt="10vh" ></Image>
+          <VStack w={["full","50%","50%"]}  alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
+              <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
               <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
-              <Link href="/signin" w="20%" >
-                <Button rounded='md'  bg="#20BC7E" > Signin</Button>
-              </Link>
+              <Center>  
+                <Link href="/signin" w="full" >
+                  <Button rounded='md'  bg="#20BC7E" > Signin</Button>
+                </Link>
+              </Center>
           </VStack>
           <VStack w={["full","50%","50%"]} h={["90vh","80vh","80vh"]} spacing="5vh" >
               <Heading pt="10vh"> Create Account</Heading>
