@@ -14,7 +14,7 @@ export default function Hero() {
             // border="2px solid red"
         >
             <Stack direction={['column','row','row']}>
-                <Flex direction="column" w="50%" p="10">
+                <Flex direction="column" w={["100%","50%","50%"]} p="10">
                     <Image w="26px" h="26px"  align="flex-start" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665683216/Med%20Donner/Rectangle_3_aajbgu.svg" />
                     <Heading 
                         pl="5" fontWeight="700" fontFamily="IBM Plex Sans" fontStyle="normal"
@@ -37,7 +37,7 @@ export default function Hero() {
                      </Link>
                 </Flex>
                 {/* second half  */}
-                <Flex direction="column" w="50%" >
+                <Flex direction="column" w={["100%","50%","50%"]} >
                     <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665685965/Med%20Donner/Homepage_Design_1_jbtj2c.svg" />
                 </Flex>
             </Stack>
