@@ -1,4 +1,4 @@
-import { Image, Stack, Flex, Text, Box, Heading, Button } from '@chakra-ui/react'
+import { Image, Stack, Flex, Text, Box, Heading, Button, Link } from '@chakra-ui/react'
 import React from 'react'
 
 export default function Hero() {
@@ -28,11 +28,13 @@ export default function Hero() {
                     <Flex direction="row-reverse">
                         <Image w="26px" h="26px"   src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665685545/Med%20Donner/Rectangle_4_yafxif.svg" />
                     </Flex>
-                    <Button
-                        size='lg' variant='solid' bg='#20BC7E' _hover="#FFB87A" color="white" transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                        borderRadius='47px' w="40%" alignSelf="center"
-                    >Find Your Donner
-                    </Button>
+                    <Link href='/signup' w="full"  >
+                        <Button
+                            size='lg' variant='solid' bg='#20BC7E' _hover="#FFB87A" color="white" transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                            borderRadius='47px' w="40%" alignSelf="center"
+                        >Find Your Donner
+                        </Button>
+                     </Link>
                 </Flex>
                 {/* second half  */}
                 <Flex direction="column" w="50%" >
