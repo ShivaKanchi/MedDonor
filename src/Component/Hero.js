@@ -28,10 +28,10 @@ export default function Hero() {
                     <Flex direction="row-reverse">
                         <Image w="26px" h="26px"   src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665685545/Med%20Donner/Rectangle_4_yafxif.svg" />
                     </Flex>
-                    <Link href='/signup' w="full"  >
+                    <Link href='/signup' w="full" alignSelf="center" >
                         <Button
                             size='lg' variant='solid' bg='#20BC7E' _hover="#FFB87A" color="white" transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                            borderRadius='47px' w="40%" alignSelf="center"
+                            borderRadius='47px' w="40%" 
                         >Find Your Donner
                         </Button>
                      </Link>
