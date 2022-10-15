@@ -3,6 +3,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import About from "./Screen/About";
 import Contact from "./Screen/Contact";
 import Donner from "./Screen/Donner";
 import Event from "./Screen/Event";
@@ -19,6 +20,7 @@ function App() {
     {/* <DocumentMeta {...meta} /> */}
       <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/donner" element={<Donner />} />
