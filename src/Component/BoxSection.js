@@ -1,10 +1,12 @@
-import { Box, Flex, Text, Heading } from '@chakra-ui/react'
+import { Flex, Text, Heading } from '@chakra-ui/react'
 import React from 'react'
-import { AiOutlineMedicineBox } from "react-icons/ai";
+
 
 export default function BoxSection() {
   return (
     <Flex direction={["column","row","row"]} p="20">
+      {/* first  */}
+      
       <Flex
         w="309px"
         h="260px"
@@ -12,7 +14,6 @@ export default function BoxSection() {
         borderRadius="16px"
         // border="1px "
         p="10"
-        
         justifyContent="center"
       >
         <Flex direction="column" w="full" alignSelf="center">
