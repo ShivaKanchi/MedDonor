@@ -70,7 +70,7 @@ export default function Count() {
                 </Flex>  
                 {/* Meddoner Regiseter */}
                 <Flex w="full" justifyContent="center" mt="50"  >
-     <Flex w="80%" borderRadius="lg"  boxShadow="0px 4px 10px" h="fit-content" bgColor="white"   >
+     <Flex w="80%" borderRadius="lg"  boxShadow="0px 4px 10px" h="fit-content"    >
         <Flex w={["100%","80%","80%"]} p={["5","10","10"]} direction="column" justifyContent={["center","none","none"]} 
             alignSelf={["center","none","none"]} 
         >
@@ -94,7 +94,7 @@ export default function Count() {
                     >
                         Medicen name
                     </Heading>
-                    <Input variant='flushed' placeholder="Enter name here" color="#ACACAC"
+                    <Input variant='flushed' placeholder="Enter name here" 
                             focusBorderColor="#ACACAC"  />
                 </Flex >
                 <FcExpired size="50px"  />
