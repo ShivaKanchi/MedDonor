@@ -41,7 +41,7 @@ function SignUp() {
 			const { data: res } = await axios.post(url, data);
 			// navigate("/login");
 			console.log(res.message);
-      window.location = "/signin";
+      window.location = "/";
 		} catch (error) {
 			if (
 				error.response &&
