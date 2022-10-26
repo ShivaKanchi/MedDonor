@@ -19,13 +19,13 @@ function App() {
     <Router>
     {/* <DocumentMeta {...meta} /> */}
       <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/donner" element={<Donner />} />
           <Route path="/event" element={<Event />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/" element={<Signin />}  />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<PageNotFound />} />
       </Routes>

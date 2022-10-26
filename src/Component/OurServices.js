@@ -11,13 +11,13 @@ export default function OurServices() {
                 fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
                 Our Services
             </Heading>
-            <Heading 
+            {/* <Heading 
                 fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
-                fontSize="67px" lineHeight="88px" letterSpacing="0.023em" w="70%" textAlign="center"
+                fontSize={["4xl","5xl","6xl"]} lineHeight={["4xl","5xl","6xl"]} letterSpacing="0.023em" w={["90%","80%","70%"]} textAlign="center"
             >
                 We Offer Different Medicine
                 Such as 
-            </Heading>
+            </Heading> */}
         <Divider orientation='horizontal' w="30%"  />
         {/* <Stack direction={['column','row','row']} pt="10" > */}
         {/* </Stack> */}

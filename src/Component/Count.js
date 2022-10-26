@@ -21,7 +21,7 @@ export default function Count() {
         {/* firt layer of bg */}
         <Box
             w="full"
-            h="633"
+            h={["700","","633"]}
             bgImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665842919/Med%20Donner/Frame_25_1_cblrry.svg)"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
@@ -47,7 +47,7 @@ export default function Count() {
                             fontSize="21" lineHeight="28px" letterSpacing="0.023em" pt="5"
                         >Happy Donner</Text>
                     </Flex>
-                    <Flex direction="column" alignItems="center" >
+                    <Flex direction="column" alignItems="center" pt="10" >
                         <FaHandsHelping size="54" />
                         <Heading fontFamily="IBM Plex Sans" fontWeight="bold" 
                             fontSize="38" lineHeight="49px" letterSpacing="0.023em" pt="5"
@@ -57,7 +57,7 @@ export default function Count() {
                             fontSize="21" lineHeight="28px" letterSpacing="0.023em" pt="5"
                         >Helped people</Text>
                     </Flex>
-                    <Flex direction="column" alignItems="center" >
+                    <Flex direction="column" alignItems="center" pt="10" >
                         <SlCalender size="54" />
                         <Heading fontFamily="IBM Plex Sans" fontWeight="bold" 
                             fontSize="38" lineHeight="49px" letterSpacing="0.023em" pt="5"
@@ -71,7 +71,9 @@ export default function Count() {
                 {/* Meddoner Regiseter */}
                 <Flex w="full" justifyContent="center" mt="50"  >
      <Flex w="80%" borderRadius="lg"  boxShadow="0px 4px 10px" h="fit-content" bgColor="white"   >
-         <Flex w="80%" p="10" direction="column" >
+        <Flex w={["100%","80%","80%"]} p={["5","10","10"]} direction="column" justifyContent={["center","none","none"]} 
+            alignSelf={["center","none","none"]} 
+        >
              <Heading 
              color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
              fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
@@ -79,13 +81,13 @@ export default function Count() {
              </Heading>
              <Heading 
                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
-                 fontSize="50px" lineHeight="88px" letterSpacing="0.023em" >
+                 fontSize={["4xl","5xl","6xl"]} lineHeight={["4xl","5xl","6xl"]} letterSpacing="0.023em" >
                     Get Regiseter Your Self
              </Heading>
              {/* first row */}
-             <Flex direction={["column","row","row"]} p="10" justifyContent="space-between">
+             <Flex direction={["column","row","row"]} p="10" justifyContent={["center","space-between","space-between"]} >
                 <GiMedicines size="60px" />
-                <Flex direction="column">
+                <Flex direction="column" p={["3","0","0"]}>
                     <Heading
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
                         fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
@@ -94,9 +96,9 @@ export default function Count() {
                     </Heading>
                     <Input variant='flushed' placeholder="Enter name here" color="#ACACAC"
                             focusBorderColor="#ACACAC"  />
-                </Flex>
-                <FcExpired size="50px" />
-                <Flex direction="column">
+                </Flex >
+                <FcExpired size="50px"  />
+                <Flex direction="column" p={["3","0","0"]}>
                     <Heading
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
                         fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
@@ -107,7 +109,7 @@ export default function Count() {
                 </Flex>
             </Flex>
             {/* second row */}
-             <Flex direction={["column","row","row"]} p="10" justifyContent="space-between">
+             <Flex direction={["column","row","row"]} mt={["-14","0","0"]} p={["10","10","10"]} justifyContent="space-between" >
                 <BsTelephoneFill size="50px" />
                 <Flex direction="column">
                     <Heading
@@ -119,7 +121,7 @@ export default function Count() {
                     <Input variant='flushed' placeholder="Enter phone no. here" color="#ACACAC"
                             focusBorderColor="#ACACAC"  />
                 </Flex>
-                <FaClinicMedical size="50px" />
+                <FaClinicMedical size="50px" p={["3","0","0"]}/>
                 <Flex direction="column">
                     <Heading
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
@@ -135,7 +137,7 @@ export default function Count() {
          <Button background="#20BC7E" varient="soild" p="5" w="20%" mt="10"  alignSelf="center" >Submit</Button>
          {/*second row end */}
          </Flex>
-         <Flex w="30%" border="medium" h="fit-content">
+         <Flex w="30%" border="medium" h="fit-content" display={["none","none","flex"]}>
              <Image  opacity="100%" objectFit='cover' h="full" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665860093/Med%20Donner/doctorBackLogo_we5mrp.svg" />
          </Flex>
      </Flex> 

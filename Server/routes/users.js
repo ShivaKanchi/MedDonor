@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt");
+const cloudinary = require("../cloudinary");
+const upload = require("../multer");
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("image"), async (req, res) => {
 	try {
 		const { error } = validate(req.body);
 		if (error)
@@ -18,6 +20,9 @@ router.post("/", async (req, res) => {
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
 
 		await new User({ ...req.body, password: hashPassword }).save();
+		// upload image
+		const res = await cloudinary.uploader.upload(req.file.path);
+
 		res.status(201).send({ message: "User created successfully" });
 	} catch (error) {
 		res.status(500).send({ message: "Internal Server Error" });

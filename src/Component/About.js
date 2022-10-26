@@ -39,24 +39,20 @@ export default function About() {
                 </Heading>
                 <Heading 
                   fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
-                  fontSize="67px" lineHeight="88px" letterSpacing="0.023em" >
-                    Short Story About
-                    Medonner
+                  fontSize={["4xl","5xl","6xl"]} lineHeight={["4xl","5xl","6xl"]} letterSpacing="0.023em" >
+                    A short story about MedDonor
                 </Heading>
                 <VStack spacing="10">
                   
                   <Text 
                     pt="5" fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                     fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
-                  > Medifine is an online healthcare provider, Offering health solutions
-                    and advice to over 30,00,000 patients across  Bangladesh.
+                  > MedDonor is a platform to donate medicine and urgently give medicines to people who need it.
                   </Text>
                   <Text 
                     fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                     fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
-                  > With a team of licensed doctors and pharmasists, Medifine aim to
-                    provide comprihensive medical consultation services for patients
-                    and doctors alike.
+                  > We have 100s of donors and pharmacists, that aim to let unused and to be expired medicine be used more efficiently and reduce medicine wastage and make medicines available for people for less price.
                   </Text>
                   <Link href='/about' w="full" alignSelf="flex-start" >
                     <Button 
