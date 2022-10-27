@@ -17,9 +17,11 @@ import {
 import Head from '../Component/Head'
 import axios from 'axios'
 import styles from "./styles.module.css";
+import { useColorModeValue} from "@chakra-ui/color-mode"
 
 function Signin() {
 
+  const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666895130/Med%20Donner/Logo_1_fzzxmc.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666895153/Med%20Donner/Logo_2_ycyiff.svg')
   const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
   // const [isLoading ] = useState(true)
@@ -86,16 +88,16 @@ function Signin() {
               <HStack display={['flex','none','none']}>
                 <Text>Want to create account?</Text>
                 <Link href="/signup">
-                  <Text color="#20BC7E" > SignUp</Text>
+                  <Text color="#20BC7E" > Sign Up</Text>
                 </Link>
               </HStack>
             </VStack>
             <VStack w={["full","50%","50%"]} alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
-                <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
+                <Image src={image}  ></Image>
                 <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
                 <Center>
                     <Link href='/signup' w="full"  >
-                        <Button rounded='md' bg="#20BC7E"  > SignUp</Button>
+                        <Button rounded='md' bg="#20BC7E"  > Sign Up</Button>
                     </Link>
                 </Center>
             </VStack>

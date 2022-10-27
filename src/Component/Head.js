@@ -12,6 +12,7 @@ function Head() {
     const isDark = colorMode === "dark";
     const [display,changeDisplay] = useState('none')
     const color = useColorModeValue('white', 'gray.800')
+    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666895130/Med%20Donner/Logo_1_fzzxmc.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666895153/Med%20Donner/Logo_2_ycyiff.svg')
 
     const handleLogout = () => {
       localStorage.removeItem("token");
@@ -21,7 +22,7 @@ function Head() {
     return (
      <VStack p={3}>
        <Flex w="100%" >
-       <Image h="40px" pl="15px" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
+       <Image h="40px" pl="15px"  src={image}  ></Image>
         <Spacer></Spacer>
         
         {/* Desktop navigation  */}
@@ -38,7 +39,7 @@ function Head() {
             </Link>
             <Link href='/donner' _focus="none" >
               <Button as="a"  variant='ghost' >
-                Donner
+                Doner
               </Button>
             </Link>
             <Link href='/event' _focus="none" >
@@ -131,7 +132,7 @@ function Head() {
             </Link>
             <Link href='/donner' _focus="none" >
               <Button as="a"  variant='ghost' >
-                Donner
+                Doner
               </Button>
             </Link>
             <Link href='/event' _focus="none" >

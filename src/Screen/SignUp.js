@@ -16,10 +16,11 @@ import React,{useState} from 'react'
 import Head from '../Component/Head'
 import axios from 'axios'
 import styles from "./styles.module.css";
-
+import { useColorModeValue} from "@chakra-ui/color-mode"
 
 function SignUp() {
-  
+
+  const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666895130/Med%20Donner/Logo_1_fzzxmc.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666895153/Med%20Donner/Logo_2_ycyiff.svg')
   const [data, setData] = useState({
 		firstName: "",
 		lastName: "",
@@ -61,7 +62,7 @@ function SignUp() {
         <Stack direction={["column","row","row"]}  w="full">
           <VStack w={["full","50%","50%"]}  alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
                 
-              <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg"  ></Image>
+              <Image src={image}  ></Image>
                 <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
                 <Center>  
                   <Link href="/signin" w="full" >
