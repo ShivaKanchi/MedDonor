@@ -1,7 +1,8 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import About from "./Screen/About";
 import Contact from "./Screen/Contact";
@@ -15,19 +16,23 @@ import Signin from "./Screen/Signin";
 import SignUp from "./Screen/SignUp";
 
 function App() {
+
+  const user= localStorage.getItem('token')
+
   return (
     <Router>
     {/* <DocumentMeta {...meta} /> */}
       <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/donner" element={<Donner />} />
-          <Route path="/event" element={<Event />} />
-          <Route path="/" element={<Signin />}  />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="*" element={<PageNotFound />} />
+          {user && <Route path="/" exact element={<Home />} /> } 
+          <Route path="/about" exact element={<About />} />
+          <Route path="/services" exact element={<Services />} />
+          <Route path="/contact" exact element={<Contact />} />
+          <Route path="/donner" exact element={<Donner />} />
+          <Route path="/event" exact element={<Event />} />
+          <Route path="/signup" exact element={<SignUp />} />
+          <Route path="/signin" exact element={<Signin />} />
+          <Route path="/" exact element={<Navigate replace to="/signin" />}  />
+          <Route path="*" exact element={<PageNotFound />} />
       </Routes>
     </Router>
   );

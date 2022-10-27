@@ -3,6 +3,8 @@ import { Flex, IconButton, VStack, Spacer, Tooltip, Link, Button, Box, Icon, Div
 import {FaGithub, FaMoon, FaSun } from 'react-icons/fa'
 import {useColorMode, useColorModeValue} from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { SlLogout } from "react-icons/sl";
+// SlLogout
 
 function Head() {
 
@@ -10,6 +12,11 @@ function Head() {
     const isDark = colorMode === "dark";
     const [display,changeDisplay] = useState('none')
     const color = useColorModeValue('white', 'gray.800')
+
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      window.location.reload();
+    }
 
     return (
      <VStack p={3}>
@@ -52,6 +59,7 @@ function Head() {
             </Link>
           </Tooltip>
           <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
+          <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
         </Flex>
        </Flex>
 

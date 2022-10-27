@@ -11,7 +11,7 @@ import {
     Input,
     HStack,  
     Link,
-    Center
+    Center, 
   } from '@chakra-ui/react'
 
 import Head from '../Component/Head'
@@ -20,8 +20,9 @@ import styles from "./styles.module.css";
 
 function Signin() {
 
-    const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+  // const [isLoading ] = useState(true)
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -34,7 +35,8 @@ function Signin() {
 			const url = "https://med-donner.herokuapp.com/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
-			window.location = "/home";
+      // isLoading=true;
+			window.location = "/";
 		} catch (error) {
 			if (
 				error.response &&
@@ -49,6 +51,7 @@ function Signin() {
   return (
     <>
     <Head />
+    
     <VStack  h="100vh"  p="50">
       <Box boxShadow='dark-lg' w="full" pb={["20","0","0"]} rounded='md'  >
         <Stack direction={["column","row","row"]}  w="full">
@@ -74,7 +77,9 @@ function Signin() {
 					className={styles.input}
 				/>
                 {error && <div className={styles.error_msg}>{error}</div>}
-                <Button mt={[10,5,5]} rounded='lg'  bg="#20BC7E" type="submit">
+                <Button 
+                  mt={[10,5,5]} rounded='lg'  bg="#20BC7E" type="submit" 
+                >
                   Sing In
                 </Button>
 				    	</form>

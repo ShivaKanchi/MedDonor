@@ -10,6 +10,8 @@ import Hero from '../Component/Hero'
 import OurServices from '../Component/OurServices'
 
 function Home() {
+  const user= localStorage.getItem('token')
+  console.log(user)
   return (
     <>
       <Head />
