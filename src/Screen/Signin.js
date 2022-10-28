@@ -94,7 +94,7 @@ function Signin() {
             </VStack>
             <VStack w={["full","50%","50%"]} alignSelf="center" justifyContent="center" h="80vh" display={["none","flex","flex"]} bg="#FFB87A" spacing="5vh" >
                 <Image src={image}  ></Image>
-                <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
+                <Text fontWeight="semibold" fontSize="50"> Want to create account ?</Text>
                 <Center>
                     <Link href='/signup' w="full"  >
                         <Button rounded='md' bg="#20BC7E"  > Sign Up</Button>
