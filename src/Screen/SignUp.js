@@ -66,7 +66,7 @@ function SignUp() {
                 <Text fontWeight="semibold" fontSize="50"> Welcome back</Text>
                 <Center>  
                   <Link href="/signin" w="full" >
-                    <Button rounded='md'  bg="#20BC7E" > Sign in</Button>
+                    <Button rounded='md'  bg="#20BC7E" > Sign In</Button>
                   </Link>
                 </Center>
              
