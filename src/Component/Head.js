@@ -12,7 +12,7 @@ function Head() {
     const isDark = colorMode === "dark";
     const [display,changeDisplay] = useState('none')
     const color = useColorModeValue('white', 'gray.800')
-    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666895130/Med%20Donner/Logo_1_fzzxmc.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666895153/Med%20Donner/Logo_2_ycyiff.svg')
+    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
 
     const handleLogout = () => {
       localStorage.removeItem("token");
@@ -39,7 +39,7 @@ function Head() {
             </Link>
             <Link href='/donner' _focus="none" >
               <Button as="a"  variant='ghost' >
-                Doner
+                Donor
               </Button>
             </Link>
             <Link href='/event' _focus="none" >

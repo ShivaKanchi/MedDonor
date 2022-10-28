@@ -1,14 +1,17 @@
 import { Image, Text, Flex, Heading, Link } from '@chakra-ui/react'
 import React from 'react'
 import { IoLocationSharp, IoCall } from "react-icons/io5";
+import {useColorModeValue} from "@chakra-ui/color-mode"
 // IoLocationSharp
 
 export default function Footer() {
+  
+  const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   return (
     <Flex direction={["column","row","row"]} w="full" mt="20" justifyContent="space-around" p={["10","10","20"]}>
         {/* column 1 */}
         <Flex direction="column" w={["90%","25%","25%"]} alignSelf="center" >
-            <Image w="200px" h="64px" alignSelf="center" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665256771/Med%20Donner/Logo_ujcyxi.svg" />
+            <Image w="200px" h="64px" alignSelf="center" src={image} />
             <Text
                 fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="500" 
                 fontSize="16px" lineHeight="21px" letterSpacing="0.023em" color="#ACACAC" pt="5"
@@ -64,7 +67,7 @@ export default function Footer() {
                         fontSize="21px" lineHeight="27px" letterSpacing="0.023em" color="#ACACAC"
                          
                     >
-                    Donner
+                    Donor
                     </Text>
                 </Link>
                 <Link href="/services" alignSelf="center" pt="2" _focus="none" >    
