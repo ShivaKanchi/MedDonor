@@ -21,7 +21,7 @@ import { useColorModeValue} from "@chakra-ui/color-mode"
 
 function Signin() {
 
-  const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666895130/Med%20Donner/Logo_1_fzzxmc.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666895153/Med%20Donner/Logo_2_ycyiff.svg')
+  const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
   // const [isLoading ] = useState(true)
