@@ -67,7 +67,7 @@ export default function Footer() {
                         fontSize="21px" lineHeight="27px" letterSpacing="0.023em" color="#ACACAC"
                          
                     >
-                    Donner
+                    Donor
                     </Text>
                 </Link>
                 <Link href="/services" alignSelf="center" pt="2" _focus="none" >    
