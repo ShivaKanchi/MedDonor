@@ -1,6 +1,7 @@
 import { Image, Text, Flex, Heading, Link } from '@chakra-ui/react'
 import React from 'react'
 import { IoLocationSharp, IoCall } from "react-icons/io5";
+import {useColorModeValue} from "@chakra-ui/color-mode"
 // IoLocationSharp
 
 export default function Footer() {
