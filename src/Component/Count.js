@@ -7,7 +7,8 @@ import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";   
+import "react-datepicker/dist/react-datepicker.css"; 
+import {useColorModeValue} from "@chakra-ui/color-mode"
 // GrGallery 
 // FcExpired
 // GiMedicines
@@ -15,6 +16,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export default function Count() {
 
     const [startDate, setStartDate] = useState(new Date()); 
+    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
 
   return (
     <Stack >
