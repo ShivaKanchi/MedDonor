@@ -12,7 +12,7 @@ function Head() {
     const isDark = colorMode === "dark";
     const [display,changeDisplay] = useState('none')
     const color = useColorModeValue('white', 'gray.800')
-    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg')
+    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
 
     const handleLogout = () => {
       localStorage.removeItem("token");
