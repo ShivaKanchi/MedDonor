@@ -16,7 +16,7 @@ import {useColorModeValue} from "@chakra-ui/color-mode"
 export default function Count() {
 
     const [startDate, setStartDate] = useState(new Date()); 
-    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg')
+    const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
 
   return (
     <Stack >
