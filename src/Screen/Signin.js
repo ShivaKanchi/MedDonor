@@ -82,7 +82,7 @@ function Signin() {
                 <Button 
                   mt={[10,5,5]} rounded='lg'  bg="#20BC7E" type="submit" 
                 >
-                  Sing In
+                  Sign In
                 </Button>
 				    	</form>
               <HStack display={['flex','none','none']}>
