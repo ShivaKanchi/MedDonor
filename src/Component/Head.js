@@ -39,7 +39,7 @@ function Head() {
             </Link>
             <Link href='/donner' _focus="none" >
               <Button as="a"  variant='ghost' >
-                Doner
+                Donor
               </Button>
             </Link>
             <Link href='/event' _focus="none" >
