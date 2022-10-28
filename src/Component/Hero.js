@@ -32,7 +32,7 @@ export default function Hero() {
                         <Button
                             size='lg' variant='solid' bg='#20BC7E' _hover="#FFB87A" color="white" transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                             borderRadius='47px' w={["80%","50%","40%"]} 
-                        >Find Your Donner
+                        >Find Your Donor
                         </Button>
                      </Link>
                 </Flex>
