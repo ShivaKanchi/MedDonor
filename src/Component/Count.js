@@ -45,7 +45,7 @@ export default function Count() {
                         <Text
                             fontFamily="IBM Plex Sans" fontWeight="400"  fontStyle="normal"
                             fontSize="21" lineHeight="28px" letterSpacing="0.023em" pt="5"
-                        >Happy Donner</Text>
+                        >Happy Donor</Text>
                     </Flex>
                     <Flex direction="column" alignItems="center" pt="10" >
                         <FaHandsHelping size="54" />
@@ -77,7 +77,7 @@ export default function Count() {
              <Heading 
              color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
              fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
-             Want to donate medicince ?
+             Want to donate medicine ?
              </Heading>
              <Heading 
                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
@@ -92,7 +92,7 @@ export default function Count() {
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
                         fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
                     >
-                        Medicen name
+                        Medicine name
                     </Heading>
                     <Input variant='flushed' placeholder="Enter name here" 
                             focusBorderColor="#ACACAC"  />
@@ -103,7 +103,7 @@ export default function Count() {
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
                         fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
                     >
-                        Medicen expire date
+                        Medicine expire date
                     </Heading>
                     <DatePicker pt="10" selected={startDate} onChange={(date) => setStartDate(date)} />  
                 </Flex>
@@ -133,12 +133,12 @@ export default function Count() {
                             focusBorderColor="#ACACAC"  />  
                 </Flex>
             </Flex>
-         <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicen Image</Button>
+         <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicine Image</Button>
          <Button background="#20BC7E" varient="soild" p="5" w="20%" mt="10"  alignSelf="center" >Submit</Button>
          {/*second row end */}
          </Flex>
          <Flex w="30%" border="medium" h="fit-content" display={["none","none","flex"]}>
-             <Image  opacity="100%" objectFit='cover' h="full" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665860093/Med%20Donner/doctorBackLogo_we5mrp.svg" />
+             <Image  opacity="100%" objectFit='cover' h="full" src={image} />
          </Flex>
      </Flex> 
  </Flex>
