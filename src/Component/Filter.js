@@ -1,4 +1,4 @@
-import { Stack, Select, InputGroup, Input, InputRightElement, Button ,Heading, Flex, Image, VStack  } from '@chakra-ui/react'
+import { Stack, Select, InputGroup, Input, InputRightElement,Link, Button ,Heading, Flex, Image, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
 // ImLocation2
@@ -14,12 +14,14 @@ export default function Filter() {
                 <Input placeholder='Search Collage Name' />
                 <InputRightElement children={<ImSearch />} />
             </InputGroup>
-            <Button
-                w="15%" background="#20BC7E" boxShadow="0px 2px 10px" rounded="47px" alignSelf="end"
-                display={['none',"flex","flex"]}
-            >
-                Register Now
-            </Button>
+            <Link href="/eventregister" w="15%" alignSelf="end"> 
+                <Button
+                     background="#20BC7E" boxShadow="0px 2px 10px" rounded="47px" 
+                    display={['none',"flex","flex"]}
+                >
+                    Register Now
+                </Button>
+            </Link>
         </Stack>
             {/* for mobile  */}
              {/* <Button
