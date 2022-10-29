@@ -3,7 +3,7 @@ import BreadCumb from '../Component/BreadCumb';
 import Filter from '../Component/Filter';
 import Head from '../Component/Head';
 import Count from '../Component/Count'
-import Footer from '../Component/Footer'
+import Footer from '../Component/Footer2'
 
 
 export default function Event() {
@@ -13,7 +13,7 @@ export default function Event() {
       <BreadCumb name="Event" />
       <Filter />
       <Count />
-      <Footer />
+      <Footer top="50%" />
     </>
   )
 }

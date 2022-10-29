@@ -8,7 +8,7 @@ export default function Footer(props) {
   
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   return (
-    <Flex direction={["column","row","row"]} w="full" justifyContent="space-around" p={["10","10","20"]} mb="-5%">
+    <Flex direction={["column","row","row"]} w="full" mt={["250%","none","25%"]} justifyContent="space-around" p={["10","10","20"]} mb="-5%">
         {/* column 1 */}
         <Flex direction="column" w={["90%","25%","25%"]} alignSelf="center" >
             <Image w="200px" h="64px" alignSelf="center" src={image} />
