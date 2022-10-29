@@ -1,4 +1,4 @@
-import { Stack, Select, InputGroup, Input, InputRightElement, Button ,Heading, Box, Flex, Image, Text, VStack, HStack} from '@chakra-ui/react'
+import { Stack, Select, InputGroup, Input, InputRightElement, Button ,Heading, Flex, Image, Text, VStack, HStack} from '@chakra-ui/react'
 import React from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
 // ImLocation2
