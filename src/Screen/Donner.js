@@ -1,7 +1,13 @@
 import React from 'react'
+import Footer from '../Component/Footer'
+import Head from '../Component/Head'
 
 export default function Donner() {
   return (
-    <div>Donner</div>
+    <>
+      <Head />
+
+      <Footer top="50%" />
+    </>
   )
 }

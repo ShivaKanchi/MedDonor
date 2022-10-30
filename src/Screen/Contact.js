@@ -1,7 +1,14 @@
 import React from 'react'
+import Footer from '../Component/Footer'
+import Head from '../Component/Head'
+import About from './About'
 
 export default function Contact() {
   return (
-    <div>Contact</div>
+    <>
+      <Head />
+      <About />
+      <Footer top="50%" />
+    </>
   )
 }
