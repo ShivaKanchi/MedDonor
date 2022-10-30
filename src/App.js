@@ -8,6 +8,7 @@ import About from "./Screen/About";
 import Contact from "./Screen/Contact";
 import Donner from "./Screen/Donner";
 import Event from "./Screen/Event";
+import EventRegister from "./Screen/EventRegister";
 import Home from "./Screen/Home";
 import PageNotFound from "./Screen/PageNotFound";
 import Services from "./Screen/Services";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/signup" exact element={<SignUp />} />
           <Route path="/signin" exact element={<Signin />} />
           <Route path="/" exact element={<Navigate replace to="/signin" />}  />
+          <Route path="/eventregister" exact element={<EventRegister />}  />
           <Route path="*" exact element={<PageNotFound />} />
       </Routes>
     </Router>
