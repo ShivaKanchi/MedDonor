@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../Component/Footer'
+import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
 
 export default function About() {
@@ -7,6 +8,7 @@ export default function About() {
     <>
       <Head />
       <About />
+      <GetOffer />
       <Footer top="50%" />
     </>
   )

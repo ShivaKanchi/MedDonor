@@ -5,12 +5,12 @@ import { ImLocation2, ImSearch } from "react-icons/im";
 
 export default function Filter() {
 
-
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
+
             <Stack direction="row" spacing={10}>
                 <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Mumbai' />
-                <InputGroup w={["50%", "50%", "85%"]} alignSelf="center">
+                <InputGroup w={["50%", "50%", "85%"]} alignSelf="center" >
                     <Input placeholder='Search Collage Name' />
                     <InputRightElement children={<ImSearch />} />
                 </InputGroup>
@@ -23,6 +23,7 @@ export default function Filter() {
                     </Button>
                 </Link>
             </Stack>
+
             {/* for mobile  */}
             {/* <Button
                 w="50%" background="#20BC7E" boxShadow="0px 2px 10px" rounded="47px" alignSelf="center"
@@ -34,7 +35,7 @@ export default function Filter() {
                 fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
                 fontSize={["lg", "xl", "2xl"]} lineHeight={["lg", "xl", "2xl"]}
                 letterSpacing="0.023em" pt={["5", "0", "0"]} alignSelf="center" w="full"
-                textAlign="center" color="#FFB87A"
+                textAlign="center" color="#20BC7E"
             >
                 Search result
             </Heading>
@@ -49,19 +50,19 @@ export default function Filter() {
                 </Flex>
 
                 <VStack w={["none", "55%", "55%"]} >
-                    <Heading
-                        fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
-                        fontSize={["lg", "xl", "2xl"]} lineHeight={["lg", "xl", "2xl"]}
-                        letterSpacing="0.023em" pt={["5", "0", "0"]} alignSelf={["center", "center", "flex-Start"]}
-                        textAlign="center" pl={["0", "0", "10"]}
-                    >
-                        Thakur  Polytechinc
-                    </Heading>
+
                     <Stack direction={["column", "column", "row"]} alignSelf={["center", "flex-Start", "flex-Start"]} w="full" >
                         {/* made a row for event and time */}
                         <Flex direction="row">
                             {/* for laptop */}
-
+                            <Heading
+                                fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
+                                fontSize={["lg", "xl", "2xl"]} lineHeight={["lg", "xl", "2xl"]}
+                                letterSpacing="0.023em" pt={["5", "0", "0"]} alignSelf={["center", "center", "flex-Start"]}
+                                textAlign="center" pl={["0", "0", "10"]}
+                            >
+                                Thakur  Polytechinc
+                            </Heading>
                             <Heading
                                 fontFamily='IBM Plex Sans' fontStyle="medium" fontWeight="400"
                                 fontSize={["md", "lg", "xl"]} lineHeight={["md", "lg", "xl"]}
