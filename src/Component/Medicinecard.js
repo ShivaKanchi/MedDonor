@@ -1,17 +1,101 @@
 import {
     Heading,
     Box,
-    Center,
     Image,
     Text,
+    Center,
     Stack,
     Button,
     useColorModeValue,
 } from '@chakra-ui/react';
+import medimg from './Medicines/med1.jpg';
+const medicines = [
+    {
+        "MedName": "Dolo 650",
+        "MedDetails": "For fever",
+        "MedExpiry": "04/01/2023",
+        "MedPic": "med1",
+        "Donor": "Shiva"
+    }, {
+        "MedName": "dala 650",
+        "MedDetails": "For fever",
+        "MedExpiry": "04/01/2023",
+        "MedPic": "med2",
+        "Donor": "Shiva"
+    }, {
+        "MedName": "popo 650",
+        "MedDetails": "For fever",
+        "MedExpiry": "04/01/2023",
+        "MedPic": "med1",
+        "Donor": "Shiva"
+    }, {
+        "MedName": "ropo 650",
+        "MedDetails": "For fever",
+        "MedExpiry": "04/01/2023",
+        "MedPic": "med2",
+        "Donor": "Shiva"
+    }
+];
 
-export default function Medicinecard(MedName, MedDetails, MedExpiry, MedPic, MedDonor) {
+export default function Medicinecard() {
+
     return (
-        <Center py={2}>
+
+        // medicines.map((med) => (<div>
+        //     <Box py={2}>
+        //         <Box
+        //             maxW={'270px'}
+        //             w={'full'}
+        //             bg={useColorModeValue('white', 'gray.800')}
+        //             boxShadow={'2xl'}
+        //             rounded={'md'}
+        //             overflow={'hidden'}>
+        //             <Image
+        //                 h={'200px'}
+        //                 w={'full'}
+        //                 src={`../Component/Medicines/${med.MedPic}`}
+        //                 objectFit={'cover'}
+        //             />
+        //             <Box p={6}>
+        //                 <Stack spacing={0} align={'center'} mb={5}>
+        //                     <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
+        //                         {med.MedName}
+        //                     </Heading>
+        //                     <Text color={'gray.500'}>{med.MedDetails}</Text>
+        //                 </Stack>
+
+        //                 <Stack direction={'row'} justify={'center'} spacing={6}>
+        //                     <Stack spacing={0} align={'center'}>
+        //                         <Text fontWeight={600}>Donor</Text>
+        //                         <Text fontSize={'sm'} color={'gray.500'}>
+        //                             {med.MedDonor}
+        //                         </Text>
+        //                     </Stack>
+        //                     <Stack spacing={0} align={'center'}>
+        //                         <Text fontWeight={600}>Expiry</Text>
+        //                         <Text fontSize={'sm'} color={'gray.500'}>
+        //                             {med.MedExpiry}
+        //                         </Text>
+        //                     </Stack>
+        //                 </Stack>
+        //                 <Button
+        //                     w={'full'}
+        //                     mt={8}
+        //                     bg={useColorModeValue('#151f21', 'gray.900')}
+        //                     color={'white'}
+        //                     rounded={'md'}
+        //                     _hover={{
+        //                         transform: 'translateY(-2px)',
+        //                         boxShadow: 'lg',
+        //                     }}>
+        //                     Buy
+        //                 </Button>
+        //             </Box>
+        //         </Box>
+        //     </Box>
+        // </div>
+        // ))
+        <Center py={6}>
             <Box
                 maxW={'270px'}
                 w={'full'}
@@ -23,32 +107,33 @@ export default function Medicinecard(MedName, MedDetails, MedExpiry, MedPic, Med
                     h={'200px'}
                     w={'full'}
                     src={
-                        'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+                        `${medimg}`
                     }
                     objectFit={'cover'}
                 />
                 <Box p={6}>
                     <Stack spacing={0} align={'center'} mb={5}>
                         <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
-                            {MedName}
+                            Dolo 650
                         </Heading>
-                        <Text color={'gray.500'}>Frontend Developer</Text>
+                        <Text color={'gray.500'}>For fever</Text>
                     </Stack>
 
                     <Stack direction={'row'} justify={'center'} spacing={6}>
                         <Stack spacing={0} align={'center'}>
-                            <Text fontWeight={600}>Details</Text>
+                            <Text fontWeight={600}>Donor</Text>
                             <Text fontSize={'sm'} color={'gray.500'}>
-                                {MedDetails}
+                                Shiva
                             </Text>
                         </Stack>
                         <Stack spacing={0} align={'center'}>
                             <Text fontWeight={600}>Expiry</Text>
                             <Text fontSize={'sm'} color={'gray.500'}>
-                                {MedExpiry}
+                                04/01/2023
                             </Text>
                         </Stack>
                     </Stack>
+
                     <Button
                         w={'full'}
                         mt={8}
@@ -59,7 +144,7 @@ export default function Medicinecard(MedName, MedDetails, MedExpiry, MedPic, Med
                             transform: 'translateY(-2px)',
                             boxShadow: 'lg',
                         }}>
-                        Buy
+                        Get
                     </Button>
                 </Box>
             </Box>
