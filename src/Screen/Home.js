@@ -22,7 +22,7 @@ function Home() {
       <Count />
       {/* <MedicenDonateRegister /> */}
       <GetOffer />
-      <Footer />
+      <Footer  />
     </>
   )
 }
