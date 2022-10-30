@@ -31,7 +31,12 @@ function Head() {
               <Button as="a"  variant='ghost'  >
                 Home
               </Button>
-            </Link>
+          </Link>
+          <Link href='/about' _focus="none" >
+              <Button as="a"  variant='ghost'  >
+                About
+              </Button>
+          </Link>
           <Link href='/services' _focus="none" >
               <Button as="a"  variant='ghost' >
                 Services
@@ -120,11 +125,16 @@ function Head() {
             mt="5"
             ml="5"
           >
-              <Link href='/' _focus="none" >
+          <Link href='/' _focus="none" >
+            <Button as="a"  variant='ghost'  >
+              Home
+            </Button>
+          </Link>
+          <Link href='/about' _focus="none" >
               <Button as="a"  variant='ghost'  >
-                Home
+                About
               </Button>
-            </Link>
+          </Link>
           <Link href='/services' _focus="none" >
               <Button as="a"  variant='ghost' >
                 Services
