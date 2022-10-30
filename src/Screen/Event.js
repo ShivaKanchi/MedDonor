@@ -11,7 +11,7 @@ export default function Event() {
       <Head />
       <Filter />
       <Count />
-      <Footer top="50%" />
+      <Footer />
     </>
   )
 }

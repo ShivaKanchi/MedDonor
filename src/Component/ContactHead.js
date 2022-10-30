@@ -1,4 +1,4 @@
-import { Box, Stack,Text, VStack, Flex, Input, Heading, Button, Link, Divider } from '@chakra-ui/react'
+import {  Stack, Flex, Input, Heading, Button, Divider } from '@chakra-ui/react'
 import React from 'react'
 
 export default function ContactHead() {

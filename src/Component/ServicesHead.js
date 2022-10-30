@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, Divider } from '@chakra-ui/react'
+import {  Stack, Flex, Image, Heading, Divider } from '@chakra-ui/react'
 
 export default function ServicesHead() {
   return (
