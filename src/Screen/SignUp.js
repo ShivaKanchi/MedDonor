@@ -39,6 +39,7 @@ function SignUp() {
     try {
       // const url = "http://localhost:8080/api/users";
       const url = "https://med-donner.herokuapp.com/api/users";
+
       const { data: res } = await axios.post(url, data);
       // navigate("/login");
       console.log(res.message);

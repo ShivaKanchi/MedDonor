@@ -11,27 +11,26 @@ import {
     Radio,
     Button
 } from '@chakra-ui/react'
+import axios from 'axios'
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from "yup"
 
 export default function EventRegister() {
 
     const [value, setValue] = React.useState('no')
-
     const formik = useFormik({
         initialValues: {
-            collageName: "",
-            dateTime: "",
+            name: "",
             address: "",
-            appartment: "",
+            startDate: "",
+            endDate: "",
             city: "",
             state: "",
             pincode: "",
-            personName: "",
+            coordinator: "",
+            coordinatorphno: "",
             certificate: "",
-            number: "",
-            whatsappNumber: "",
         },
         validationSchema: Yup.object({
             collageName: Yup.string().required("College Name required").min(6, " Collage Name is too short"),
@@ -49,8 +48,51 @@ export default function EventRegister() {
         onSubmit: (values, actions) => {
             alert(JSON.stringify(values, null));
             actions.resetForm();
+            handleSubmit();
         },
+        onChange: () => {
+            handleChange();
+        }
     });
+    const [data, setData] = useState({
+        name: "",
+        address: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        state: "",
+        pincode: "",
+        coordinator: "",
+        coordinatorphno: "",
+        certificate: "",
+    });
+    const [err, setError] = useState("");
+    // const { isOpen } = useDisclosure({isOpen})
+
+    const handleChange = ({ currentTarget: Input }) => {
+        setData({ ...data, [Input.name]: Input.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // const url = "http://localhost:8080/api/users";
+            const url = "http://localhost:8081/Events";
+            const { data: res } = await axios.post(url, data);
+            // navigate("/login");
+            console.log(res.message);
+            window.location = "/";
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(err.response.data.message);
+            }
+        }
+        console.log(data);
+    };
 
     return (
         <VStack
@@ -59,28 +101,39 @@ export default function EventRegister() {
             w={{ base: "90%", md: 500 }}
             h="full"
             justifyContent="center"
-            onSubmit={formik.handleSubmit}
+            onSubmit={handleSubmit}
             spacing="5"
         >
-            <Heading>Register for Event</Heading>
+            <Heading>Event Registration</Heading>
 
-            <FormControl isInvalid={formik.errors.collageName && formik.touched.collageName}>
+            <FormControl isInvalid={formik.errors.name && formik.touched.name}>
                 <FormLabel>College Name</FormLabel>
                 <Input
-                    name="collageName"
+                    name="name"
                     onChange={formik.handleChange}
-                    value={formik.values.collageName}
-                    placeholder="enter collage name"
+                    value={formik.values.name}
+                    placeholder="enter college name"
                 />
-                <FormErrorMessage>{formik.errors.collageName}</FormErrorMessage>
+                <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
             </FormControl>
 
             <FormControl>
-                <FormLabel>Date & Time</FormLabel>
+                <FormLabel>Start Date</FormLabel>
                 <Input
-                    name="dateTime"
+                    name="startDate"
                     onChange={formik.handleChange}
-                    value={formik.values.dateTime}
+                    value={formik.values.startDate}
+                    placeholder="Select Date and Time"
+                    size="md"
+                    type="datetime-local"
+                />
+            </FormControl>
+            <FormControl>
+                <FormLabel>End Date</FormLabel>
+                <Input
+                    name="endDate"
+                    onChange={formik.handleChange}
+                    value={formik.values.endDate}
                     placeholder="Select Date and Time"
                     size="md"
                     type="datetime-local"
@@ -93,28 +146,15 @@ export default function EventRegister() {
                     name="address"
                     onChange={formik.handleChange}
                     value={formik.values.address}
-                    placeholder="House number and street name"
+                    placeholder="Landmark, Road, Area"
                     size="md"
                     type="address"
                 />
                 <FormErrorMessage>{formik.errors.address}</FormErrorMessage>
             </FormControl>
 
-            <FormControl isInvalid={formik.errors.appartment && formik.touched.appartment}>
-                <FormLabel>Appartment</FormLabel>
-                <Input
-                    name="appartment"
-                    onChange={formik.handleChange}
-                    value={formik.values.appartment}
-                    placeholder="Appartment, suite, unit, etc"
-                    size="md"
-                    type="address"
-                />
-                <FormErrorMessage>{formik.errors.appartment}</FormErrorMessage>
-            </FormControl>
-
             <FormControl isInvalid={formik.errors.city && formik.touched.city}>
-                <FormLabel>Town/city</FormLabel>
+                <FormLabel>City</FormLabel>
                 <Input
                     name="city"
                     onChange={formik.handleChange}
@@ -157,16 +197,16 @@ export default function EventRegister() {
                 <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
             </FormControl>
 
-            <FormControl isInvalid={formik.errors.personName && formik.touched.personName} >
+            <FormControl isInvalid={formik.errors.coordinator && formik.touched.coordinator} >
                 <FormLabel>Co-Ordinator Name</FormLabel>
                 <Input
-                    name="personName"
+                    name="coordinator"
                     onChange={formik.handleChange}
-                    value={formik.values.personName}
+                    value={formik.values.coordinator}
                     placeholder="Sasuke"
                     size="md"
                 />
-                <FormErrorMessage>{formik.errors.personName}</FormErrorMessage>
+                <FormErrorMessage>{formik.errors.coordinator}</FormErrorMessage>
             </FormControl>
 
             <FormControl isInvalid={formik.errors.certificate && formik.touched.certificate} >
@@ -180,35 +220,23 @@ export default function EventRegister() {
                 <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
             </FormControl>
 
-            <FormControl isInvalid={formik.errors.number && formik.touched.number}>
+            <FormControl isInvalid={formik.errors.coordinatorphno && formik.touched.coordinatorphno}>
                 <FormLabel>Contact Number</FormLabel>
                 <Input
-                    name="number"
+                    name="coordinatorphno"
                     onChange={formik.handleChange}
-                    value={formik.values.number}
-                    placeholder="8850293795"
+                    value={formik.values.coordinatorphno}
+                    placeholder="9876543210"
                     size="md"
                     type="number"
                 />
-                <FormErrorMessage>{formik.errors.number}</FormErrorMessage>
+                <FormErrorMessage>{formik.errors.coordinatorphno}</FormErrorMessage>
             </FormControl>
 
-            <FormControl isInvalid={formik.errors.whatsappNumber && formik.touched.whatsappNumber}>
-                <FormLabel>Whatsapp Number</FormLabel>
-                <Input
-                    name="whatsappNumber"
-                    onChange={formik.handleChange}
-                    value={formik.values.whatsappNumber}
-                    placeholder="8850293795"
-                    size="md"
-                    type="number"
-                />
-                <FormErrorMessage>{formik.errors.whatsappNumber}</FormErrorMessage>
-            </FormControl>
-
-            <Button type="submit" variant="outline">
+            <Button type="submit" variant="outline" >
                 Submit
             </Button>
+            console.log(...formik);
         </VStack>
     )
 }

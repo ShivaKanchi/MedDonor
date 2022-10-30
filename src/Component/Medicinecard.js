@@ -55,7 +55,7 @@ export default function Medicinecard() {
                             src={`${medimg}`}
                             objectFit={'cover'}
                         />
-                        <Box p={6}>
+                        <Box p={8}>
                             <Stack spacing={0} align={'center'} mb={5}>
                                 <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
                                     {med.MedName}
