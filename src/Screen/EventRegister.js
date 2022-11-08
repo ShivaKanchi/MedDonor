@@ -22,7 +22,7 @@ import React, { useState } from 'react'
 import * as Yup from "yup"
 import { useColorModeValue} from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
-import register from "../../lotties/register.json";
+import register from './../lotties/register.json';
 
 
 export default function EventRegister() {
