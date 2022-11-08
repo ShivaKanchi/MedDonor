@@ -51,7 +51,7 @@ export default function ChooseUs() {
                             <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                Charity campagion for child education
+                                We provide campaign to collect unused medicines from colleges. 
                                 </Box>
                                 {isExpanded ? (
                                 <MinusIcon fontSize='12px' />
@@ -75,7 +75,7 @@ export default function ChooseUs() {
                             <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                Charity campagion for child education
+                                Provides medicine free of cost to needy people.
                                 </Box>
                                 {isExpanded ? (
                                 <MinusIcon fontSize='12px' />

@@ -56,9 +56,9 @@ export default function OurMission() {
                     fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                     fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
                   > 
-                    {/* With a team of licensed doctors and pharmasists, Medifine aim to
-                    provide comprihensive medical consultation services for patients
-                    and doctors alike. */}
+                    * To reduce medical waste.<br /><br /> 
+                    * To reduce pollution which happens after decomposing medicines. <br /><br /> 
+                    * Provide medicines to the people who can't afford on daily basis. <br /><br />
                   </Text>
                   
                 </VStack>

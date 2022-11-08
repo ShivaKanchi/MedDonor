@@ -44,7 +44,7 @@ export default function AboutPage() {
                 <Heading 
                   fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
                   fontSize={["3xl","4xl","5xl"]} lineHeight={["3xl","4xl","5xl"]} letterSpacing="0.023em" >
-                    Welcome To MedDonner
+                    Welcome To MedDonor
                 </Heading>
                 <VStack spacing="10">
                   
@@ -52,16 +52,14 @@ export default function AboutPage() {
                     pt="5" fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                     fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
                   > 
-                    Medifine is an online healthcare provider, Offering health solutions
-                    and advice to over 30,00,000 patients across  Bangladesh.
+                    MedDonor is a online portal to donate unused medicines and that medicines to be used by needy one who is unable to pay money for that particular medicine. We provide medicines free of cost to the poor people.
                   </Text>
                   <Text 
                     fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
-                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
+                    fontSize="21px" line-height="28px" letterSpacing="0.023em"
+                     color="#7C7C7C"
                   > 
-                    With a team of licensed doctors and pharmasists, Medifine aim to
-                    provide comprihensive medical consultation services for patients
-                    and doctors alike.
+                  MedDonor aims to provide unused medicines for free. 
                   </Text>
                   <Link href='/donner' w="full" alignSelf="flex-start" >
                     <Button 
