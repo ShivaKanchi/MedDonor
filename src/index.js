@@ -7,14 +7,14 @@ import theme from './theme';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ChakraProvider theme={theme} >
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       {/* cookie */}
         <App />    
       {/* scrollButton implemented  */}
       {/* <ScrolltoTop /> */}
-    </ChakraProvider>
-  </React.StrictMode>,
+    </ChakraProvider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

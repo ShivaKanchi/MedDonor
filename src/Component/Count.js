@@ -19,17 +19,18 @@ export default function Count() {
     const [startDate, setStartDate] = useState(new Date()); 
     const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
     
-    useEffect (async ()=>  {
-        const data = await fetch('http://localhost:8081/events', {
-        method: 'GET',
-        // mode: 'no-cors',
-        headers: { 'Content-type': 'application/json' },
-    }).then((t) =>
-        // console.log(t)
-        t.json()
-    )
-    console.log(data.message);
-    },[])
+    // useEffect (async ()=>  {
+
+    //     const data = await fetch('http://localhost:8081/events', {
+    //     method: 'GET',
+    //     // mode: 'no-cors',
+    //     headers: { 'Content-type': 'application/json' },
+    // }).then((t) =>
+    //     // console.log(t)
+    //     t.json()
+    // )
+    // console.log(data.message);
+    // },[])
 
     // POST METHOD
     // const data = await fetch('http://www.payment.ultronofficial.online/api/razorpay', {
