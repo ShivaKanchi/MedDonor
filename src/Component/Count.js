@@ -1,5 +1,5 @@
 import { Box, Stack, Flex, Heading, Text, Image, Input, Button } from '@chakra-ui/react'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
@@ -9,6 +9,7 @@ import { GrGallery } from "react-icons/gr";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; 
 import {useColorModeValue} from "@chakra-ui/color-mode"
+import axios from 'axios';
 // GrGallery 
 // FcExpired
 // GiMedicines
@@ -17,6 +18,35 @@ export default function Count() {
 
     const [startDate, setStartDate] = useState(new Date()); 
     const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
+    
+    useEffect (async ()=>  {
+        const data = await fetch('http://localhost:8081/events', {
+        method: 'GET',
+        // mode: 'no-cors',
+        headers: { 'Content-type': 'application/json' },
+    }).then((t) =>
+        // console.log(t)
+        t.json()
+    )
+    console.log(data.message);
+    },[])
+
+    // POST METHOD
+    // const data = await fetch('http://www.payment.ultronofficial.online/api/razorpay', {
+    //     method: 'POST',
+    //     // mode: 'no-cors',
+    //     body: JSON.stringify({
+    //         amount: document.getElementById("amount").value,
+    //         name:document.getElementById("firstname").value,
+    //     }),
+    //     headers: { 'Content-type': 'application/json' },
+    // }).then((t) =>
+    //     // console.log(t)
+    //     t.json()
+    // )
+    // console.log(data);
+
+
 
   return (
     <Stack >

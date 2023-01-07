@@ -19,6 +19,7 @@ import axios from 'axios'
 import styles from "./styles.module.css";
 import { useColorModeValue} from "@chakra-ui/color-mode"
 
+
 function Signin() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
@@ -33,8 +34,9 @@ function Signin() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			// const url = "http://localhost:8080/api/auth";
-			const url = "https://med-donner.herokuapp.com/api/auth";
+			const url = "http://localhost:8080/api/auth";
+			// const url = "https://med-donner.herokuapp.com/api/auth";
+      // const url = "https://med-serer.vercel.app/auth"
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
       // isLoading=true;
@@ -49,6 +51,11 @@ function Signin() {
 			}
 		}
 	};
+
+  // cookies 
+
+
+  
 
   return (
     <>
