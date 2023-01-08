@@ -1,3 +1,17 @@
+# Med Donor
+
+#### A platform to hep people looking for medicines at cheap price.
+#### Here we as a user can buy or donate medicines.
+#### For now we can login and register.
+#### Backend is still in progress.
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
