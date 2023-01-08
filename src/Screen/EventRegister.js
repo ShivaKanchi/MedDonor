@@ -44,29 +44,30 @@ export default function EventRegister() {
             certificate: value,
         },
         validationSchema: Yup.object({
-            name: Yup.string().required("College Name required").min(6, " Collage Name is too short"),
+            name: Yup.string(),
             //dateTime: Yup.date().required("College Name requried"),
-            address: Yup.string().required("address required"),
+            address: Yup.string(),
             //appartment: Yup.string().required("appartment required"),
-            city: Yup.string().required("City required"),
-            state: Yup.string().required("State required"),
-            pincode: Yup.number().required("pincode required").min(6, " please enter pincode properly"),
-            coordinator: Yup.string().required("Co-ordinator Name required").min(6, " Enter FullName"),
+            city: Yup.string(),
+            state: Yup.string(),
+            pincode: Yup.number(),
+            coordinator: Yup.string(),
             // certificate: Yup.boolean().required("certificate required"),
-            coordinatorphno: Yup.number().required("Number is Required").min(10, "mobile no. should be 10 digit"),
+            coordinatorphno: Yup.number(),
             //whatsappNumber: Yup.number().min(10, "mobile no. should be 10 digit")
         }),
         onSubmit: (values, actions) => {
             alert(JSON.stringify(values, null));
             actions.resetForm();
-            handleSubmit(values);
+            handleSubmit();
         }
     });
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+
+    const handleSubmit = async () => {
+        // e.preventDefault();
         try {
             // const url = "http://localhost:8080/api/users";
-            const url = "http://localhost:8081/Events";
+            const url = "http://localhost:8081/events";
 
             const { values: res } = await axios.post(url, formik.values);
             // navigate("/login");
