@@ -5,7 +5,7 @@ import Footer from '../Component/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
 
-export default function Donner() {
+export default function Donnor() {
   return (
     <>
       <Head />
