@@ -22,8 +22,8 @@ function SignUp() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg','https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		firstname: "",
+		lastname: "",
 		email: "",
 		password: "",
 	});
@@ -37,7 +37,8 @@ function SignUp() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
+			// const url = "http://localhost:8080/api/users";
+			const url = "http://localhost:4000/user/register";
 			// const url = "https://med-donner.herokuapp.com/api/users";
       // const url = "https://med-serer.vercel.app/api/users"
 			const { data: res } = await axios.post(url, data);
@@ -78,9 +79,9 @@ function SignUp() {
                 <Input
                   type="text"
                   placeholder="First Name"
-                  name="firstName"
+                  name="firstname"
                   onChange={handleChange}
-                  value={data.firstName}
+                  value={data.firstname}
                   required
                   variant='filled' 
                   size='md'
@@ -89,9 +90,9 @@ function SignUp() {
                 <Input
                   type="text"
                   placeholder="Last Name"
-                  name="lastName"
+                  name="lastname"
                   onChange={handleChange}
-                  value={data.lastName}
+                  value={data.lastname}
                   required
                   className={styles.input}
                   variant='filled' 
