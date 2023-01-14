@@ -17,7 +17,7 @@ import {
 import Head from '../Component/Head'
 import styles from "./styles.module.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
-import { signUp } from '../Redux/Reducers/Auth/auth.action';
+import { signIn } from '../Redux/Reducers/Auth/auth.action';
 
 
 function Signin() {
@@ -31,10 +31,11 @@ function Signin() {
   const handleChange = (e) => {
     setData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
-    await dispatch(signUp(data))
-
+    await dispatch(signIn(data))
+    setData({ email: "", password: "" })
   };
 
   // cookies 
@@ -53,7 +54,7 @@ function Signin() {
               <Heading pt="10vh">Login Account</Heading>
               <form className={styles.form_container} onSubmit={handleSubmit}>
                 <Input
-                  type="email"
+                  type="text"
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
