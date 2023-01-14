@@ -5,7 +5,7 @@ import ChooseUs from '../Component/ChooseUs'
 import Head from '../Component/Head'
 import OurMission from '../Component/OurMission'
 import Count from '../Component/Count'
-import Footer from '../Component/Footer'
+import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 
 export default function About() {
