@@ -37,26 +37,6 @@ function SignUp() {
 
   const dispatch = useDispatch()
   const handleSubmit = async () => {
-    // e.preventDefault();
-    // try {
-    //   // const url = "http://localhost:8080/api/users";
-    //   const url = "http://localhost:4000/user/register";
-    //   // const url = "https://med-donner.herokuapp.com/api/users";
-    //   // const url = "https://med-serer.vercel.app/api/users"
-    //   const { data: res } = await axios.post(url, data);
-    //   // navigate("/login");
-    //   console.log(res.message);
-    //   console.log(data);
-    //   window.location = "/";
-    // } catch (error) {
-    //   if (
-    //     error.response &&
-    //     error.response.status >= 400 &&
-    //     error.response.status <= 500
-    //   ) {
-    //     setError(error.response.data.message);
-    //   }
-    // }
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
   };
@@ -146,3 +126,26 @@ function SignUp() {
 }
 
 export default SignUp
+
+
+
+    // e.preventDefault();
+    // try {
+    //   // const url = "http://localhost:8080/api/users";
+    //   const url = "http://localhost:4000/user/register";
+    //   // const url = "https://med-donner.herokuapp.com/api/users";
+    //   // const url = "https://med-serer.vercel.app/api/users"
+    //   const { data: res } = await axios.post(url, data);
+    //   // navigate("/login");
+    //   console.log(res.message);
+    //   console.log(data);
+    //   window.location = "/";
+    // } catch (error) {
+    //   if (
+    //     error.response &&
+    //     error.response.status >= 400 &&
+    //     error.response.status <= 500
+    //   ) {
+    //     setError(error.response.data.message);
+    //   }
+    // }
