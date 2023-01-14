@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { useDispatch } from "react-redux";
 import {
   Stack,
   Box,
@@ -15,9 +15,9 @@ import {
 } from '@chakra-ui/react'
 
 import Head from '../Component/Head'
-import axios from 'axios'
 import styles from "./styles.module.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
+import { signUp } from '../Redux/Reducers/Auth/auth.action';
 
 
 function Signin() {
@@ -31,27 +31,10 @@ function Signin() {
   const handleChange = (e) => {
     setData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
-
+  const dispatch = useDispatch()
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const url = "http://localhost:8080/api/auth";
-      // const url = "https://med-donner.herokuapp.com/api/auth";
-      // const url = "https://med-serer.vercel.app/auth"
-      const { data: res } = await axios.post(url, data);
-      localStorage.setItem("token", res.data);
-      // isLoading=true;
-      window.location = "/";
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-      }
-    }
+    await dispatch(signUp(data))
+
   };
 
   // cookies 
@@ -119,3 +102,22 @@ function Signin() {
 }
 
 export default Signin
+
+  // e.preventDefault();
+    // try {
+    //   const url = "http://localhost:8080/api/auth";
+    //   // const url = "https://med-donner.herokuapp.com/api/auth";
+    //   // const url = "https://med-serer.vercel.app/auth"
+    //   const { data: res } = await axios.post(url, data);
+    //   localStorage.setItem("token", res.data);
+    //   // isLoading=true;
+    //   window.location = "/";
+    // } catch (error) {
+    //   if (
+    //     error.response &&
+    //     error.response.status >= 400 &&
+    //     error.response.status <= 500
+    //   ) {
+    //     setError(error.response.data.message);
+    //   }
+    // }

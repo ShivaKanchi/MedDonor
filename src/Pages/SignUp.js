@@ -14,10 +14,10 @@ import {
 
 import React, { useState } from 'react'
 import Head from '../Component/Head'
-import axios from 'axios'
 import styles from "./styles.module.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
 import { signUp } from '../Redux/Reducers/Auth/auth.action';
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 function SignUp() {
 
@@ -34,7 +34,7 @@ function SignUp() {
   const handleChange = ({ currentTarget: Input }) => {
     setData({ ...data, [Input.name]: Input.value });
   };
-
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const handleSubmit = async () => {
     await dispatch(signUp(data));
