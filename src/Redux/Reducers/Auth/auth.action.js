@@ -10,7 +10,7 @@ export const signIn = (data) => async (dispatch) => {
         })
         localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
         axios.defaults.headers.common["Authorization"] = `Bearer${User.data.token}`;
-        return dispatch({ type: SIGN_IN, payload: error })
+        return dispatch({ type: SIGN_IN, payload: data })
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error })
@@ -26,7 +26,7 @@ export const signUp = (data) => async (dispatch) => {
         })
         localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
         axios.defaults.headers.common["Authorization"] = `Bearer${User.data.token}`;
-        return dispatch({ type: SIGN_UP, payload: error })
+        return dispatch({ type: SIGN_UP, payload: data })
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error })
