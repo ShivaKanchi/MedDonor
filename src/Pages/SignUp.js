@@ -19,6 +19,8 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import { signUp } from '../Redux/Reducers/Auth/auth.action';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
+
+
 function SignUp() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')

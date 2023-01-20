@@ -20,7 +20,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import { signIn } from '../Redux/Reducers/Auth/auth.action';
 
 
-function Signin() {
+function SignIn() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   const [data, setData] = useState({ email: "", password: "" });
@@ -28,13 +28,14 @@ function Signin() {
   // const [isLoading ] = useState(true)
 
 
-  const handleChange = (e) => {
-    setData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleChange = ({ currentTarget: Input }) => {
+    setData({ ...data, [Input.name]: Input.value });
   };
 
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     await dispatch(signIn(data))
+    setData({ email: "", password: "" })
     setData({ email: "", password: "" })
   };
 
@@ -46,7 +47,6 @@ function Signin() {
   return (
     <>
       <Head />
-
       <VStack h="100vh" p="50">
         <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
           <Stack direction={["column", "row", "row"]} w="full">
@@ -102,7 +102,7 @@ function Signin() {
   )
 }
 
-export default Signin
+export default SignIn
 
   // e.preventDefault();
     // try {
