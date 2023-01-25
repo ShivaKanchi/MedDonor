@@ -33,10 +33,12 @@ function SignIn() {
   };
 
   const dispatch = useDispatch()
-  const handleSubmit = async (e) => {
-    await dispatch(signIn(data))
+
+  const submit = async () => {
+    // await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })
+    console.log("HANDlesub,it")
   };
 
   // cookies 
@@ -52,7 +54,7 @@ function SignIn() {
           <Stack direction={["column", "row", "row"]} w="full">
             <VStack w={["full", "50%", "50%"]} h={["90vh", "80vh", "80vh"]} pt={["5%", "5%", "5%"]} spacing="5vh" >
               <Heading pt="10vh">Login Account</Heading>
-              <form className={styles.form_container} onSubmit={handleSubmit}>
+              <form className={styles.form_container} onSubmit={submit}>
                 <Input
                   type="text"
                   placeholder="Email"
@@ -71,7 +73,7 @@ function SignIn() {
                   required
                   className={styles.input}
                 />
-                {error && <div className={styles.error_msg}>{error}</div>}
+                {/* {error && <div className={styles.error_msg}>{error}</div>} */}
                 <Button
                   mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit"
                 >

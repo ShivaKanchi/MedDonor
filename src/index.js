@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import store from "./Redux/store"
 import { ChakraProvider, ColorModeScript, } from '@chakra-ui/react';
@@ -11,19 +12,19 @@ if (localStorage.Donnor) {
   const { token } = JSON.parse(localStorage.Donnor)
   axios.default.headers.common["Authorization"] = `Bearer ${token}`;
 }
-
-ReactDOM.render(
-  // <React.StrictMode>
-
-  <ChakraProvider theme={theme} >
-    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-    {/* cookie */}
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <BrowserRouter> */}
+      <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        {/* cookie */}
+        <App />
+        {/* scrollButton implemented  */}
+        {/* <ScrolltoTop /> */}
+      </ChakraProvider>
+      {/* </BrowserRouter> */}
     </Provider>
-    {/* scrollButton implemented  */}
-    {/* <ScrolltoTop /> */}
-  </ChakraProvider>,
-  // </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
