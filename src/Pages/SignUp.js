@@ -40,6 +40,7 @@ function SignUp() {
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(data)
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
   };
