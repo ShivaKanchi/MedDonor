@@ -34,7 +34,8 @@ function SignIn() {
 
   const dispatch = useDispatch()
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     // await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })

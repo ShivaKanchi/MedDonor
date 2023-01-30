@@ -38,7 +38,8 @@ function SignUp() {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
   };
