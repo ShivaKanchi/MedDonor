@@ -118,7 +118,7 @@ function SignUp() {
               <HStack display={['flex', 'none', 'none']}>
                 <Text>alredy have account ?</Text>
                 <Link href="/signin" >
-                  <Text color="#20BC7E" > Sigin</Text>
+                  <Button rounded='md' bg="#20BC7E"  > Sign In</Button>
                 </Link>
               </HStack>
             </VStack>

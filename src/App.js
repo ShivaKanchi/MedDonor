@@ -19,7 +19,7 @@ import SignUp from "./Pages/SignUp";
 
 function App() {
 
-  const user = localStorage.getItem('token')
+  const user = localStorage.getItem('Donnor')
 
   return (
     <Router>

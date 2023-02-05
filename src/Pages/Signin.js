@@ -36,10 +36,10 @@ function SignIn() {
 
   const submit = async (e) => {
     e.preventDefault()
-    // await dispatch(signIn(data))
+    await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })
-    console.log("HANDlesub,it",data)
+    console.log("HANDlesub,it", data)
   };
 
   // cookies 
@@ -84,7 +84,7 @@ function SignIn() {
               <HStack display={['flex', 'none', 'none']}>
                 <Text>Want to create account?</Text>
                 <Link href="/signup">
-                  <Text color="#20BC7E" > Sign Up</Text>
+                  <Button rounded='md' bg="#20BC7E"  > Sign Up</Button>
                 </Link>
               </HStack>
             </VStack>
