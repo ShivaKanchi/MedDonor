@@ -10,7 +10,7 @@ import theme from './theme';
 // import ScrolltoTop from './Components/ScrolltoTop';
 if (localStorage.Donnor) {
   const { token } = JSON.parse(localStorage.Donnor)
-  axios.default.headers.common["Authorization"] = `Bearer ${token}`;
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

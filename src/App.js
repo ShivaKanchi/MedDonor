@@ -13,16 +13,12 @@ import EventRegister from "./Pages/EventRegister";
 import Home from "./Pages/Home";
 import PageNotFound from "./Pages/PageNotFound";
 import Services from "./Pages/Services";
-// import SignIn from "./Pages/SignIn";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
-
 function App() {
-
   const user = localStorage.getItem('Donnor')
-
   return (
-    <Router>
+    <>
       {/* <DocumentMeta {...meta} /> */}
       <Routes>
         {user && <Route path="/" exact element={<Home />} />}
@@ -37,8 +33,7 @@ function App() {
         <Route path="/eventregister" exact element={<EventRegister />} />
         <Route path="*" exact element={<PageNotFound />} />
       </Routes>
-    </Router>
+    </>
   );
 }
-
 export default App;
