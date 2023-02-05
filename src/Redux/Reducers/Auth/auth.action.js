@@ -5,7 +5,7 @@ export const signIn = (data) => async (dispatch) => {
     try {
         const User = await axios({
             method: "POST",
-            url: "http://localhost:4000/user/login",
+            url: `${process.env.REACT_APP_CLIENT_URL}/user/login`, //http://localhost:4000/
             data: { credentials: data }
         })
         localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
@@ -21,7 +21,7 @@ export const signUp = (data) => async (dispatch) => {
     try {
         const User = await axios({
             method: "POST",
-            url: "http://localhost:4000/user/register",
+            url: `${process.env.REACT_APP_CLIENT_URL}/user/register`,
             data: { credentials: data }
         })
         localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));

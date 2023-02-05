@@ -19,6 +19,8 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import { signUp } from '../Redux/Reducers/Auth/auth.action';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
+
+
 function SignUp() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
@@ -36,7 +38,9 @@ function SignUp() {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(data)
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
   };
@@ -114,7 +118,7 @@ function SignUp() {
               <HStack display={['flex', 'none', 'none']}>
                 <Text>alredy have account ?</Text>
                 <Link href="/signin" >
-                  <Text color="#20BC7E" > Sigin</Text>
+                  <Button rounded='md' bg="#20BC7E"  > Sign In</Button>
                 </Link>
               </HStack>
             </VStack>
