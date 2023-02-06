@@ -6,6 +6,7 @@ import Footer from '../Component/Footer/Footer2'
 import EventCard from '../Component/EventCard';
 
 export default function Event() {
+
   return (
     <>
       <Head />

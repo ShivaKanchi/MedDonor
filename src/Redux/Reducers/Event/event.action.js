@@ -10,6 +10,20 @@ import {
 
 import axios from 'axios';
 
+export const getAllEvents = () => async (dispatch) => {
+    try {
+        const events = await axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_CLIENT_URL}/event/all`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            data: { credentials: eventData }
+        });
+        return dispatch({ type: GET_ALL_EVENTS, payload: events.data.events });
+    }
+    catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+
+    }
+}
 export const addEvent = (eventData) => async (dispatch) => {
     try {
         await axios({
