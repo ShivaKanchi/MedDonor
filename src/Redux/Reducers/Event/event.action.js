@@ -9,3 +9,12 @@ import {
 } from "./event.type";
 
 import axios from 'axios';
+
+export const addEvent = () => async () => {
+    try {
+
+    }
+    catch (error) {
+
+    }
+}
