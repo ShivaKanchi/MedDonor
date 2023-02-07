@@ -79,3 +79,17 @@ export const deleteEvent = (_id) => async (dispatch) => {
 
     }
 }
+
+export const getCityEvents = () => async (dispatch) => {
+    try {
+        const events = await axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_CLIENT_URL}/event/`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+        });
+        return dispatch({ type: GET_CITY_EVENTS, payload: events.data.message });
+    }
+    catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+
+    }
+}
