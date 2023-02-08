@@ -4,6 +4,8 @@ import { FaGithub, FaMoon, FaSun } from 'react-icons/fa'
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { SlLogout } from "react-icons/sl";
+import { useDispatch } from "react-redux"
+import { useNavigate } from 'react-router-dom';
 // SlLogout
 
 function Head() {
