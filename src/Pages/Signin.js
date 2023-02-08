@@ -39,7 +39,7 @@ function SignIn() {
     await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })
-
+    navigate("/")
     console.log("HANDlesub,it", data)
   };
 
