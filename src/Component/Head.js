@@ -14,9 +14,16 @@ function Head() {
   const color = useColorModeValue('white', 'gray.800')
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
+    //dispatch(signOut());
+    // dispatch(clearUser());
+    navigate("/");
+
   }
 
   return (
@@ -142,7 +149,7 @@ function Head() {
           </Link>
           <Link href='/donner' _focus="none" >
             <Button as="a" variant='ghost' >
-              Doner
+              Donor
             </Button>
           </Link>
           <Link href='/event' _focus="none" >
