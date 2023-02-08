@@ -43,6 +43,7 @@ function SignUp() {
     console.log(data)
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
+    navigate("/")
   };
 
   return (
