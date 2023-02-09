@@ -8,14 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllEvents } from '../Redux/Reducers/Event/event.action';
 
 export default function Event() {
-  const [events, setEvents] = useState([])
-  const dispatch = useDispatch()
 
-  const eventData = useSelector(state => state.events)
-  useEffect(() => {
-    dispatch(getAllEvents())
-    setEvents(eventData)
-  }, [eventData])
 
   return (
     <>

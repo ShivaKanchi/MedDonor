@@ -16,6 +16,7 @@ export const getAllEvents = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/event/`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
         });
+        console.log("Events action", events)
         return dispatch({ type: GET_ALL_EVENTS, payload: events.data.message });
     }
     catch (error) {
