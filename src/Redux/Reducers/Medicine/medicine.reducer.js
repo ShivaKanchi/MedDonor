@@ -11,7 +11,7 @@ const medicineReducer = (state = intialState, action) => {
             console.log("reducer med", action.payload)
             return {
                 ...state,
-                medicines: [...action.payload]
+                medicines: [...action.payload.Medicines]
             };
         case GET_MEDICINE: return {
             ...state,

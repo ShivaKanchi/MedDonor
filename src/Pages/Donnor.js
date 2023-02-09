@@ -17,7 +17,7 @@ export default function Donnor() {
 
   useEffect(() => {
     dispatch(getMedicines())
-    //console.log("from donor js")
+    console.log("from donor js")
   }, [])
 
 
