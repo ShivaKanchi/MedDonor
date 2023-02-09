@@ -1,4 +1,4 @@
-import { GET_USER, SELF, CLEAR_USER } from "./user.type";
+import { GET_USER, SELF, CLEAR_USER, UPDATE_USER } from "./user.type";
 
 const initialState = {
     user: {}

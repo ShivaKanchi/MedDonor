@@ -51,7 +51,7 @@ function Head() {
               Services
             </Button>
           </Link>
-          <Link href='/donner' _focus="none" >
+          <Link href='/donnor' _focus="none" >
             <Button as="a" variant='ghost' >
               Donor
             </Button>

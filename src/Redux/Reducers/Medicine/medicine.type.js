@@ -1,0 +1,2 @@
+export const GET_MEDICINES = "GET_MEDICINES"
+export const GET_MEDICINE = "GET_MEDICINE"

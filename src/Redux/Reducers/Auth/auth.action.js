@@ -8,12 +8,12 @@ export const signIn = (data) => async (dispatch) => {
             url: `${process.env.REACT_APP_CLIENT_URL}/user/login`, //http://localhost:4000/
             data: { credentials: data }
         })
-        localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
+        localStorage.setItem("Donor", JSON.stringify({ token: User.data.token }));
         axios.defaults.headers.common["Authorization"] = `Bearer${User.data.token}`;
         return dispatch({ type: SIGN_IN, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error })
+        return dispatch({ type: "ERROR", payload: error.response.data })
     }
 }
 
@@ -24,11 +24,21 @@ export const signUp = (data) => async (dispatch) => {
             url: `${process.env.REACT_APP_CLIENT_URL}/user/register`,
             data: { credentials: data }
         })
-        localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
+        localStorage.setItem("Donor", JSON.stringify({ token: User.data.token }));
         axios.defaults.headers.common["Authorization"] = `Bearer${User.data.token}`;
         return dispatch({ type: SIGN_UP, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error })
+        return dispatch({ type: "ERROR", payload: error.response.data })
+    }
+}
+
+export const signOut = () => async (dispatch) => {
+    try {
+        localStorage.removeItem("Donor")
+        //window.location.href = "http://localhost:3000"
+        return dispatch({ type: SIGN_OUT, payload: {} });
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error.response.data });
     }
 }
