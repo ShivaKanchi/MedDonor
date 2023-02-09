@@ -73,10 +73,11 @@ export default class EventCard extends React.Component {
                             fontFamily="IBM Plex Sans" fontWeight="bold" fontSize="16px"
                             lineHeight="21px"
                           > Event Date :</Heading>
+
                           <Heading
                             fontFamily="IBM Plex Sans" fontStyle="normal" fontWeight="500" fontSize="16px"
                             lineHeight="21px"
-                          > {item.startDate}</Heading>
+                          > {item.startdate}</Heading>
                           {/* event end date */}
                           <Heading
                             fontFamily="IBM Plex Sans" fontWeight="bold" fontSize="16px"
@@ -85,7 +86,7 @@ export default class EventCard extends React.Component {
                           <Heading
                             fontFamily="IBM Plex Sans" fontStyle="normal" fontWeight="500" fontSize="16px"
                             lineHeight="21px"
-                          > {item.endDate}</Heading>
+                          > {item.enddate}</Heading>
                         </Stack>
                       </Stack>
                       {/* address */}
