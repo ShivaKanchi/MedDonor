@@ -1,8 +1,8 @@
 import { GET_MEDICINES, GET_MEDICINE } from "./medicine.type";
 
 const intialState = {
-    medicines: [],
-    medicine: {}
+    Medicines: [],
+    Medicine: {}
 }
 
 const medicineReducer = (state = intialState, action) => {
@@ -13,7 +13,7 @@ const medicineReducer = (state = intialState, action) => {
         };
         case GET_MEDICINE: return {
             ...state,
-            medicines: action.payload
+            medicine: action.payload
         };
         default: return {
             ...state

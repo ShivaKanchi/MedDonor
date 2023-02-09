@@ -1,9 +1,14 @@
 import { combineReducers } from "redux"
 
 import auth from './Auth/auth.reducer'
+import event from './Event/event.reducer'
+import medicine from './Medicine/medicine.reducer'
+import user from './User/user.reducer'
 
 const rootReducer = combineReducers({
-    auth
+    auth,
+    medicine,
+    event,
 })
 
 export default rootReducer

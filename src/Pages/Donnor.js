@@ -13,14 +13,11 @@ import { getMedicines } from '../Redux/Reducers/Medicine/medicine.action'
 export default function Donnor() {
   const [medicines, setMedicines] = useState([])
   const dispatch = useDispatch()
-  const reduxState = useSelector(
-    state => state.medicines
-);
-console.log("from donor js",reduxState)
+  const reduxState = useSelector(state => state.medicines);
+
   useEffect(() => {
-    if (medicines.length === 0) {
-      dispatch(getMedicines())
-    }
+    dispatch(getMedicines())
+    //console.log("from donor js")
   }, [])
 
 
