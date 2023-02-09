@@ -13,7 +13,7 @@ export const signIn = (data) => async (dispatch) => {
         return dispatch({ type: SIGN_IN, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error })
+        return dispatch({ type: "ERROR", payload: error.response.data })
     }
 }
 
@@ -29,7 +29,7 @@ export const signUp = (data) => async (dispatch) => {
         return dispatch({ type: SIGN_UP, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error })
+        return dispatch({ type: "ERROR", payload: error.response.data })
     }
 }
 
@@ -39,6 +39,6 @@ export const signOut = () => async (dispatch) => {
         //window.location.href = "http://localhost:3000"
         return dispatch({ type: SIGN_OUT, payload: {} });
     } catch (error) {
-        return dispatch({ type: "ERROR", payload: error });
+        return dispatch({ type: "ERROR", payload: error.response.data });
     }
 }
