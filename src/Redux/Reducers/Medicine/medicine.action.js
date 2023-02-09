@@ -10,7 +10,7 @@ export const getMedicines = () => async (dispatch) => {
         console.log(medicines.data.Medicines, "From action medicines")
         return dispatch({
             type: GET_MEDICINES,
-            payload: medicines.data
+            payload: medicines.data.Medicines
         })
     }
     catch (error) {
