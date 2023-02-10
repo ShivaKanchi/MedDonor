@@ -2,7 +2,7 @@ import { Stack, Select, InputGroup, Input, InputRightElement, Heading } from '@c
 import React from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
 // ImLocation2
-import MedicineCard from '../Component/Medicinelist'
+import MedicineCard from '../Medicinelist'
 
 export default function Filter() {
 

@@ -42,13 +42,10 @@ function SignIn() {
     await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })
-    console.log("sigin", data)
-    navigate("/")
+    navigate("/donnor")
   };
 
   // cookies 
-
-
 
 
   return (

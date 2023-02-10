@@ -141,7 +141,7 @@ export default class MedicineCard extends React.Component {
                                         letterSpacing="0.023em" alignSelf="flex-Start" pl={["0", "0", "10"]}
                                         display={["none", "flex", "flex"]}
                                     >
-                                        Address : 505, 11-A, Ashish complex , dahiiser (E)
+                                        Address : 505, 11-A, Ashish complex , dahisar (E)
                                     </Heading>
                                     {/* for mobile device */}
                                     <Heading
@@ -158,7 +158,7 @@ export default class MedicineCard extends React.Component {
                                         letterSpacing="0.023em" alignSelf="flex-Start" pl={["0", "0", "10"]}
                                         display={["flex", "none", "none"]}
                                     >
-                                        505, 11-A, Ashish complex , dahiiser (E)
+                                        505, 11-A, Ashish complex , dahisar (E)
                                     </Heading>
 
                                     {/* for laptop */}
