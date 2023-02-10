@@ -173,7 +173,7 @@ export default function Filter() {
                         fontSize={["md", "lg", "xl"]} lineHeight={["md", "lg", "xl"]}
                         letterSpacing="0.023em" pb="2" alignSelf={["center", "flex-start", "flex-start"]}
                     >
-                        Donner Name
+                        Donor :
                     </Heading>
                     <Heading
                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="400"

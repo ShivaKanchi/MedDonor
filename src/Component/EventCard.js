@@ -52,8 +52,8 @@ export default class EventCard extends React.Component {
                   <Stack w={["100%", "25%", "25%"]} >
                     <Image
                       objectFit='cover'
-                      src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                      alt={item.name}
+                      src={item.eventimage ? item.eventimage : "https://images.shiksha.com/mediadata/images/1627553136phphvAxM1.jpeg"}
+                      alt="https://images.shiksha.com/mediadata/images/1627553136phphvAxM1.jpeg"
                       height="auto" w="auto"
                     />
                   </Stack>
@@ -61,7 +61,7 @@ export default class EventCard extends React.Component {
                   <Stack w={["100%", "50%", "50%"]}>
 
                     <CardHeader>
-                      <Heading as="h3" >{item.name}</Heading>
+                      <Heading as="h3" >{item.eventname}</Heading>
                     </CardHeader>
 
                     <CardBody>
@@ -97,6 +97,9 @@ export default class EventCard extends React.Component {
                             lineHeight="21px"
                           > Address :
                           </Heading>
+                          <Text >
+                            {item.landmark},
+                          </Text>
                           <Text >
                             {item.address}
                           </Text>
@@ -146,7 +149,7 @@ export default class EventCard extends React.Component {
 
                       <Flex spacing='4' direction={["column", "column", "row"]}>
                         <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                          <Avatar name={item.coordinator} src='https://bit.ly/sage-adebayo' />
+                          <Avatar name={item.coordinator} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
 
                           <Box>
                             <Heading size='sm'>{item.coordinator}</Heading>

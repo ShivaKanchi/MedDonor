@@ -7,7 +7,7 @@ export const getMedicines = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/medicine`,
         });
-        console.log(medicines.data.Medicines, "From action medicines")
+        console.log(medicines.data, "From action medicines")
         return dispatch({
             type: GET_MEDICINES,
             payload: medicines.data
