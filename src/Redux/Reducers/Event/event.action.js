@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
     GET_ALL_EVENTS,
     GET_EVENT,
@@ -8,7 +9,6 @@ import {
     GET_CERTIFICATE_EVENT,
 } from "./event.type";
 
-import axios from 'axios';
 
 export const getAllEvents = () => async (dispatch) => {
     try {
