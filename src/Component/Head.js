@@ -6,6 +6,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { SlLogout } from "react-icons/sl";
 import { useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom';
+import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
 function Head() {
@@ -22,9 +23,9 @@ function Head() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
-    //dispatch(signOut());
+    dispatch(signOut());
     // dispatch(clearUser());
-    navigate("/");
+    navigate("/signin");
 
   }
 

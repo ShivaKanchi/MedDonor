@@ -8,6 +8,7 @@ import Filter from '../Component/Filter/Filter2'
 import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
+import MedicineCard from '../Component/Medicinelist'
 import { getMedicines } from '../Redux/Reducers/Medicine/medicine.action'
 
 export default function Donnor() {
@@ -25,6 +26,7 @@ export default function Donnor() {
     <>
       <Head />
       <Filter />
+      {/* <MedicineCard /> */}
       <Count />
       <GetOffer />
       <Footer />

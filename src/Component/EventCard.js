@@ -63,9 +63,7 @@ export default class EventCard extends React.Component {
                     <CardHeader>
                       <Heading as="h3" >{item.eventname}</Heading>
                     </CardHeader>
-
                     <CardBody>
-
                       <Stack direction={["column", "column", "row"]}>
                         {/* event start date */}
                         <Stack direction="row">
