@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import {
   Stack,
   Box,
@@ -20,7 +22,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import { signIn } from '../Redux/Reducers/Auth/auth.action';
 
 
-function Signin() {
+function SignIn() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   const [data, setData] = useState({ email: "", password: "" });
@@ -28,31 +30,33 @@ function Signin() {
   // const [isLoading ] = useState(true)
 
 
-  const handleChange = (e) => {
-    setData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleChange = ({ currentTarget: Input }) => {
+    setData({ ...data, [Input.name]: Input.value });
   };
 
   const dispatch = useDispatch()
-  const handleSubmit = async (e) => {
+  const navigate = useNavigate();
+
+  const submit = async (e) => {
+    e.preventDefault()
     await dispatch(signIn(data))
     setData({ email: "", password: "" })
+    setData({ email: "", password: "" })
+    navigate("/donnor")
   };
 
   // cookies 
 
 
-
-
   return (
     <>
       <Head />
-
       <VStack h="100vh" p="50">
         <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
           <Stack direction={["column", "row", "row"]} w="full">
             <VStack w={["full", "50%", "50%"]} h={["90vh", "80vh", "80vh"]} pt={["5%", "5%", "5%"]} spacing="5vh" >
               <Heading pt="10vh">Login Account</Heading>
-              <form className={styles.form_container} onSubmit={handleSubmit}>
+              <form className={styles.form_container} onSubmit={submit}>
                 <Input
                   type="text"
                   placeholder="Email"
@@ -71,7 +75,7 @@ function Signin() {
                   required
                   className={styles.input}
                 />
-                {error && <div className={styles.error_msg}>{error}</div>}
+                {/* {error && <div className={styles.error_msg}>{error}</div>} */}
                 <Button
                   mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit"
                 >
@@ -81,7 +85,7 @@ function Signin() {
               <HStack display={['flex', 'none', 'none']}>
                 <Text>Want to create account?</Text>
                 <Link href="/signup">
-                  <Text color="#20BC7E" > Sign Up</Text>
+                  <Button rounded='md' bg="#20BC7E"  > Sign Up</Button>
                 </Link>
               </HStack>
             </VStack>
@@ -102,7 +106,7 @@ function Signin() {
   )
 }
 
-export default Signin
+export default SignIn
 
   // e.preventDefault();
     // try {

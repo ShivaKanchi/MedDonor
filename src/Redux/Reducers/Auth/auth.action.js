@@ -5,7 +5,7 @@ export const signIn = (data) => async (dispatch) => {
     try {
         const User = await axios({
             method: "POST",
-            url: "https://meddonor-server.onrender.com/login",
+            url: `${process.env.REACT_APP_CLIENT_URL}/user/login`,
             data: { credentials: data }
         })
         localStorage.setItem("Donnor", JSON.stringify({ token: User.data.token }));
