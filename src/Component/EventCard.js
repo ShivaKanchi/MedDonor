@@ -43,7 +43,7 @@ export default class EventCard extends React.Component {
     return (
       <div>
         {this.state.data ? <p>
-          {this.state.data.message.slice(0, 9).map((item, i) => (
+          {this.state.data.data.slice(0, 9).map((item, i) => (
             <Stack p="10" w="100%">
 
               <Card key={WrapItem._id}>

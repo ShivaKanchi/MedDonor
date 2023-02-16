@@ -14,20 +14,27 @@ import SignUp from "./Pages/SignUp";
 //redux
 import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
+import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
+import { getAllEvents } from "./Redux/Reducers/Event/event.action";
 function App() {
-  const user = localStorage.getItem('Donor')
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getMySelf());
-  // }, []);
+  if (localStorage.Donor) {
+    const user = localStorage.getItem('Donor')
+  }
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMedicines);
+    dispatch(getAllEvents);
+    dispatch(getMySelf());
+  }, [localStorage]);
 
   return (
     <>
       <Routes>
-        {user && <Route path="/" exact element={<Home />} />}
-        <Route path="/" exact element={<Navigate replace to="/signin" />} />
-        {/* <Route path="/" exact element={<Navigate replace to="/home" />} />
-        <Route path="/home" element={<Home />} /> */}
+        {/* {user && <Route path="/" exact element={<Home />} />}
+        <Route path="/" exact element={<Navigate replace to="/signin" />} /> */}
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/donnor" element={<Donnor />} />

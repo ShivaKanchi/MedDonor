@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardBody, Avatar, Box, Heading, Text, Stack, WrapItem, Spinner, Button, IconButton, Link, Flex, Image, VStack } from '@chakra-ui/react'
 import { PhoneIcon } from "@chakra-ui/icons"
 import { BsWhatsapp } from "react-icons/bs";
+//redux
+// import { useDispatch } from "react-redux";
+// import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
 
 export default class MedicineCard extends React.Component {
-
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //   dispatch(getMedicines());
+    // }, [localStorage]);
+  
     constructor(props) {
         super(props);
 
@@ -43,9 +50,9 @@ export default class MedicineCard extends React.Component {
         return (
             <div>
                 {this.state.data ? <p>
-                    {this.state.data.Medicines.slice(0, 9).map((item, i) => (
+                    {this.state.data.data.map((item, i) => (
                         <>
-                            <Flex
+                            <Flex key={item._id}
                                 w="full" bgColor="#D9D9D9" direction={["column", "row", "row"]} p="10"
                             >
                                 {/* Medicen image */}
@@ -185,7 +192,7 @@ export default class MedicineCard extends React.Component {
                                         fontSize={["md", "lg", "xl"]} lineHeight={["md", "lg", "xl"]}
                                         letterSpacing="0.023em" alignSelf={["center", "flex-start", "flex-start"]} pb="2"
                                     >
-                                        {item.donor}
+                                        {item.donorname}
                                     </Heading>
                                     <Heading
                                         fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="400"

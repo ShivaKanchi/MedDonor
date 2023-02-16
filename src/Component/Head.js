@@ -5,13 +5,14 @@ import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { SlLogout } from "react-icons/sl";
 import { SlUser } from "react-icons/sl";
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
 function Head() {
-  const user = localStorage.getItem('Donor')
+  const user = useSelector((globalState) => globalState.user.user);
+  console.log(user._id ? "hello" : "bye")
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -74,12 +75,27 @@ function Head() {
               <IconButton ml={2} icon={<FaGithub />} isRound='true' ></IconButton>
             </Link>
           </Tooltip>
-          <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
+          <Tooltip label='Mode' >
+            <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
+          </Tooltip>
+
           {
-            true ? (
-              <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
+            user._id ? (
+              <>
+                <Tooltip label='Sign Out' >
+                  <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}>
+                  </IconButton>
+                </Tooltip>
+
+              </>
             ) : (
-              <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={navigate("/signin")}><Tooltip label='Sign In' ></Tooltip></IconButton>
+              <>
+                <Tooltip label='Sign In' >
+                  <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={navigate("/signin")}>
+                  </IconButton>
+                </Tooltip>
+
+              </>
             )
           }
         </Flex>
@@ -173,7 +189,7 @@ function Head() {
           </Link>
         </Flex>
       </Flex>
-    </VStack>
+    </VStack >
   )
 }
 
