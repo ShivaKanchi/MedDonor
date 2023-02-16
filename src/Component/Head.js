@@ -11,7 +11,7 @@ import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
 function Head() {
-  // const user = localStorage.getItem('donor')
+  const user = localStorage.getItem('Donor')
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -22,12 +22,11 @@ function Head() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
+    //localStorage.removeItem("token");
+    // window.location.reload();
+    // dispatch(clearUser());    
     dispatch(signOut());
-    // dispatch(clearUser());
     navigate("/signin");
-
   }
 
   return (
@@ -77,7 +76,7 @@ function Head() {
           </Tooltip>
           <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
           {
-            user ? (
+            true ? (
               <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
             ) : (
               <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={navigate("/signin")}><Tooltip label='Sign In' ></Tooltip></IconButton>

@@ -8,18 +8,20 @@ import Filter from '../Component/Filter/Filter2'
 import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
-import MedicineCard from '../Component/Medicinelist'
+// import MedicineCard from '../Component/Medicinelist'
+import MedicineCard from '../Component/Medicine/Medicinecard'
+
 import { getMedicines } from '../Redux/Reducers/Medicine/medicine.action'
 
 export default function Donnor() {
-  const [medicines, setMedicines] = useState([])
-  const dispatch = useDispatch()
-  const reduxState = useSelector(state => state.medicines);
+  // const [medicines, setMedicines] = useState([])
+  // const dispatch = useDispatch()
+  // const reduxState = useSelector(state => state.medicines);
 
-  useEffect(() => {
-    dispatch(getMedicines())
-    console.log("from donor js")
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getMedicines())
+  //   console.log("from donor js")
+  // }, [])
 
 
   return (
@@ -29,7 +31,9 @@ export default function Donnor() {
       {/* <MedicineCard /> */}
       <Count />
       <GetOffer />
+      <MedicineCard />
       <Footer />
+
     </>
   )
 }

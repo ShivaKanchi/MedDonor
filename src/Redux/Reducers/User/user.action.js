@@ -21,7 +21,7 @@ export const getMySelf = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/user/`
         })
-        return dispatch({ type: SELF, payload: { ...User.data.user } });
+        return dispatch({ type: SELF, payload: { ...User } });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error })
