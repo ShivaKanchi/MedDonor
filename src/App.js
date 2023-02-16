@@ -12,21 +12,19 @@ import Services from "./Pages/Services";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 //redux
-import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { getMySelf } from "./Redux/Reducers/user/user.action";
+import { getMySelf } from "./Redux/Reducers/User/user.action";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMySelf());
-    dispatch(getCart())
   }, [localStorage]);
 
   return (
     <>
       <Routes>
         <Route path="/" exact element={<Navigate replace to="/home" />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/donnor" element={<Donnor />} />

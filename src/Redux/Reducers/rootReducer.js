@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
     auth,
     medicine,
     event,
+    user,
 })
 
 export default rootReducer
