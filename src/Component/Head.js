@@ -11,7 +11,7 @@ import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
 function Head() {
-  const user = localStorage.getItem('Donor')
+  const user = localStorage.getItem('token')
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -81,7 +81,7 @@ function Head() {
             user ? (
               <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
             ) : (
-              <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={handleLogout}></IconButton>
+              <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={navigate("/signin")}></IconButton>
             )
           }
         </Flex>

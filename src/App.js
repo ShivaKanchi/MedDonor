@@ -21,11 +21,11 @@ function App() {
     <>
       {/* <DocumentMeta {...meta} /> */}
       <Routes>
-        {user && <Route path="/" exact element={<Home />} />} 
+        {user && <Route path="/" exact element={<Home />} />}
         <Route path="/" exact element={<Navigate replace to="/signin" />} />
         <Route path="/signup" exact element={<SignUp />} />
         <Route path="/signin" exact element={<SignIn />} />
-<Route path="/donnor" exact element={<Donnor />} />
+        <Route path="/donnor" exact element={<Donnor />} />
         <Route path="/event" exact element={<Event />} />
         <Route path="/about" exact element={<About />} />
         <Route path="/services" exact element={<Services />} />
