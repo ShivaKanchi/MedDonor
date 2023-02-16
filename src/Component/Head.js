@@ -4,13 +4,14 @@ import { FaGithub, FaMoon, FaSun } from 'react-icons/fa'
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { SlLogout } from "react-icons/sl";
+import { SlUser } from "react-icons/sl";
 import { useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
 function Head() {
-
+  const user = localStorage.getItem('Donor')
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -75,7 +76,14 @@ function Head() {
             </Link>
           </Tooltip>
           <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
-          <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
+          {
+
+            user ? (
+              <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
+            ) : (
+              <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={handleLogout}></IconButton>
+            )
+          }
         </Flex>
       </Flex>
 
