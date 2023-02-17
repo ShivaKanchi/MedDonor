@@ -5,7 +5,7 @@ export const signIn = (data) => async (dispatch) => {
     try {
         const User = await axios({
             method: "POST",
-            url: `${process.env.REACT_APP_CLIENT_URL}/user/login`, //http://localhost:4000/
+            url: `${process.env.REACT_APP_CLIENT_URL}/user/login`,
             data: { credentials: data }
         })
         localStorage.setItem("Donor", JSON.stringify({ token: User.data.token }));
@@ -13,7 +13,7 @@ export const signIn = (data) => async (dispatch) => {
         return dispatch({ type: SIGN_IN, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error.response.data })
+        return dispatch({ type: "ERROR", payload: error })
     }
 }
 
@@ -29,7 +29,7 @@ export const signUp = (data) => async (dispatch) => {
         return dispatch({ type: SIGN_UP, payload: data })
     }
     catch (error) {
-        return dispatch({ type: "ERROR", payload: error.response.data })
+        return dispatch({ type: "ERROR", payload: error })
     }
 }
 

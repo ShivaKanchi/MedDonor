@@ -20,7 +20,6 @@ import { signUp } from '../Redux/Reducers/Auth/auth.action';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 
-
 function SignUp() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
@@ -31,6 +30,7 @@ function SignUp() {
     password: "",
   });
   const [error, setError] = useState("");
+  const [isLoading, setisLoading] = useState(false);
   // const { isOpen } = useDisclosure({isOpen})
 
   const handleChange = ({ currentTarget: Input }) => {
@@ -39,10 +39,12 @@ function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const handleSubmit = async (e) => {
+    setisLoading(true);
     e.preventDefault()
     console.log(data)
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "" })
+    setisLoading(false);
     navigate("/")
   };
 
@@ -111,7 +113,8 @@ function SignUp() {
                   size='md'
                 />
                 {error && <div className={styles.error_msg}>{error}</div>}
-                <Button mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit">
+                <Button mt={[10, 5, 5]} isLoading={isLoading} 
+                  loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit">
                   Sign Up
                 </Button>
 

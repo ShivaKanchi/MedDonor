@@ -13,6 +13,7 @@ if (localStorage.Donor) {
   const { token } = JSON.parse(localStorage.Donor)
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
@@ -21,7 +22,7 @@ root.render(
       <Provider store={store}>
         <ChakraProvider theme={theme}>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-          {/* cookie */}
+          {/* cookie */}    
           <App />
           {/* scrollButton implemented  */}
           {/* <ScrolltoTop /> */}

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 //component
 import Count from '../Component/Count'
-import Filter from '../Component/Filter/Filter2'
+import Filter from '../Component/Filter/Filter'
 import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
@@ -27,6 +27,10 @@ export default function Donnor() {
     <>
       <Head />
       <Filter />
+<<<<<<< HEAD
+=======
+      <MedicineCard />
+>>>>>>> d09d999b990bf01366f1186942638b8d967ebf2c
       <Count />
       <GetOffer />
       <Footer />

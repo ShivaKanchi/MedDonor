@@ -142,7 +142,7 @@ export default class EventCard extends React.Component {
 
                   </Stack>
 
-                  <Stack w={["100%", "50%", "50%"]}>
+                  <Stack w={["100%", "50%", "25%"]}>
                     <CardHeader>
 
                       <Flex spacing='4' direction={["column", "column", "row"]}>
@@ -200,7 +200,7 @@ export default class EventCard extends React.Component {
               thickness='4px'
               speed='0.65s'
               emptyColor='gray.200'
-              color='blue.500'
+              color='#20BC7E'
               size='xl'
             />
           </Stack>
