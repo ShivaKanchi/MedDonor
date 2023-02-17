@@ -79,7 +79,6 @@ export default function Head() {
             <IconButton ml={8} icon={token ? <SlLogout /> : <SlUser />} isRound='true' onClick={handleLogout}>
             </IconButton>
           </Tooltip>
-
         </Flex>
       </Flex>
 
