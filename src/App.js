@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+//components
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Donnor from "./Pages/Donnor";
@@ -15,25 +11,33 @@ import PageNotFound from "./Pages/PageNotFound";
 import Services from "./Pages/Services";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
-function App() {
+//redux
+import { useDispatch } from "react-redux";
+import { getMySelf } from "./Redux/Reducers/User/user.action";
+import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
+import { getAllEvents } from "./Redux/Reducers/Event/event.action";
 
-  const user = localStorage.getItem('Donor')
-  
+function App() {
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getMySelf());
+  // }, [localStorage]);
   return (
     <>
-      {/* <DocumentMeta {...meta} /> */}
       <Routes>
-        {user && <Route path="/" exact element={<Home />} />}
-        <Route path="/about" exact element={<About />} />
-        <Route path="/services" exact element={<Services />} />
-        <Route path="/contact" exact element={<Contact />} />
-        <Route path="/donnor" exact element={<Donnor />} />
-        <Route path="/event" exact element={<Event />} />
-        <Route path="/signup" exact element={<SignUp />} />
-        <Route path="/signin" exact element={<SignIn />} />
-        <Route path="/" exact element={<Navigate replace to="/signin" />} />
-        <Route path="/eventregister" exact element={<EventRegister />} />
-        <Route path="*" exact element={<PageNotFound />} />
+        {/* {user && <Route path="/" exact element={<Home />} />}
+        <Route path="/" exact element={<Navigate replace to="/signin" />} /> */}
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/donnor" element={<Donnor />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/eventregister" element={<EventRegister />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

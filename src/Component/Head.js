@@ -4,13 +4,14 @@ import { FaGithub, FaMoon, FaSun } from 'react-icons/fa'
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode"
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { SlLogout } from "react-icons/sl";
-import { useDispatch } from "react-redux"
+import { SlUser } from "react-icons/sl";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
-function Head() {
-
+export default function Head() {
+  const token = localStorage.getItem("Donor");
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -21,12 +22,8 @@ function Head() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
     dispatch(signOut());
-    // dispatch(clearUser());
     navigate("/signin");
-
   }
 
   return (
@@ -74,8 +71,14 @@ function Head() {
               <IconButton ml={2} icon={<FaGithub />} isRound='true' ></IconButton>
             </Link>
           </Tooltip>
-          <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
-          <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}></IconButton>
+          <Tooltip label='Mode' >
+            <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
+          </Tooltip>
+
+          <Tooltip label={token ? 'Sign Out' : 'Sign In'} >
+            <IconButton ml={8} icon={token ? <SlLogout /> : <SlUser />} isRound='true' onClick={handleLogout}>
+            </IconButton>
+          </Tooltip>
         </Flex>
       </Flex>
 
@@ -167,8 +170,6 @@ function Head() {
           </Link>
         </Flex>
       </Flex>
-    </VStack>
+    </VStack >
   )
 }
-
-export default Head

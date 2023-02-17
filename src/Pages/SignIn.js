@@ -80,7 +80,7 @@ function SignIn() {
                 />
                 {/* {error && <div className={styles.error_msg}>{error}</div>} */}
                 <Button
-                  mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit" isLoading={isLoading} 
+                  mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit" isLoading={isLoading}
                   loadingText='Loginig in...'
                 >
                   Sign In
