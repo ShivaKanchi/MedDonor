@@ -43,7 +43,7 @@ export default class EventCard extends React.Component {
     return (
       <div>
         {this.state.data ? <p>
-          {this.state.data.message.slice(0, 9).map((item, i) => (
+          {this.state.data.data.slice(0, 9).map((item, i) => (
             <Stack p="10" w="100%">
 
               <Card key={WrapItem._id}>
@@ -142,7 +142,7 @@ export default class EventCard extends React.Component {
 
                   </Stack>
 
-                  <Stack w={["100%", "50%", "50%"]}>
+                  <Stack w={["100%", "50%", "25%"]}>
                     <CardHeader>
 
                       <Flex spacing='4' direction={["column", "column", "row"]}>
@@ -200,7 +200,7 @@ export default class EventCard extends React.Component {
               thickness='4px'
               speed='0.65s'
               emptyColor='gray.200'
-              color='blue.500'
+              color='#20BC7E'
               size='xl'
             />
           </Stack>

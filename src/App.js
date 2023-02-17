@@ -16,7 +16,9 @@ import Services from "./Pages/Services";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 function App() {
+
   const user = localStorage.getItem('Donor')
+  
   return (
     <>
       {/* <DocumentMeta {...meta} /> */}

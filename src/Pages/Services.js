@@ -1,11 +1,10 @@
 import React from 'react'
 import Count from '../Component/Count'
-import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
 import ServicesHead from '../Component/ServicesHead'
 import Work from '../Component/Work'
-import Footer from '../Component/Footer/Footer2'
+import Footer from '../Component/Footer/Footer'
 
 function Services() {
   return (

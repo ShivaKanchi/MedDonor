@@ -27,6 +27,7 @@ function SignIn() {
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [isLoading, setisLoading] = useState(false);
   // const [isLoading ] = useState(true)
 
 
@@ -38,11 +39,13 @@ function SignIn() {
   const navigate = useNavigate();
 
   const submit = async (e) => {
+    setisLoading(true);
     e.preventDefault()
     await dispatch(signIn(data))
     setData({ email: "", password: "" })
     setData({ email: "", password: "" })
-    navigate("/donnor")
+    setisLoading(false);
+    navigate("/")
   };
 
   // cookies 
@@ -52,7 +55,7 @@ function SignIn() {
     <>
       <Head />
       <VStack h="100vh" p="50">
-        <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
+        <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded="xl"  >
           <Stack direction={["column", "row", "row"]} w="full">
             <VStack w={["full", "50%", "50%"]} h={["90vh", "80vh", "80vh"]} pt={["5%", "5%", "5%"]} spacing="5vh" >
               <Heading pt="10vh">Login Account</Heading>
@@ -77,7 +80,8 @@ function SignIn() {
                 />
                 {/* {error && <div className={styles.error_msg}>{error}</div>} */}
                 <Button
-                  mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit"
+                  mt={[10, 5, 5]} rounded='lg' bg="#20BC7E" type="submit" isLoading={isLoading} 
+                  loadingText='Loginig in...'
                 >
                   Sign In
                 </Button>
@@ -89,7 +93,7 @@ function SignIn() {
                 </Link>
               </HStack>
             </VStack>
-            <VStack w={["full", "50%", "50%"]} alignSelf="center" justifyContent="center" h="80vh" display={["none", "flex", "flex"]} bg="#FFB87A" spacing="5vh" >
+            <VStack w={["full", "50%", "50%"]} roundedRight="xl" alignSelf="center" justifyContent="center" h="80vh" display={["none", "flex", "flex"]} bg="#FFB87A" spacing="5vh" >
               <Image src={image}  ></Image>
               <Text fontWeight="semibold" fontSize="50"> Want to create account ?</Text>
               <Center>
