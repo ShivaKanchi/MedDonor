@@ -16,17 +16,12 @@ import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
 import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
 import { getAllEvents } from "./Redux/Reducers/Event/event.action";
-function App() {
-  if (localStorage.Donor) {
-    const user = localStorage.getItem('Donor')
-  }
 
+function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getMedicines);
-    dispatch(getAllEvents);
-    dispatch(getMySelf());
-  }, [localStorage]);
+  // useEffect(() => {
+  //   dispatch(getMySelf());
+  // }, [localStorage]);
 
   return (
     <>

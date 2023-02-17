@@ -10,9 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/Reducers/Auth/auth.action';
 // SlLogout
 
-function Head() {
-  const user = useSelector((globalState) => globalState.user.user);
-  console.log(user._id ? "hello" : "bye")
+export default function Head() {
+  const token = localStorage.getItem("Donor");
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState('none')
@@ -23,9 +22,6 @@ function Head() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    //localStorage.removeItem("token");
-    // window.location.reload();
-    // dispatch(clearUser());    
     dispatch(signOut());
     navigate("/signin");
   }
@@ -79,25 +75,10 @@ function Head() {
             <IconButton ml={8} icon={isDark ? <FaSun /> : <FaMoon />} isRound='true' onClick={toggleColorMode}></IconButton>
           </Tooltip>
 
-          {
-            user._id ? (
-              <>
-                <Tooltip label='Sign Out' >
-                  <IconButton ml={8} icon={<SlLogout />} isRound='true' onClick={handleLogout}>
-                  </IconButton>
-                </Tooltip>
-
-              </>
-            ) : (
-              <>
-                <Tooltip label='Sign In' >
-                  <IconButton ml={8} icon={<SlUser />} isRound='true' onClick={navigate("/signin")}>
-                  </IconButton>
-                </Tooltip>
-
-              </>
-            )
-          }
+          <Tooltip label={token ? 'Sign Out' : 'Sign In'} >
+            <IconButton ml={8} icon={token ? <SlLogout /> : <SlUser />} isRound='true' onClick={handleLogout}>
+            </IconButton>
+          </Tooltip>
         </Flex>
       </Flex>
 
@@ -192,5 +173,3 @@ function Head() {
     </VStack >
   )
 }
-
-export default Head
