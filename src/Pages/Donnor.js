@@ -15,13 +15,10 @@ export default function Donnor() {
   // const [medicines, setMedicines] = useState([])
   // const dispatch = useDispatch()
   // const reduxState = useSelector(state => state.medicines);
-
   // useEffect(() => {
   //   dispatch(getMedicines())
   //   console.log("from donor js")
   // }, [])
-
-
   return (
     <>
       <Head />
