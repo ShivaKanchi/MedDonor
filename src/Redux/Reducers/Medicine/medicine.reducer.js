@@ -1,17 +1,15 @@
-import { GET_MEDICINES, GET_MEDICINE } from "./medicine.type";
-
+import { GET_ALL_MEDICINES, GET_MEDICINE } from "./medicine.type";
 const intialState = {
-    medicines: [],
+    medicinelist: [],
     medicine: {}
 }
 
 const medicineReducer = (state = intialState, action) => {
-    switch (action) {
-        case GET_MEDICINES:
-            console.log("reducer med", action.payload)
+    switch (action.type) {
+        case GET_ALL_MEDICINES:
             return {
                 ...state,
-                medicines: [...action.payload.Medicines]
+                medicinelist: [...action.payload]
             };
         case GET_MEDICINE: return {
             ...state,
