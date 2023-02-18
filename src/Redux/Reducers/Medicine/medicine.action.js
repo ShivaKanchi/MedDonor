@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MEDICINES, GET_MEDICINE } from "./medicine.type";
+import { GET_ALL_MEDICINES, GET_MEDICINE } from "./medicine.type";
 
 export const getMedicines = () => async (dispatch) => {
     try {
@@ -7,10 +7,9 @@ export const getMedicines = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/medicine`,
         });
-        console.log(medicines.data, "From action medicines")
         return dispatch({
-            type: GET_MEDICINES,
-            payload: medicines.data
+            type: GET_ALL_MEDICINES,
+            payload: medicines.data.data
         })
     }
     catch (error) {
