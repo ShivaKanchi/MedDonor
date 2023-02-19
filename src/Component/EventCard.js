@@ -13,6 +13,7 @@ export default function EventCard() {
     dispatch(getAllEvents())
     setEvents(eventData)
   }, [eventData])
+
   return (
     <div>
       {events ? <p>

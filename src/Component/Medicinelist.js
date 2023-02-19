@@ -7,21 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
 
 export default function MedicineCard() {
-  const [medicines, setMedicines] = useState([
-    {
-      medname: "",
-      medimage: "",
-    }
-
-  ])
+  const [medicines, setMedicines] = useState([])
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const medData = useSelector(state => state.medicine.medicinelist)
-  useEffect(() => {
-    dispatch(getMedicines()).then(() => {
-    })
-    setMedicines(medData)
-  }, [medData])
 
+  useEffect(() => {
+    dispatch(getMedicines())
+    setMedicines(medData)
+    setLoading(false)
+  }, [])
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())
@@ -34,7 +29,18 @@ export default function MedicineCard() {
   // console.log("set mediciens worked",medicines)
   return (
     <>
-
+      {loading ?
+        <Stack w="100%" align={"center"}>
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='#20BC7E'
+            size='xl'
+            mb={5}
+          />
+        </Stack> : <></>
+      }
       {medicines.map((item, index) => (
         <Stack p="10" w="100%">
           <Card key={index}>
@@ -115,20 +121,10 @@ export default function MedicineCard() {
         </Stack >
       ))}
     </>
-    //       :
-    //       // if no data spinner
-    //       <Stack w="100%" align={"center"}>
+    //           :
+    //   // if no data spinner
 
-    //         <Spinner
-    //           thickness='4px'
-    //           speed='0.65s'
-    //           emptyColor='gray.200'
-    //           color='#20BC7E'
-    //           size='xl'
-    //           mb={5}
-    //         />
-    //       </Stack>
-    //   }
-    // </ >
+    // }
+    //     </ >
   );
 }
