@@ -42,7 +42,7 @@ export const addEvent = (eventData) => async (dispatch) => {
         console.log("Data recev in event add action ", eventData)
         await axios({
             method: "POST",
-            url: `${process.env.REACT_APP_CLIENT_URL}/event/add`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            url: `${process.env.REACT_APP_CLIENT_URL}/event/new`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
             data: { credentials: eventData }
         });
         return dispatch({ type: ADD_EVENT, payload: eventData });
@@ -57,7 +57,7 @@ export const updateEvent = (eventData) => async (dispatch) => {
     try {
         await axios({
             method: "POST",
-            url: `${process.env.REACT_APP_CLIENT_URL}/event/add`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            url: `${process.env.REACT_APP_CLIENT_URL}/event/update`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
             data: { credentials: eventData }
         });
         return dispatch({ type: UPDATE_EVENT, payload: eventData });

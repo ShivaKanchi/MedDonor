@@ -61,9 +61,9 @@ export default function EventRegister(props) {
     // }
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
-    const onSubmit = async (e) => {
-        e.preventDefault()
-        // console.log(data)
+    const onSubmit = async () => {
+        // e.preventDefault()
+        console.log(value, formik.values)
         await dispatch(addEvent(formik.values));
         // setValue({})
         // navigate("/")
@@ -119,21 +119,21 @@ export default function EventRegister(props) {
         onSubmit
     });
 
-    const handleSubmit = async () => {
-        // e.preventDefault();
-        try {
-            // const url = "http://localhost:8080/api/users";
-            const url = "http://localhost:8081/events";
+    // const handleSubmit = async () => {
+    //     // e.preventDefault();
+    //     try {
+    //         // const url = "http://localhost:8080/api/users";
+    //         const url = "http://localhost:8081/events";
 
-            const { values: res } = await axios.post(url, formik.values);
-            // navigate("/login");
-            console.log(res.message);
-            window.location = "/";
-        } catch (error) {
-            console.log(error)
-        }
+    //         const { values: res } = await axios.post(url, formik.values);
+    //         // navigate("/login");
+    //         console.log(res.message);
+    //         window.location = "/";
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
 
-    };
+    // };
 
     // lottie animation loop control
     const defaultOptions = {
