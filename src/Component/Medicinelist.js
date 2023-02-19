@@ -13,10 +13,12 @@ export default function MedicineCard() {
   const medData = useSelector(state => state.medicine.medicinelist)
 
   useEffect(() => {
-    dispatch(getMedicines())
+    dispatch(getMedicines()).then((data) => {
+      setLoading(false)
+    })
     setMedicines(medData)
-    setLoading(false)
-  }, [])
+    //setLoading(false)
+  }, [medData])
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())
@@ -119,12 +121,9 @@ export default function MedicineCard() {
             </Stack >
           </Card >
         </Stack >
-      ))}
+      )
+      )
+      }
     </>
-    //           :
-    //   // if no data spinner
-
-    // }
-    //     </ >
   );
 }
