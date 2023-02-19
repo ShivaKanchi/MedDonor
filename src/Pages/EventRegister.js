@@ -14,23 +14,73 @@ import {
     Image,
     Center,
     Text,
-    Link
+    Link,
+    Avatar
 } from '@chakra-ui/react'
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 import { useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { createRef, useState } from 'react'
 import * as Yup from "yup"
 import { useColorModeValue} from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
+import ImageUpload from '../Component/ImageUpload'
 
 
-export default function EventRegister() {
+export default function EventRegister(props) {
 
-    const user = localStorage.getItem('Donor')
     const [value, setValue] = React.useState('')
     const [setError] = useState("");
-   
+    // const [imageUpload,] = useState({});
+    // const [, setImg] = useState({});
+    // const [logo, setLogo] = useState('')
+
+    // const handleImg = (e) => {
+    //     if (e.target.files[0]) {
+    //         setImg({
+    //             src: URL.createObjectURL(e.target.files[0]),
+    //             alt: e.target.files[0].name
+    //         });
+    //         setLogo(e.target.files[0]);
+    //     }
+    // }
+
+    // const profileUpload = async (file) => {
+    //     const formData = new FormData()
+    //     formData.append("file",file)
+    //     formData.append("upload_perset","Med_Donor")
+    //     let data = "";
+    //     await axios.post(
+    //         "https://api.cloudinary.com/v1_1/ssdeveloper/image/upload", 
+    //         formData).then((response) => {
+    //             data = response.data["https://api.cloudinary.com/v1_1/ssdeveloper/image/upload"];
+    //         });
+    //     return data;
+    // }
+
+    // const handleSubmite = async (e) => {
+    //     imageUpload.image = logo;
+    //     await profileUpload(logo);
+    // }
+
+    const [image, setImage ] = useState("");
+    const [ url, setUrl ] = useState("");
+    const uploadImage = () => {
+    const data = new FormData()
+    data.append("file", image)
+    data.append("upload_preset", "Med_Donor")
+    data.append("cloud_name","ssdeveloper")
+    fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload",{
+    method:"post",
+    body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    setUrl(data.url)
+    })
+    .catch(err => console.log(err))
+    }
+
     const onSubmit = async (values) => {
 
             // const response = await axios
@@ -148,7 +198,7 @@ export default function EventRegister() {
             justifyContent="center"
             onSubmit={formik.handleSubmit}
             spacing="5"
-            padding="20"
+            padding={["5","10","20"]}
         >
             <Heading>Event Registration</Heading>
 
@@ -810,7 +860,9 @@ export default function EventRegister() {
                 </RadioGroup>
                 <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
             </FormControl>
-
+            <FormLabel>Upload Co-Ordinator Photo</FormLabel>
+                <Input isReadOnly="true" type="file" onChange= {(e)=> setImage(e.target.files[0])}></Input>
+            <button onClick={uploadImage}>Upload</button>            
             <Button type="submit" variant="outline" >
                 Submit
             </Button>
