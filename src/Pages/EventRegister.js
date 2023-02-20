@@ -61,13 +61,11 @@ export default function EventRegister(props) {
     // }
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
-    const onSubmit = async () => {
-        // e.preventDefault()
-        console.log(value, formik.values)
-        await dispatch(addEvent(formik.values));
+    const onSubmit = () => {
+        console.log("yaaaaaaaaaaaaa", formik.values)
+        dispatch(addEvent(formik.values));
         // setValue({})
         // navigate("/")
-
         // try {
         //     // const url = "http://localhost:8080/api/users";
         //     const url = `${process.env.REACT_APP_CLIENT_URL}/event/new`;
@@ -95,8 +93,8 @@ export default function EventRegister(props) {
             address: "",
             city: "",
             state: "",
-            startDate: "",
-            endDate: "",
+            startdate: "",
+            enddate: "",
             coordinatorname: "",
             coordinatorimage: "",
             coordinatorphno: "",
@@ -765,9 +763,9 @@ export default function EventRegister(props) {
                         <FormControl>
                             <FormLabel>Start Date</FormLabel>
                             <Input
-                                name="startDate"
+                                name="startdate"
                                 onChange={formik.handleChange}
-                                value={formik.values.startDate}
+                                value={formik.values.startdate}
                                 placeholder="Select Date and Time"
                                 size="md"
                                 type="datetime-local"
@@ -777,9 +775,9 @@ export default function EventRegister(props) {
                         <FormControl>
                             <FormLabel>End Date</FormLabel>
                             <Input
-                                name="endDate"
+                                name="enddate"
                                 onChange={formik.handleChange}
-                                value={formik.values.endDate}
+                                value={formik.values.enddate}
                                 placeholder="Select Date and Time"
                                 size="md"
                                 type="datetime-local"
