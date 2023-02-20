@@ -14,14 +14,12 @@ import SignUp from "./Pages/SignUp";
 //redux
 import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
-import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
-import { getAllEvents } from "./Redux/Reducers/Event/event.action";
 
 function App() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getMySelf());
-  // }, [localStorage]);
+  useEffect(() => {
+    dispatch(getMySelf());
+  }, [localStorage]);
   return (
     <>
       <Routes>

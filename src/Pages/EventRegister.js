@@ -62,7 +62,7 @@ export default function EventRegister(props) {
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = () => {
-        console.log("yaaaaaaaaaaaaa", formik.values)
+        // console.log("yaaaaaaaaaaaaa", formik.values)
         dispatch(addEvent(formik.values));
         // setValue({})
         // navigate("/")
@@ -98,7 +98,7 @@ export default function EventRegister(props) {
             coordinatorname: "",
             coordinatorimage: "",
             coordinatorphno: "",
-            certificate: value,
+            certificate: true,
         },
         validationSchema: Yup.object({
             eventname: Yup.string(),
@@ -827,8 +827,8 @@ export default function EventRegister(props) {
                             <FormLabel>Certificate</FormLabel>
                             <RadioGroup name="certificate" onChange={setValue} value={value} >
                                 <Stack direction='row'>
-                                    <Radio colour="" value='yes'>yes</Radio>
-                                    <Radio value='no'>no</Radio>
+                                    <Radio colour="" value={true}>yes</Radio>
+                                    <Radio value={false}>no</Radio>
                                 </Stack>
                             </RadioGroup>
                             <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
