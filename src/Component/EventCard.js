@@ -10,39 +10,9 @@ export default function EventCard() {
   const dispatch = useDispatch()
   const eventData = useSelector(state => state.event.events)
   useEffect(() => {
-    dispatch(getAllEvents()).then(() => {
-    })
+    dispatch(getAllEvents())
     setEvents(eventData)
   }, [eventData])
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     data: null
-  //   };
-  // }
-  // componentWillMount() {
-  //   this.renderMyData();
-  // }
-  // renderMyData() {
-  // const [events, setEvents] = useState([])
-  // const dispatch = useDispatch()
-  // const eventData = useSelector(state => state.events)
-  // useEffect(() => {
-  //   if (!events) {
-  //     dispatch(getAllEvents())
-  //     setEvents(eventData)
-  //   }
-  // }, [])
-  //   fetch(`${process.env.REACT_APP_CLIENT_URL}/event/`)
-  //     .then((response) => response.json())
-  //     .then((responseJson) => {
-  //       this.setState({ data: responseJson })
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
-  // render() {
   return (
     <div>
       {events ? <p>
@@ -136,7 +106,7 @@ export default function EventCard() {
                         > Certificate :
                         </Heading>
                         <Text >
-                          {item.certificate}
+                          {item.certificate.toString()}
                         </Text>
                       </Stack>
                     </Stack>
