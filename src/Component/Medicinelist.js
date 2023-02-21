@@ -5,8 +5,14 @@ import { BsWhatsapp } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
+import { SlUser } from "react-icons/sl";
 
 export default function MedicineCard() {
+
+  // token 
+  const token = localStorage.getItem("Donor");
+
+  // intital value
   const [medicines, setMedicines] = useState([
     {
       medname: "",
@@ -101,11 +107,12 @@ export default function MedicineCard() {
                       </Button>
                     </Link>
 
-                    <Link href={`https://wa.me/${item.phone}`}>
-                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
-                        Whatsapp Now
+                    <Link href={token ? "/talknow" : "/signin"}>
+                      <Button leftIcon={token ? <PhoneIcon /> : <SlUser />}  align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
+                        {token ? "Talk Now" : "Sigin"}
                       </Button>
-                    </Link >
+                    </Link>
+                   
                   </Stack >
                 </CardBody >
               </Stack >

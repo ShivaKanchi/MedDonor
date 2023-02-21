@@ -17,7 +17,7 @@ if (localStorage.Donor) {
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-  <React.StrictMode>
+ 
     <BrowserRouter>
       <Provider store={store}>
         <ChakraProvider theme={theme}>
@@ -29,5 +29,5 @@ root.render(
         </ChakraProvider>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  
 );

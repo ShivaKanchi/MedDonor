@@ -16,6 +16,9 @@ import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
 import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
 import { getAllEvents } from "./Redux/Reducers/Event/event.action";
+import TalkNow from "./Component/TalkNow";
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +40,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/eventregister" element={<EventRegister />} />
+        <Route path="/talknow" element={<TalkNow />} />
+        {/* <Route path="/chat" element={<Chatbot />} /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

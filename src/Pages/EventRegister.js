@@ -11,21 +11,13 @@ import {
     Radio,
     Button,
     Box,
-    Image,
-    Center,
-    Text,
-    Link,
-    Avatar
 } from '@chakra-ui/react'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import { useFormik } from 'formik'
-import React, { createRef, useState } from 'react'
+import React, { useState } from 'react'
 import * as Yup from "yup"
-import { useColorModeValue} from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
-import ImageUpload from '../Component/ImageUpload'
-
 
 export default function EventRegister(props) {
 
