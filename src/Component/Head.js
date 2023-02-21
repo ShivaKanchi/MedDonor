@@ -54,6 +54,11 @@ export default function Head() {
               Donor
             </Button>
           </Link>
+          <Link href='/medical' _focus="none" >
+            <Button as="a" variant='ghost' >
+              Medicals
+            </Button>
+          </Link>
           <Link href='/event' _focus="none" >
             <Button as="a" variant='ghost' >
               Event

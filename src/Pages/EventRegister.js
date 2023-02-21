@@ -31,11 +31,10 @@ import { useDispatch } from 'react-redux'
 
 export default function EventRegister(props) {
 
-    const [value, setValue] = React.useState('')
-    const [setError] = useState("");
-
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
+    const [value, setValue] = React.useState({eventimage:""})
+    const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
         data.append("file", image)
@@ -48,6 +47,9 @@ export default function EventRegister(props) {
             .then(resp => resp.json())
             .then(data => {
                 setUrl(data.url)
+                console.log(url)
+                setUrl(formik.values.eventimage)
+                // eventimage
             })
             .catch(err => console.log(err))
     }
@@ -61,9 +63,15 @@ export default function EventRegister(props) {
     // }
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
+    
     const onSubmit = () => {
-        // console.log("yaaaaaaaaaaaaa", formik.values)
-        dispatch(addEvent(formik.values));
+        setValue(prevState => ({ ...prevState, eventimage: url}));
+        setValue(prevState => ({ ...prevState, ...formik.values}));
+       
+        console.log("yaaaaaaaaaaaaa", formik.values)
+        // console.log("naaaaaaaaaaaaa", value)
+        // dispatch(addEvent(formik.values));
+        
         // setValue({})
         // navigate("/")
         // try {
@@ -88,7 +96,7 @@ export default function EventRegister(props) {
     const formik = useFormik({
         initialValues: {
             eventname: "",
-            eventimage: "",
+            eventimage: setUrl,
             landmark: "",
             address: "",
             city: "",
@@ -833,9 +841,9 @@ export default function EventRegister(props) {
                             </RadioGroup>
                             <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
                         </FormControl>
-                        <FormLabel>Upload Co-Ordinator Photo</FormLabel>
+                        <FormLabel>Upload Event Photo</FormLabel>
                         <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
-                        <button onClick={uploadImage}>Upload</button>
+                        <button  onClick={uploadImage}>Upload</button>
                         <Button type="submit" variant="outline" >
                             Submit
                         </Button>

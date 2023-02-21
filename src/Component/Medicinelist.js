@@ -10,15 +10,17 @@ export default function MedicineCard() {
   const [medicines, setMedicines] = useState([])
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  const medData = useSelector(state => state.medicine.medicinelist)
-
+  const medData = useSelector((state) => state.medicine.medicinelist)
   useEffect(() => {
     dispatch(getMedicines()).then((data) => {
       setLoading(false)
     })
-    setMedicines(medData)
-    //setLoading(false)
-  }, [medData])
+  }, [])
+  useEffect(() => {
+    if (medData) {
+        setMedicines(medData);
+    }
+}, [medData]);
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())

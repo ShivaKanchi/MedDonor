@@ -4,20 +4,20 @@ import { PhoneIcon } from "@chakra-ui/icons"
 import { BsWhatsapp } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
+import { getAllMedicals } from "../../Redux/Reducers/Medical/medical.action.js";
 
 export default function MedicalList() {
     const [medicals, setMedicals] = useState([])
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-
+    const medicalData = useSelector(state => state.medical.medicals)
     useEffect(() => {
-        dispatch(getMedicals()).then(() => {
+        dispatch(getAllMedicals()).then(() => {
             setLoading(false)
         })
         setMedicals(medicalData)
-    }, [])
-    const medicalData = useSelector(state => state.medical.medicallist)
+        console.log("wromg",medicalData)
+    }, [medicalData ])
 
     //   fetch(`${process.env.REACT_APP_CLIENT_URL
     //     }/medicine`)
