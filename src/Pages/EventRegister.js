@@ -11,15 +11,10 @@ import {
     Radio,
     Button,
     Box,
-    Image,
-    Center,
-    Text,
-    Link,
-    Avatar
 } from '@chakra-ui/react'
 import axios, { Axios } from 'axios'
 import { useFormik } from 'formik'
-import React, { createRef, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import * as Yup from "yup"
 import { useColorModeValue } from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
@@ -33,7 +28,20 @@ export default function EventRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState({ eventimage: "" })
+    const [value, setValue] = React.useState({
+        eventname: "",
+        eventimage: "",
+        landmark: "",
+        address: "",
+        city: "",
+        state: "",
+        startdate: "",
+        enddate: "",
+        coordinatorname: "",
+        coordinatorimage: "",
+        coordinatorphno: "",
+        certificate: "",
+    })
     const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
@@ -47,9 +55,7 @@ export default function EventRegister(props) {
             .then(resp => resp.json())
             .then(data => {
                 setUrl(data.url)
-                console.log(url)
-                setUrl(formik.values.eventimage)
-                // eventimage
+                setValue({ ...value, eventimage: url });
             })
             .catch(err => console.log(err))
     }
@@ -63,14 +69,14 @@ export default function EventRegister(props) {
     // }
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        setValue({ ...value, ...formik.values });
+    }, [value])
     const onSubmit = () => {
-        setValue(prevState => ({ ...prevState, eventimage: url }));
-        setValue(prevState => ({ ...prevState, ...formik.values }));
+        setValue({ ...value, ...formik.values });
         console.log("yaaaaaaaaaaaaa", value)
-        // console.log("naaaaaaaaaaaaa", value)
+        // console.log("naaaaaaaaaaaaa", url)
         // dispatch(addEvent(formik.values));
-
         // setValue({})
         // navigate("/")
         // try {
@@ -95,7 +101,7 @@ export default function EventRegister(props) {
     const formik = useFormik({
         initialValues: {
             eventname: "",
-            eventimage: setUrl,
+            // eventimage: "",
             landmark: "",
             address: "",
             city: "",
@@ -105,7 +111,7 @@ export default function EventRegister(props) {
             coordinatorname: "",
             coordinatorimage: "",
             coordinatorphno: "",
-            certificate: true,
+            certificate: "",
         },
         validationSchema: Yup.object({
             eventname: Yup.string(),
@@ -832,10 +838,10 @@ export default function EventRegister(props) {
 
                         <FormControl isInvalid={formik.errors.certificate && formik.touched.certificate} >
                             <FormLabel>Certificate</FormLabel>
-                            <RadioGroup name="certificate" onChange={setValue} value={value} >
+                            <RadioGroup name="certificate" onChange={formik.handleChange} value={value} >
                                 <Stack direction='row'>
-                                    <Radio colour="" value={true}>yes</Radio>
-                                    <Radio value={false}>no</Radio>
+                                    <Radio colour="" value="true">yes</Radio>
+                                    <Radio value="false">no</Radio>
                                 </Stack>
                             </RadioGroup>
                             <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
