@@ -14,8 +14,13 @@ export default function EventCard() {
     dispatch(getAllEvents()).then((data) => {
       setLoading(false)
     })
-    setEvents(eventData)
-  }, [eventData])
+  }, [])
+
+  useEffect(() => {
+    if (eventData) {
+      setEvents(eventData);
+    }
+  }, [eventData]);
 
   return (
     <div>

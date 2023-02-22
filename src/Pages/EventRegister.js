@@ -33,7 +33,7 @@ export default function EventRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState({eventimage:""})
+    const [value, setValue] = React.useState({ eventimage: "" })
     const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
@@ -63,15 +63,14 @@ export default function EventRegister(props) {
     // }
     //  const navigate = useNavigate();
     const dispatch = useDispatch();
-    
+
     const onSubmit = () => {
-        setValue(prevState => ({ ...prevState, eventimage: url}));
-        setValue(prevState => ({ ...prevState, ...formik.values}));
-       
-        console.log("yaaaaaaaaaaaaa", formik.values)
+        setValue(prevState => ({ ...prevState, eventimage: url }));
+        setValue(prevState => ({ ...prevState, ...formik.values }));
+        console.log("yaaaaaaaaaaaaa", value)
         // console.log("naaaaaaaaaaaaa", value)
         // dispatch(addEvent(formik.values));
-        
+
         // setValue({})
         // navigate("/")
         // try {
@@ -843,7 +842,7 @@ export default function EventRegister(props) {
                         </FormControl>
                         <FormLabel>Upload Event Photo</FormLabel>
                         <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
-                        <button  onClick={uploadImage}>Upload</button>
+                        <button onClick={uploadImage}>Upload</button>
                         <Button type="submit" variant="outline" >
                             Submit
                         </Button>

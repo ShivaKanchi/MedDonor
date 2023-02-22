@@ -15,9 +15,12 @@ export default function MedicalList() {
         dispatch(getAllMedicals()).then(() => {
             setLoading(false)
         })
-        setMedicals(medicalData)
-        console.log("wromg",medicalData)
-    }, [medicalData ])
+    }, [])
+    useEffect(() => {
+        if (medicalData) {
+            setMedicals(medicalData);
+        }
+    }, [medicalData]);
 
     //   fetch(`${process.env.REACT_APP_CLIENT_URL
     //     }/medicine`)
