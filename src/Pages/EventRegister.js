@@ -55,7 +55,6 @@ export default function EventRegister(props) {
             .then(resp => resp.json())
             .then(data => {
                 setUrl(data.url)
-                setValue({ ...value, eventimage: url });
             })
             .catch(err => console.log(err))
     }
@@ -68,12 +67,15 @@ export default function EventRegister(props) {
     // alert("Register done");
     // }
     //  const navigate = useNavigate();
-    const dispatch = useDispatch();
     useEffect(() => {
+        console.log("USEeffect")
+        setValue({ ...value, eventimage: url });
         setValue({ ...value, ...formik.values });
-    }, [value])
+    }, [url])
+    const dispatch = useDispatch();
+
     const onSubmit = () => {
-        setValue({ ...value, ...formik.values });
+
         console.log("yaaaaaaaaaaaaa", value)
         // console.log("naaaaaaaaaaaaa", url)
         // dispatch(addEvent(formik.values));
