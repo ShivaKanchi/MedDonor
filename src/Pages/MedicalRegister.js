@@ -24,11 +24,23 @@ import { addEvent } from '../Redux/Reducers/Event/event.action'
 import { useDispatch } from 'react-redux'
 
 
-export default function EventRegister(props) {
+export default function MedicalRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState("")
+    const [value, setValue] = React.useState({
+        medicalname: "",
+        medicalimage: "",
+        type: true,
+        landmark: "",
+        address: "",
+        city: "",
+        state: "",
+        pincode: "",
+        holiday: "",
+        workinghour: "",
+        coords: ""
+    })
     const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
@@ -45,34 +57,65 @@ export default function EventRegister(props) {
             })
             .catch(err => console.log(err))
     }
-   
+    // const response = await axios
+    // .post(`${process.env.REACT_APP_CLIENT_URL}/event/new` ,values)
+    // .catch((err) => {
+    //     if (err && err.response) setError(err.response.data.data);
+    // });
+    // if (response) {
+    // alert("Register done");
+    // }
+    //  const navigate = useNavigate();
+    useEffect(() => {
+        console.log("USEeffect")
+        setValue({ ...value, eventimage: url });
+        setValue({ ...value, ...formik.values });
+    }, [url])
     const dispatch = useDispatch();
+
     const onSubmit = () => {
-        if (url && !formik.values.eventimage) {
-            formik.values.eventimage = url
-            console.log(formik.values)
-            dispatch(addEvent(formik.values));
-        }
-       
+
+        console.log("yaaaaaaaaaaaaa", value)
+        // console.log("naaaaaaaaaaaaa", url)
+        // dispatch(addEvent(formik.values));
+        // setValue({})
+        // navigate("/")
+        // try {
+        //     // const url = "http://localhost:8080/api/users";
+        //     const url = `${process.env.REACT_APP_CLIENT_URL}/event/new`;
+
+        //     const { values: res } = await axios.post(url, formik.values);
+        //     console.log(res.message);
+        //     window.location = "/";
+
+        // } catch (error) {
+        //     if (
+        //         error.response &&
+        //         error.response.status >= 400 &&
+        //         error.response.status <= 500
+        //     ) {
+        //         setError(error.response.data.message);
+        //     }
+        // }
     }
 
     const formik = useFormik({
         initialValues: {
-            eventname: "",
-            eventimage: "",
+            medicalname: "",
+            // medicalimage: "",
+            type: "",
             landmark: "",
             address: "",
+            phone: "",
             city: "",
             state: "",
-            startdate: "",
-            enddate: "",
-            coordinatorname: "",
-            coordinatorimage: "",
-            coordinatorphno: "",
-            certificate: "",
+            pincode: "",
+            holiday: "",
+            workinghour: "",
+            coords: ""
         },
         validationSchema: Yup.object({
-            eventname: Yup.string(),
+            medicalname: Yup.string(),
             //dateTime: Yup.date().required("College Name requried"),
             landmark: Yup.string(),
             address: Yup.string(),
@@ -82,12 +125,30 @@ export default function EventRegister(props) {
             // pincode: Yup.number(),
             coordinatorname: Yup.string(),
             // certificate: Yup.boolean().required("certificate required"),
-            coordinatorphno: Yup.number(),
+            pincode: Yup.number(),
+            phone: Yup.number(),
             //whatsappNumber: Yup.number().min(10, "mobile no. should be 10 digit")
         }),
         onSubmit
     });
 
+    // const handleSubmit = async () => {
+    //     // e.preventDefault();
+    //     try {
+    //         // const url = "http://localhost:8080/api/users";
+    //         const url = "http://localhost:8081/events";
+
+    //         const { values: res } = await axios.post(url, formik.values);
+    //         // navigate("/login");
+    //         console.log(res.message);
+    //         window.location = "/";
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+
+    // };
+
+    // lottie animation loop control
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -98,6 +159,7 @@ export default function EventRegister(props) {
     };
     // console.log(formik.values);
     return (
+
         <VStack h="100vh" p="50">
             <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
                 <Stack direction={["column", "row", "row"]} w="full" h="full" >
@@ -127,26 +189,37 @@ export default function EventRegister(props) {
                         spacing="5"
                         padding={["5", "10", "20"]}
                     >
-                        <Heading>Event Registration</Heading>
+                        <Heading>Medical Registration</Heading>
 
-                        <FormControl isInvalid={formik.errors.eventname && formik.touched.eventname}>
-                            <FormLabel>Collage Name</FormLabel>
+                        <FormControl isInvalid={formik.errors.medicalname && formik.touched.medicalname}>
+                            <FormLabel>Medical Name</FormLabel>
                             <Input
-                                name="eventname"
+                                name="medicalname"
                                 onChange={formik.handleChange}
-                                value={formik.values.eventname}
-                                placeholder="enter college name"
+                                value={formik.values.medicalname}
+                                placeholder="enter medical name"
                             />
-                            <FormErrorMessage>{formik.errors.eventname}</FormErrorMessage>
+                            <FormErrorMessage>{formik.errors.medicalname}</FormErrorMessage>
                         </FormControl>
-
+                        <FormControl isInvalid={formik.errors.phone && formik.touched.phone}>
+                            <FormLabel>Contact Number</FormLabel>
+                            <Input
+                                name="phone"
+                                onChange={formik.handleChange}
+                                value={formik.values.phone}
+                                placeholder="8928656498"
+                                size="md"
+                                type="number"
+                            />
+                            <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
+                        </FormControl>
                         <FormControl isInvalid={formik.errors.landmark && formik.touched.landmark}>
                             <FormLabel>Landmark</FormLabel>
                             <Input
                                 name="landmark"
                                 onChange={formik.handleChange}
                                 value={formik.values.landmark}
-                                placeholder="near shaktinagri"
+                                placeholder="Opp. Temple"
                                 size="md"
                             />
                             <FormErrorMessage>{formik.errors.landmark}</FormErrorMessage>
@@ -158,7 +231,7 @@ export default function EventRegister(props) {
                                 name="address"
                                 onChange={formik.handleChange}
                                 value={formik.values.address}
-                                placeholder="Landmark, Road, Area"
+                                placeholder="Society, Road, Area"
                                 size="md"
                                 type="address"
                             />
@@ -171,7 +244,7 @@ export default function EventRegister(props) {
                                 id="city"
                                 name="city"
                                 onChange={formik.handleChange}
-                                placeholder='City'
+                                placeholder='Mumbai'
                                 value={formik.values.city} >
                                 <option value='Abu'>Abu</option>
                                 <option value='Adoni'>Adoni</option>
@@ -673,13 +746,14 @@ export default function EventRegister(props) {
                                 <option value='Yavatmal'>Yavatmal</option>
                                 <option value='Yemmiganur'>Yemmiganur</option>
                                 <option value='Zunheboto'>Zunheboto</option>
+
                             </Select>
                             <FormErrorMessage>{formik.errors.city}</FormErrorMessage>
                         </FormControl>
 
                         <FormControl isInvalid={formik.errors.state && formik.touched.state}>
                             <FormLabel>State</FormLabel>
-                            <Select placeholder='state' name="state" value={formik.values.state} onChange={formik.handleChange}>
+                            <Select placeholder='Maharashtra' name="state" value={formik.values.state} onChange={formik.handleChange}>
                                 <option value='Andhra Pradesh'>Andhra Pradesh</option>
                                 <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
                                 <option value='Assam'>Assam</option>
@@ -712,7 +786,7 @@ export default function EventRegister(props) {
                             <FormErrorMessage>{formik.errors.state}</FormErrorMessage>
                         </FormControl>
 
-                        <FormControl>
+                        {/* <FormControl>
                             <FormLabel>Start Date</FormLabel>
                             <Input
                                 name="startdate"
@@ -734,35 +808,35 @@ export default function EventRegister(props) {
                                 size="md"
                                 type="datetime-local"
                             />
+                        </FormControl> */}
+
+
+                        <FormControl isInvalid={formik.errors.pincode && formik.touched.pincode}>
+                            <FormLabel>Pincode</FormLabel>
+                            <Input
+                                name="pincode"
+                                onChange={formik.handleChange}
+                                value={formik.values.pincode}
+                                placeholder="400067"
+                                size="md"
+                                type="number"
+                            />
+                            <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
                         </FormControl>
 
-
-                        {/* <FormControl isInvalid={formik.errors.pincode && formik.touched.pincode}>
-                <FormLabel>Pincode</FormLabel>
-                <Input
-                    name="pincode"
-                    onChange={formik.handleChange}
-                    value={formik.values.pincode}
-                    placeholder="pincode"
-                    size="md"
-                    type="number"
-                />
-                <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
-            </FormControl> */}
-
                         <FormControl isInvalid={formik.errors.coordinator && formik.touched.coordinator} >
-                            <FormLabel>Co-Ordinator Name</FormLabel>
+                            <FormLabel>Owner Name</FormLabel>
                             <Input
                                 name="coordinator"
                                 onChange={formik.handleChange}
                                 value={formik.values.coordinator}
-                                placeholder="Sasuke"
+                                placeholder="Naruto"
                                 size="md"
                             />
                             <FormErrorMessage>{formik.errors.coordinator}</FormErrorMessage>
                         </FormControl>
 
-                        <FormControl isInvalid={formik.errors.coordinatorphno && formik.touched.coordinatorphno} >
+                        {/* <FormControl isInvalid={formik.errors.coordinatorphno && formik.touched.coordinatorphno} >
                             <FormLabel>Co-Ordinator Phone No.</FormLabel>
                             <Input
                                 name="coordinatorphno"
@@ -773,23 +847,22 @@ export default function EventRegister(props) {
                                 type="number"
                             />
                             <FormErrorMessage>{formik.errors.coordinatorphno}</FormErrorMessage>
-                        </FormControl>
+                        </FormControl> */}
 
-                        <FormControl isInvalid={formik.errors.certificate && formik.touched.certificate} >
+                        {/* <FormControl isInvalid={formik.errors.certificate && formik.touched.certificate} >
                             <FormLabel>Certificate</FormLabel>
                             <RadioGroup name="certificate" onChange={formik.handleChange} value={value} >
                                 <Stack direction='row'>
-                                    <Radio colour="" value="Yes">yes</Radio>
-                                    <Radio value="No">no</Radio>
+                                    <Radio colour="" value="true">yes</Radio>
+                                    <Radio value="false">no</Radio>
                                 </Stack>
                             </RadioGroup>
                             <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
-                        </FormControl>
-                        <FormControl>
-                            <FormLabel>Upload Event Photo</FormLabel>
-                            <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
-                            <button onClick={uploadImage}>Upload</button>
-                        </FormControl>
+                        </FormControl> */}
+
+                        <FormLabel>Upload Medical Photo</FormLabel>
+                        <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
+                        <button onClick={uploadImage}>Upload</button>
 
                         <Button type="submit" variant="outline" >
                             Submit
@@ -801,65 +874,3 @@ export default function EventRegister(props) {
         </VStack>
     )
 }
-
-
-
-
-
-
- // const response = await axios
-    // .post(`${process.env.REACT_APP_CLIENT_URL}/event/new` ,values)
-    // .catch((err) => {
-    //     if (err && err.response) setError(err.response.data.data);
-    // });
-    // if (response) {
-    // alert("Register done");
-    // }
-    //  const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (url) {
-    //         setValue({ ...value, ...formik.values });
-    //         setValue({ ...value, eventimage: url });
-    //     }
-    // }, [url])
-
-    
-    // const handleSubmit = async () => {
-    //     // e.preventDefault();
-    //     try {
-    //         // const url = "http://localhost:8080/api/users";
-    //         const url = "http://localhost:8081/events";
-
-    //         const { values: res } = await axios.post(url, formik.values);
-    //         // navigate("/login");
-    //         console.log(res.message);
-    //         window.location = "/";
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-
-    // };
-
-    // lottie animation loop control
-
-
-     // setValue({})
-        // navigate("/")
-        // try {
-        //     // const url = "http://localhost:8080/api/users";
-        //     const url = `${process.env.REACT_APP_CLIENT_URL}/event/new`;
-
-        //     const { values: res } = await axios.post(url, formik.values);
-        //     console.log(res.message);
-        //     window.location = "/";
-
-        // } catch (error) {
-        //     if (
-        //         error.response &&
-        //         error.response.status >= 400 &&
-        //         error.response.status <= 500
-        //     ) {
-        //         setError(error.response.data.message);
-        //     }
-        // }
