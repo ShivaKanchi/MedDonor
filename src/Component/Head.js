@@ -51,7 +51,7 @@ export default function Head() {
           </Link>
           <Link href='/donnor' _focus="none" >
             <Button as="a" variant='ghost' >
-              Donor
+              Medicines
             </Button>
           </Link>
           <Link href='/medical' _focus="none" >
@@ -61,7 +61,7 @@ export default function Head() {
           </Link>
           <Link href='/event' _focus="none" >
             <Button as="a" variant='ghost' >
-              Event
+              Events
             </Button>
           </Link>
           <Link href='/contact' _focus="none" >
