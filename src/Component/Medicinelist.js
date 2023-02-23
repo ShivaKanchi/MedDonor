@@ -5,10 +5,21 @@ import { BsWhatsapp } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
+import { SlUser } from "react-icons/sl";
 
 export default function MedicineCard() {
-  const [medicines, setMedicines] = useState([])
-  const [loading, setLoading] = useState(true)
+
+  // token 
+  const token = localStorage.getItem("Donor");
+
+  // intital value
+  const [medicines, setMedicines] = useState([
+    {
+      medname: "",
+      medimage: "",
+    }
+
+  ])
   const dispatch = useDispatch()
   const medData = useSelector((state) => state.medicine.medicinelist)
   useEffect(() => {
@@ -18,9 +29,9 @@ export default function MedicineCard() {
   }, [])
   useEffect(() => {
     if (medData) {
-        setMedicines(medData);
+      setMedicines(medData);
     }
-}, [medData]);
+  }, [medData]);
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())
@@ -111,11 +122,12 @@ export default function MedicineCard() {
                       </Button>
                     </Link>
 
-                    <Link href={`https://wa.me/${item.phone}`}>
-                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
-                        Whatsapp Now
+                    <Link href={token ? "/talknow" : "/signin"}>
+                      <Button leftIcon={token ? <PhoneIcon /> : <SlUser />} align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
+                        {token ? "Talk Now" : "Sigin"}
                       </Button>
-                    </Link >
+                    </Link>
+
                   </Stack >
                 </CardBody >
               </Stack >

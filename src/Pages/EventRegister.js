@@ -12,7 +12,7 @@ import {
     Button,
     Box,
 } from '@chakra-ui/react'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { createRef, useEffect, useState } from 'react'
 import * as Yup from "yup"
