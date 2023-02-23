@@ -4,7 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 //import { useState } from 'react';
 
 const MapView = (props) => {
-    const position = [51.505, -0.09]
+    console.log("props", props)
+    const position = props.coords
     return (
         <div >
             <MapContainer
@@ -18,7 +19,7 @@ const MapView = (props) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <Marker position={position}>
-                    <Popup>{props.title}</Popup>
+                    <Popup>{props.medicalname}</Popup>
                 </Marker>
             </MapContainer>
         </div>

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
 import { Card, CardHeader, CardBody, Avatar, Box, Heading, Text, Stack, WrapItem, Spinner, Button, IconButton, Link, Flex, Image, VStack } from '@chakra-ui/react'
 import { PhoneIcon } from "@chakra-ui/icons"
 import { BsWhatsapp } from "react-icons/bs";
@@ -8,26 +10,31 @@ import { getAllMedicals } from "../../Redux/Reducers/Medical/medical.action.js";
 import MapView from '../MapView/MapView.js';
 
 export default function MedicalList() {
+    // const map = useMap()
+    // console.log('map center:', map.getCenter())
     const [medicals, setMedicals] = useState([])
+    const [currentlocation, setCurrentlocation] = useState([]);
     const [mapmarker, setMapmarker] = useState([]);
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const medicalData = useSelector(state => state.medical.medicals)
+
     useEffect(() => {
         dispatch(getAllMedicals()).then((data) => {
             setLoading(false)
-            const mappoint = [];
-            data.payload?.map(({ coords, medicalname }) => mappoint.push(coords, medicalname));
-            setMapmarker(mappoint);
-            console.log("mapmarker", mapmarker)
+            // const mappoint = [];
+            // data.payload?.map(({ coords, medicalname }) => mappoint.push(coords, medicalname));
+            // setMapmarker(mappoint);
+            // console.log("mapmarker", mapmarker, currentlocation)
         })
     }, [])
+
     useEffect(() => {
         if (medicalData) {
             setMedicals(medicalData);
+
         }
     }, [medicalData]);
-
     //   fetch(`${process.env.REACT_APP_CLIENT_URL
     //     }/medicine`)
     //     .then((response) => response.json())
@@ -53,7 +60,6 @@ export default function MedicalList() {
                 </Stack> : <></>
             }
             {
-
                 medicals.map((item, index) => (
                     <Stack p="10" w="100%">
                         <Card key={index}>
@@ -128,15 +134,34 @@ export default function MedicalList() {
                                         </Stack >
                                     </CardBody >
                                 </Stack >
-
                             </Stack >
                         </Card >
-                        <MapView />
                     </Stack >
-
                 )
                 )
             }
+            <div w="100%">
+                {<MapContainer
+                    center={[19.203611, 72.848344]}//[medicals[0]?.coords]
+                    zoom={13}
+                    scrollWheelZoom={false}
+                    className="h-full"
+                >
+                    <TileLayer
+                        attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {
+                        // medicals.map((item, index) => (
+                        // console.log([item.coords])
+                        < Marker position={[19.203611, 72.848344]} >
+                            <Popup>"Shiv Medical"</Popup>
+                        </Marker>
+                        // ))
+                    }
+
+                </MapContainer>}
+            </div>
         </>
     );
 }
