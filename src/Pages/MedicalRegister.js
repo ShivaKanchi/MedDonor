@@ -159,6 +159,7 @@ export default function MedicalRegister(props) {
     };
     // console.log(formik.values);
     return (
+
         <VStack h="100vh" p="50">
             <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
                 <Stack direction={["column", "row", "row"]} w="full" h="full" >

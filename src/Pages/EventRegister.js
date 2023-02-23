@@ -28,20 +28,7 @@ export default function EventRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState({
-        eventname: "",
-        eventimage: "",
-        landmark: "",
-        address: "",
-        city: "",
-        state: "",
-        startdate: "",
-        enddate: "",
-        coordinatorname: "",
-        coordinatorimage: "",
-        coordinatorphno: "",
-        certificate: "",
-    })
+    const [value, setValue] = React.useState("")
     const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
@@ -58,52 +45,21 @@ export default function EventRegister(props) {
             })
             .catch(err => console.log(err))
     }
-    // const response = await axios
-    // .post(`${process.env.REACT_APP_CLIENT_URL}/event/new` ,values)
-    // .catch((err) => {
-    //     if (err && err.response) setError(err.response.data.data);
-    // });
-    // if (response) {
-    // alert("Register done");
-    // }
-    //  const navigate = useNavigate();
-    useEffect(() => {
-        console.log("USEeffect")
-        setValue({ ...value, eventimage: url });
-        setValue({ ...value, ...formik.values });
-    }, [url])
+   
     const dispatch = useDispatch();
-
     const onSubmit = () => {
-
-        console.log("yaaaaaaaaaaaaa", value)
-        // console.log("naaaaaaaaaaaaa", url)
-        // dispatch(addEvent(formik.values));
-        // setValue({})
-        // navigate("/")
-        // try {
-        //     // const url = "http://localhost:8080/api/users";
-        //     const url = `${process.env.REACT_APP_CLIENT_URL}/event/new`;
-
-        //     const { values: res } = await axios.post(url, formik.values);
-        //     console.log(res.message);
-        //     window.location = "/";
-
-        // } catch (error) {
-        //     if (
-        //         error.response &&
-        //         error.response.status >= 400 &&
-        //         error.response.status <= 500
-        //     ) {
-        //         setError(error.response.data.message);
-        //     }
-        // }
+        if (url && !formik.values.eventimage) {
+            formik.values.eventimage = url
+            console.log(formik.values)
+            dispatch(addEvent(formik.values));
+        }
+       
     }
 
     const formik = useFormik({
         initialValues: {
             eventname: "",
-            // eventimage: "",
+            eventimage: "",
             landmark: "",
             address: "",
             city: "",
@@ -132,23 +88,6 @@ export default function EventRegister(props) {
         onSubmit
     });
 
-    // const handleSubmit = async () => {
-    //     // e.preventDefault();
-    //     try {
-    //         // const url = "http://localhost:8080/api/users";
-    //         const url = "http://localhost:8081/events";
-
-    //         const { values: res } = await axios.post(url, formik.values);
-    //         // navigate("/login");
-    //         console.log(res.message);
-    //         window.location = "/";
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-
-    // };
-
-    // lottie animation loop control
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -840,15 +779,18 @@ export default function EventRegister(props) {
                             <FormLabel>Certificate</FormLabel>
                             <RadioGroup name="certificate" onChange={formik.handleChange} value={value} >
                                 <Stack direction='row'>
-                                    <Radio colour="" value="true">yes</Radio>
-                                    <Radio value="false">no</Radio>
+                                    <Radio colour="" value="Yes">yes</Radio>
+                                    <Radio value="No">no</Radio>
                                 </Stack>
                             </RadioGroup>
                             <FormErrorMessage>{formik.errors.certificate}</FormErrorMessage>
                         </FormControl>
-                        <FormLabel>Upload Event Photo</FormLabel>
-                        <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
-                        <button onClick={uploadImage}>Upload</button>
+                        <FormControl>
+                            <FormLabel>Upload Event Photo</FormLabel>
+                            <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
+                            <button onClick={uploadImage}>Upload</button>
+                        </FormControl>
+
                         <Button type="submit" variant="outline" >
                             Submit
                         </Button>
@@ -859,3 +801,65 @@ export default function EventRegister(props) {
         </VStack>
     )
 }
+
+
+
+
+
+
+ // const response = await axios
+    // .post(`${process.env.REACT_APP_CLIENT_URL}/event/new` ,values)
+    // .catch((err) => {
+    //     if (err && err.response) setError(err.response.data.data);
+    // });
+    // if (response) {
+    // alert("Register done");
+    // }
+    //  const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if (url) {
+    //         setValue({ ...value, ...formik.values });
+    //         setValue({ ...value, eventimage: url });
+    //     }
+    // }, [url])
+
+    
+    // const handleSubmit = async () => {
+    //     // e.preventDefault();
+    //     try {
+    //         // const url = "http://localhost:8080/api/users";
+    //         const url = "http://localhost:8081/events";
+
+    //         const { values: res } = await axios.post(url, formik.values);
+    //         // navigate("/login");
+    //         console.log(res.message);
+    //         window.location = "/";
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+
+    // };
+
+    // lottie animation loop control
+
+
+     // setValue({})
+        // navigate("/")
+        // try {
+        //     // const url = "http://localhost:8080/api/users";
+        //     const url = `${process.env.REACT_APP_CLIENT_URL}/event/new`;
+
+        //     const { values: res } = await axios.post(url, formik.values);
+        //     console.log(res.message);
+        //     window.location = "/";
+
+        // } catch (error) {
+        //     if (
+        //         error.response &&
+        //         error.response.status >= 400 &&
+        //         error.response.status <= 500
+        //     ) {
+        //         setError(error.response.data.message);
+        //     }
+        // }
