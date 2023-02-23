@@ -34,23 +34,23 @@ function SignUp() {
   const [isLoading, setisLoading] = useState(false);
   // const { isOpen } = useDisclosure({isOpen})
 
-    const [images, setimage ] = useState("");
-    const [ url, setUrl ] = useState("");
-    const uploadImage = () => {
+  const [images, setimage] = useState("");
+  const [url, setUrl] = useState("");
+  const uploadImage = () => {
     const data = new FormData()
     data.append("file", images)
     data.append("upload_preset", "Med_Donor")
-    data.append("cloud_name","ssdeveloper")
-    fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload",{
-      method:"post",
+    data.append("cloud_name", "ssdeveloper")
+    fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload", {
+      method: "post",
       body: data
     })
-    .then(resp => resp.json())
-    .then(data => {
-    setUrl(data.url)
-    })
-    .catch(err => console.log(err))
-    }
+      .then(resp => resp.json())
+      .then(data => {
+        setUrl(data.url)
+      })
+      .catch(err => console.log(err))
+  }
 
   const handleChange = ({ currentTarget: Input }) => {
     setData({ ...data, [Input.name]: Input.value });
@@ -63,7 +63,7 @@ function SignUp() {
     e.preventDefault()
     console.log(data)
     await dispatch(signUp(data));
-    setData({ email: "", password: "", firstname: "", lastname: "", profilepic:"" })
+    setData({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
     setisLoading(false);
     navigate("/")
   };
@@ -132,17 +132,12 @@ function SignUp() {
                   variant='filled'
                   size='md'
                 />
-                
-                <Input isReadOnly="true" type="file" onChange= {(e)=> setimage(e.target.files[0])}></Input>      
-                
+
+                <Input isReadOnly="true" type="file" onChange={(e) => setimage(e.target.files[0])}></Input>
+
                 {error && <div className={styles.error_msg}>{error}</div>}
-<<<<<<< HEAD
-                <Button mt={[10, 5, 5]} isLoading={isLoading} 
-                  loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit" onClick={uploadImage}>
-=======
                 <Button mt={[10, 5, 5]} isLoading={isLoading}
                   loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit">
->>>>>>> b4142ba6298ce2033162d7120a78f7ebe070bed2
                   Sign Up
                 </Button>
 

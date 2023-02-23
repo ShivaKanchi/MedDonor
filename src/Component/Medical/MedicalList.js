@@ -8,11 +8,17 @@ import { getAllMedicals } from "../../Redux/Reducers/Medical/medical.action.js";
 
 export default function MedicalList() {
     const [medicals, setMedicals] = useState([])
+    const [mapmarker, setMapmarker] = useState([]);
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const medicalData = useSelector(state => state.medical.medicals)
     useEffect(() => {
         dispatch(getAllMedicals()).then(() => {
+            const mappoint = [];
+            data.payload.data.medicals?.map(({ location }) => mappoint.push(location));
+            console.log("Map Location", mappoint);
+            setMapmarker(mappoint);
+        }).then(() => {
             setLoading(false)
         })
     }, [])
