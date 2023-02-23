@@ -136,13 +136,8 @@ function SignUp() {
                 <Input isReadOnly="true" type="file" onChange= {(e)=> setimage(e.target.files[0])}></Input>      
                 
                 {error && <div className={styles.error_msg}>{error}</div>}
-<<<<<<< HEAD
-                <Button mt={[10, 5, 5]} isLoading={isLoading} 
-                  loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit" onClick={uploadImage}>
-=======
                 <Button mt={[10, 5, 5]} isLoading={isLoading}
                   loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit">
->>>>>>> b4142ba6298ce2033162d7120a78f7ebe070bed2
                   Sign Up
                 </Button>
 

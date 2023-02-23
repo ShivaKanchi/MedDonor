@@ -8,17 +8,15 @@ import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
 import { SlUser } from "react-icons/sl";
 
 export default function MedicineCard() {
-
   // token 
   const token = localStorage.getItem("Donor");
-
+  const [loading, setLoading] = useState(false);
   // intital value
   const [medicines, setMedicines] = useState([
     {
       medname: "",
       medimage: "",
     }
-
   ])
   const dispatch = useDispatch()
   const medData = useSelector((state) => state.medicine.medicinelist)

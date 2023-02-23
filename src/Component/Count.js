@@ -10,8 +10,6 @@ import DonationRegister from "./DonationRegister"
 
 export default function Count() {
 
-
-
     return (
         <Stack >
             {/* firt layer of bg */}
@@ -43,7 +41,7 @@ export default function Count() {
                                 fontSize="21" lineHeight="28px" letterSpacing="0.023em" pt="5"
                             >Happy Donor</Text>
                         </Flex>
-                        <Flex direction="column" alignItems="center" pt="10" >
+                        <Flex direction="column" alignItems="center"  pt={["10","5","0"]}>
                             <FaHandsHelping size="54" />
                             <Heading fontFamily="IBM Plex Sans" fontWeight="bold"
                                 fontSize="38" lineHeight="49px" letterSpacing="0.023em" pt="5"
@@ -53,7 +51,7 @@ export default function Count() {
                                 fontSize="21" lineHeight="28px" letterSpacing="0.023em" pt="5"
                             >Helped people</Text>
                         </Flex>
-                        <Flex direction="column" alignItems="center" pt="10" >
+                        <Flex direction="column" alignItems="center" pt={["10","5","0"]} >
                             <SlCalender size="54" />
                             <Heading fontFamily="IBM Plex Sans" fontWeight="bold"
                                 fontSize="38" lineHeight="49px" letterSpacing="0.023em" pt="5"
@@ -65,7 +63,9 @@ export default function Count() {
                         </Flex>
                     </Flex>
                     {/* Meddoner Regiseter */}
-                    <DonationRegister />
+                    <Stack display={["none","flex","flex"]}>
+                        <DonationRegister />
+                    </Stack>
                 </Box>
             </Box>
         </Stack>
