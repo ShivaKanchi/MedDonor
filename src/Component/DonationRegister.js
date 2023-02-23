@@ -16,7 +16,7 @@ export default function DonationRegister() {
   return (
     <>
       <Flex w="full" justifyContent="center" mt="50"  >
-        <Flex w="80%" borderRadius="lg" boxShadow="0px 4px 10px" h="fit-content"    >
+        <Flex w="80%" borderRadius="lg" boxShadow="0px 0px 5px" h="fit-content"    >
           <Flex w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
             alignSelf={["center", "none", "none"]}
           >

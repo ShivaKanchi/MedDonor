@@ -20,7 +20,8 @@ export default function ServicesHead() {
       <Flex
         w="309px"
         h="260px"
-        boxShadow="0px 0px 10px"
+        _hover={{boxShadow: "0px 0px 10px"}}
+        boxShadow="0px 0px 5px"
         borderRadius="16px"
         // border="1px "
         p="10"
@@ -43,7 +44,8 @@ export default function ServicesHead() {
       <Flex
         w="309px"
         h="260px"
-        boxShadow="0px 0px 0px"
+        _hover={{boxShadow: "0px 0px 10px"}}
+        boxShadow="0px 0px 5px"
         borderRadius="16px"
         // border="1px "
         p="10"
@@ -66,7 +68,8 @@ export default function ServicesHead() {
       <Flex
         w="309px"
         h="260px"
-        boxShadow="0px 0px 10px"
+        _hover={{boxShadow: "0px 0px 10px"}}
+        boxShadow="0px 0px 5px"
         borderRadius="16px"
         // border="1px "
         p="10"
@@ -88,7 +91,8 @@ export default function ServicesHead() {
       <Flex
         w="309px"
         h="260px"
-        boxShadow="0px 0px 10px"
+        _hover={{boxShadow: "0px 0px 10px"}}
+        boxShadow="0px 0px 5px"
         borderRadius="16px"
         // border="1px "
         p="10"
@@ -112,7 +116,8 @@ export default function ServicesHead() {
       <Flex
         w="309px"
         h="260px"
-        boxShadow="0px 0px 10px"
+        _hover={{boxShadow: "0px 0px 10px"}}
+        boxShadow="0px 0px 5px"
         borderRadius="16px"
         // border="1px "
         p="10"

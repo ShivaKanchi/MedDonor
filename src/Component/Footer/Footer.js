@@ -16,8 +16,7 @@ export default function Footer(props) {
                 fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="500" 
                 fontSize="16px" lineHeight="21px" letterSpacing="0.023em" color="#ACACAC" pt="5"
             >
-            There’s nothing in this story to make us think 
-            we are dreaming of good health.
+                Join us in delivering happiness across india
             </Text>
         </Flex>
         {/* column 2 */}

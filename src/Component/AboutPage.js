@@ -1,9 +1,12 @@
-import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, Divider } from '@chakra-ui/react'
+import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, Divider, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 
 
 export default function AboutPage() {
+
+  const text=useColorModeValue("#7C7C7C","#d1cdc2")
+
   return (
     <Stack >
         <Box
@@ -27,14 +30,6 @@ export default function AboutPage() {
             <Stack direction={['column','row','row']}>
               {/* first half  */}
               <Flex direction="column" w={["100%","50%","50%"]} p="10">
-                {/* <Box 
-                  backgroundImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665816660/Med%20Donner/Group_5_nnn7v9.svg)"
-                  backgroundPosition="left"
-                  backgroundRepeat="no-repeat"
-                  w="full"
-                  h="full"
-                  // bgImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665816660/Med%20Donner/Group_5_nnn7v9.svg)" />
-                > */}
                 {/* <AiOutlinePlayCircle /> */}
                 <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665816660/Med%20Donner/Group_5_nnn7v9.svg" />
                 {/* </Box> */}
@@ -50,18 +45,18 @@ export default function AboutPage() {
                   
                   <Text 
                     pt="5" fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
-                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
+                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color={text}
                   > 
                     MedDonor is a online portal to donate unused medicines and that medicines to be used by needy one who is unable to pay money for that particular medicine. We provide medicines free of cost to the poor people.
                   </Text>
                   <Text 
                     fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                     fontSize="21px" line-height="28px" letterSpacing="0.023em"
-                     color="#7C7C7C"
+                     color={text}
                   > 
                   MedDonor aims to provide unused medicines for free. 
                   </Text>
-                  <Link href='/donner' w="full" alignSelf="flex-start" >
+                  <Link href='/donor' w="full" alignSelf="flex-start" >
                     <Button 
                       rightIcon={<ArrowForwardIcon />}  color='#20BC7E' variant='link'
                       fontFamily="IBM Plex Sans" fontSize="28" lineheight="37" fontWeight="700" letterSpacing="0.023em"  
