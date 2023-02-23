@@ -39,19 +39,9 @@ export default function Head() {
               Home
             </Button>
           </Link>
-          <Link href='/about' _focus="none" >
-            <Button as="a" variant='ghost'  >
-              About
-            </Button>
-          </Link>
-          <Link href='/services' _focus="none" >
-            <Button as="a" variant='ghost' >
-              Services
-            </Button>
-          </Link>
           <Link href='/donnor' _focus="none" >
             <Button as="a" variant='ghost' >
-              Donor
+              Medicines
             </Button>
           </Link>
           <Link href='/medical' _focus="none" >
@@ -61,7 +51,17 @@ export default function Head() {
           </Link>
           <Link href='/event' _focus="none" >
             <Button as="a" variant='ghost' >
-              Event
+              Events
+            </Button>
+          </Link>
+          <Link href='/about' _focus="none" >
+            <Button as="a" variant='ghost'  >
+              About
+            </Button>
+          </Link>
+          <Link href='/services' _focus="none" >
+            <Button as="a" variant='ghost' >
+              Services
             </Button>
           </Link>
           <Link href='/contact' _focus="none" >

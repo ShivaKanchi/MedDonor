@@ -1,25 +1,22 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 //components
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
-import Donnor from "./Pages/Donnor";
-import Event from "./Pages/Event";
-import EventRegister from "./Pages/EventRegister";
 import Home from "./Pages/Home";
-import PageNotFound from "./Pages/PageNotFound";
-import Services from "./Pages/Services";
-import SignIn from "./Pages/SignIn";
+import About from "./Pages/About";
+import Event from "./Pages/Event";
 import SignUp from "./Pages/SignUp";
 import Medical from "./Pages/Medical";
+import TalkNow from "./Component/TalkNow";
+import SignIn from "./Pages/SignIn";
+import Donnor from "./Pages/Donnor";
+import Contact from "./Pages/Contact";
+import Services from "./Pages/Services";
+import PageNotFound from "./Pages/PageNotFound";
+import EventRegister from "./Pages/EventRegister";
+import MedicalRegister from "./Pages/MedicalRegister";
 //redux
 import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
-import { getMedicines } from "./Redux/Reducers/Medicine/medicine.action";
-import { getAllEvents } from "./Redux/Reducers/Event/event.action";
-import TalkNow from "./Component/TalkNow";
-
-
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +39,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/eventregister" element={<EventRegister />} />
+        <Route path="/medicalregister" element={<MedicalRegister />} />
         <Route path="/talknow" element={<TalkNow />} />
         {/* <Route path="/chat" element={<Chatbot />} /> */}
         <Route path="*" element={<PageNotFound />} />
