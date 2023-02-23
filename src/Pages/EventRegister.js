@@ -234,7 +234,6 @@ export default function EventRegister(props) {
                                 onChange={formik.handleChange}
                                 placeholder='City'
                                 value={formik.values.city} >
-                                <option value='Andhra Pradesh'>Andhra Pradesh</option>
                                 <option value='Abu'>Abu</option>
                                 <option value='Adoni'>Adoni</option>
                                 <option value='Agartala'>Agartala</option>
@@ -742,7 +741,6 @@ export default function EventRegister(props) {
                         <FormControl isInvalid={formik.errors.state && formik.touched.state}>
                             <FormLabel>State</FormLabel>
                             <Select placeholder='state' name="state" value={formik.values.state} onChange={formik.handleChange}>
-                                <option value='Andhra Pradesh'>Andhra Pradesh</option>
                                 <option value='Andhra Pradesh'>Andhra Pradesh</option>
                                 <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
                                 <option value='Assam'>Assam</option>

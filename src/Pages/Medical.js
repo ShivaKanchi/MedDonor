@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Filter from '../Component/Filter/Filter';
+import Filter from '../Component/Filter/Filter3';
 import Head from '../Component/Head';
 import Count from '../Component/Count'
 import Footer from '../Component/Footer/Footer2'

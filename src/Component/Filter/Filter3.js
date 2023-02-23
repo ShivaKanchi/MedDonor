@@ -6,9 +6,9 @@ export default function Filter() {
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
             <Stack direction="row" spacing={10}>
-                <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Cough' />
+                <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Mumbai' />
                 <InputGroup w={["50%", "50%", "85%"]} alignSelf="center">
-                    <Input placeholder='Search Medicine' />
+                    <Input placeholder='Search Medical' />
                     <InputRightElement children={<ImSearch />} />
                 </InputGroup>
                 <Link href="/medicalregister" w="15%" alignSelf="end">
