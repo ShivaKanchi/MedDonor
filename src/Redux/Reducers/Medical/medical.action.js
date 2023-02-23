@@ -13,14 +13,14 @@ export const getAllMedicals = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/medical/`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
         });
-        return dispatch({ type: GET_ALL_MEDICALS, payload: medicallist });
+        return dispatch({ type: GET_ALL_MEDICALS, payload: medicallist.data.data });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });
 
     }
 }
-export const getEvent = (_id) => async (dispatch) => {
+export const getMedical = (_id) => async (dispatch) => {
     try {
         const onemedical = await axios({
             method: "GET",
@@ -33,7 +33,7 @@ export const getEvent = (_id) => async (dispatch) => {
 
     }
 }
-export const addEvent = (medicalData) => async (dispatch) => {
+export const addMedical = (medicalData) => async (dispatch) => {
     try {
         await axios({
             method: "POST",
@@ -48,7 +48,7 @@ export const addEvent = (medicalData) => async (dispatch) => {
     }
 }
 
-export const updateEvent = (medicalData) => async (dispatch) => {
+export const updateMedical = (medicalData) => async (dispatch) => {
     try {
         await axios({
             method: "POST",
@@ -63,7 +63,7 @@ export const updateEvent = (medicalData) => async (dispatch) => {
     }
 }
 
-export const deleteEvent = (_id) => async (dispatch) => {
+export const deleteMedical = (_id) => async (dispatch) => {
     try {
         const deletedMedical = await axios({
             method: "GET",

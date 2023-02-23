@@ -11,6 +11,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import Services from "./Pages/Services";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
+import Medical from "./Pages/Medical";
 //redux
 import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
@@ -22,9 +23,9 @@ import TalkNow from "./Component/TalkNow";
 
 function App() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getMySelf());
-  // }, [localStorage]);
+  useEffect(() => {
+    dispatch(getMySelf());
+  }, [localStorage]);
   return (
     <>
       <Routes>
@@ -35,6 +36,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/donnor" element={<Donnor />} />
+        <Route path="/medical" element={<Medical />} />
         <Route path="/event" element={<Event />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />

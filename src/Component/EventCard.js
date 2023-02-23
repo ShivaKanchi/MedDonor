@@ -7,14 +7,35 @@ import { getAllEvents } from '../Redux/Reducers/Event/event.action';
 
 export default function EventCard() {
   const [events, setEvents] = useState([])
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const eventData = useSelector(state => state.event.events)
   useEffect(() => {
-    dispatch(getAllEvents())
-    setEvents(eventData)
-  }, [eventData])
+    dispatch(getAllEvents()).then((data) => {
+      setLoading(false)
+    })
+  }, [])
+
+  useEffect(() => {
+    if (eventData) {
+      setEvents(eventData);
+    }
+  }, [eventData]);
+
   return (
     <div>
+      {loading ?
+        <Stack w="100%" align={"center"}>
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='#20BC7E'
+            size='xl'
+            mb={5}
+          />
+        </Stack> : <></>
+      }
       {events ? <p>
         {events.map((item, i) => (
           <Stack p="10" w="100%">

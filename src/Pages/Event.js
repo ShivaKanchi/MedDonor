@@ -14,7 +14,7 @@ export default function Event() {
     <>
       <Head />
       <Filter />
-      <EventCard />/
+      <EventCard />
       <Count />
       <Footer />
     </>

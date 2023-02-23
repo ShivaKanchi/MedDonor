@@ -37,7 +37,8 @@ function SignUp() {
     setData({ ...data, [Input.name]: Input.value });
   };
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     setisLoading(true);
     e.preventDefault()
@@ -113,7 +114,7 @@ function SignUp() {
                   size='md'
                 />
                 {error && <div className={styles.error_msg}>{error}</div>}
-                <Button mt={[10, 5, 5]} isLoading={isLoading} 
+                <Button mt={[10, 5, 5]} isLoading={isLoading}
                   loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit">
                   Sign Up
                 </Button>
