@@ -21,13 +21,17 @@ export default function MedicineCard() {
 
   ])
   const dispatch = useDispatch()
-  const medData = useSelector(state => state.medicine.medicinelist)
+  const medData = useSelector((state) => state.medicine.medicinelist)
   useEffect(() => {
-    dispatch(getMedicines()).then(() => {
+    dispatch(getMedicines()).then((data) => {
+      setLoading(false)
     })
-    setMedicines(medData)
-  }, [medData])
-
+  }, [])
+  useEffect(() => {
+    if (medData) {
+      setMedicines(medData);
+    }
+  }, [medData]);
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())
@@ -40,7 +44,18 @@ export default function MedicineCard() {
   // console.log("set mediciens worked",medicines)
   return (
     <>
-
+      {loading ?
+        <Stack w="100%" align={"center"}>
+          <Spinner
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='#20BC7E'
+            size='xl'
+            mb={5}
+          />
+        </Stack> : <></>
+      }
       {medicines.map((item, index) => (
         <Stack p="10" w="100%">
           <Card key={index}>
@@ -108,11 +123,11 @@ export default function MedicineCard() {
                     </Link>
 
                     <Link href={token ? "/talknow" : "/signin"}>
-                      <Button leftIcon={token ? <PhoneIcon /> : <SlUser />}  align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
+                      <Button leftIcon={token ? <PhoneIcon /> : <SlUser />} align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
                         {token ? "Talk Now" : "Sigin"}
                       </Button>
                     </Link>
-                   
+
                   </Stack >
                 </CardBody >
               </Stack >
@@ -120,22 +135,9 @@ export default function MedicineCard() {
             </Stack >
           </Card >
         </Stack >
-      ))}
+      )
+      )
+      }
     </>
-    //       :
-    //       // if no data spinner
-    //       <Stack w="100%" align={"center"}>
-
-    //         <Spinner
-    //           thickness='4px'
-    //           speed='0.65s'
-    //           emptyColor='gray.200'
-    //           color='#20BC7E'
-    //           size='xl'
-    //           mb={5}
-    //         />
-    //       </Stack>
-    //   }
-    // </ >
   );
 }
