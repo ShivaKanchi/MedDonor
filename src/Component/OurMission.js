@@ -1,7 +1,9 @@
 import React from 'react'
-import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, Divider } from '@chakra-ui/react'
+import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, Divider, useColorModeValue } from '@chakra-ui/react'
 
 export default function OurMission() {
+
+  const text=useColorModeValue("#7C7C7C","#d1cdc2")
   return (
     <Stack direction="column" w="full" h="fit-content" pt="5%">
         <Heading 
@@ -47,18 +49,21 @@ export default function OurMission() {
                   
                   <Text 
                     pt="5" fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
-                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
+                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color={text}
                   > 
                     {/* Medifine is an online healthcare provider, Offering health solutions
                     and advice to over 30,00,000 patients across  Bangladesh. */}
                   </Text>
                   <Text 
                     fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
-                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
+                    fontSize="21px" line-height="28px" letterSpacing="0.023em" color={text}
                   > 
                     * To reduce medical waste.<br /><br /> 
                     * To reduce pollution which happens after decomposing medicines. <br /><br /> 
                     * Provide medicines to the people who can't afford on daily basis. <br /><br />
+                    * Our platform allows people anywhere in the world to donate medicines. With trust, 
+                      transparency and empathy, we’re striving hard to create a better world by bringing
+                      people together to create a lasting impact.. <br /><br />
                   </Text>
                   
                 </VStack>

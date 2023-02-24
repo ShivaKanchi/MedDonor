@@ -1,7 +1,9 @@
+import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import About from '../Component/About'
 import BoxSection from '../Component/BoxSection'
 import Count from '../Component/Count'
+import DonationRegister from '../Component/DonationRegister'
 import Footer from '../Component/Footer/Footer'
 import GetOffer from '../Component/GetOffer'
 import Head from '../Component/Head'
@@ -20,6 +22,9 @@ function Home() {
       <OurServices />
       <BoxSection />
       <Count />
+      <Stack display={["flex","none","none"]}>
+        <DonationRegister />
+      </Stack>
       {/* <MedicenDonateRegister /> */}
       <GetOffer />
       <Footer />

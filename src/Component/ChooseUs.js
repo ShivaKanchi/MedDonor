@@ -27,7 +27,7 @@ export default function ChooseUs() {
             fontSize={["4xl","5xl","6xl"]} lineHeight={["4xl","5xl","6xl"]} 
             letterSpacing="0.023em"  alignSelf="center"
         >
-            Why Choose Us ?
+           FAQs
         </Heading>
         <Flex justifyContent="center" >
             <Divider w={["25%","20%","15%"]} align="center" borderColor="#20BC7E" orientation="horizontal" border="2px solid #20BC7E" />
@@ -41,17 +41,17 @@ export default function ChooseUs() {
             pt="5%"
             // border="2px solid red"
         >    */}
-            <Stack direction={['column','row','row']}>
+            <Stack direction={['column','row','row']} spacing={10} >
               {/* first half  */}
-              <Flex direction="column" w={["100%","50%","50%"]} p="10">
-                <Accordion allowMultiple>
+              <Stack direction="column" w={["100%","50%","50%"]} spacing={20} p="10" >
+                <Accordion allowMultiple >
                     <AccordionItem>
                         {({ isExpanded }) => (
                         <>
                             <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                We provide campaign to collect unused medicines from colleges. 
+                                    Is there a limit on how many medicines I can raise?
                                 </Box>
                                 {isExpanded ? (
                                 <MinusIcon fontSize='12px' />
@@ -61,10 +61,9 @@ export default function ChooseUs() {
                             </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.
+                            There is no limit to how many medicines you can raise. 
+                            We do recommend that start donating unused medicines frequently with a realistic
+                            target as donors usually wish to support and help the needy.
                             </AccordionPanel>
                         </>
                         )}
@@ -75,7 +74,7 @@ export default function ChooseUs() {
                             <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                Provides medicine free of cost to needy people.
+                                    Do we have to pay as a donor?
                                 </Box>
                                 {isExpanded ? (
                                 <MinusIcon fontSize='12px' />
@@ -85,10 +84,7 @@ export default function ChooseUs() {
                             </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.
+                                Meddonor is a completely free platform for all the donors.
                             </AccordionPanel>
                         </>
                         )}
@@ -99,7 +95,8 @@ export default function ChooseUs() {
                             <h2>
                             <AccordionButton>
                                 <Box flex='1' textAlign='left'>
-                                Charity campagion for child education
+                                    Who would be my point of contact at Meddonor ? 
+                                    Would a specific relationship manager be appointed to me?
                                 </Box>
                                 {isExpanded ? (
                                 <MinusIcon fontSize='12px' />
@@ -109,10 +106,8 @@ export default function ChooseUs() {
                             </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.
+                                Our team will be assisting you throughout the process and you can feel 
+                                free to contact them regarding any kind of assistance you need.
                             </AccordionPanel>
                         </>
                         )}
@@ -142,7 +137,7 @@ export default function ChooseUs() {
                         )}
                     </AccordionItem>
                 </Accordion>
-              </Flex>
+              </Stack>
               {/* second half */}
               <Flex direction="column" w={["100%","50%","50%"]} p="10">  
                 <Image src="https://res.cloudinary.com/ssdeveloper/image/upload/v1667156104/Med%20Donner/03_1_eqaby6.svg" />
