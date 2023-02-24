@@ -140,28 +140,44 @@ export default function MedicalList() {
                 )
                 )
             }
-            <div w="100%">
-                {<MapContainer
-                    center={[19.203611, 72.848344]}//[medicals[0]?.coords]
-                    zoom={13}
-                    scrollWheelZoom={false}
-                    className="h-full"
-                >
+            <Stack id="map">
+
+                {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>
                     <TileLayer
-                        attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {
-                        // medicals.map((item, index) => (
-                        // console.log([item.coords])
+                    <Marker position={[19.203611, 72.848344]}>
+                        <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                    </Marker>
+                </MapContainer> */}
+
+
+                {/* <MapContainer
+                        center={[19.203611, 72.848344]}//[medicals[0]?.coords]
+                        zoom={14}
+                        scrollWheelZoom={false}
+                        className="h-full"
+                    >
+                        <TileLayer
+                            attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+
                         < Marker position={[19.203611, 72.848344]} >
                             <Popup>"Shiv Medical"</Popup>
                         </Marker>
-                        // ))
-                    }
 
-                </MapContainer>}
-            </div>
+                        < Marker position={[19.203202, 72.848688]} >
+                            <Popup>"Rudra Medical"</Popup>
+                        </Marker>
+
+                    </MapContainer> */}
+
+
+            </Stack>
         </>
     );
 }
