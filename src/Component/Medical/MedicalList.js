@@ -72,7 +72,7 @@ export default function MedicalList() {
                                         height="fit-content" w="auto"
                                     />
                                 </Stack>
-                                <Stack w={["100%", "50%", "50%"]}>
+                                <Stack w={["100%", "50%", "80%"]}>
                                     <CardHeader>
                                         <Heading as="h3" >{item.medicalname}</Heading>
                                     </CardHeader>
@@ -83,24 +83,24 @@ export default function MedicalList() {
                                                 <Heading
                                                     fontFamily="IBM Plex Sans" fontWeight="bold" fontSize="16px"
                                                     lineHeight="21px"
-                                                > Quantity : {item.quantity}</Heading>
+                                                > Working Hours : {item.workinghour}</Heading>
                                                 <Heading
                                                     fontFamily="IBM Plex Sans" fontStyle="normal" fontWeight="500" fontSize="16px"
                                                     lineHeight="21px"
-                                                > Address: {item.landmark}</Heading>
+                                                > Address: {item.landmark + " " + item.address}</Heading>
                                             </Stack>
                                         </Stack>
                                     </CardBody>
                                 </Stack>
 
-                                <Stack w={["100%", "50%", "30%"]}>
+                                <Stack w={["100%", "50%", "20%"]}>
                                     <CardHeader>
                                         <Flex spacing='4' direction={["column", "column", "row"]}>
                                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                                                <Avatar name={item.donorname} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
+                                                <Avatar name={item.owner} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
                                                 <Box>
-                                                    <Heading size='sm'>{item.donorname}</Heading>
-                                                    <Text>Donor</Text>
+                                                    <Heading size='sm'>{item.owner}</Heading>
+                                                    <Text>Owner</Text>
                                                 </Box>
                                             </Flex>
 
@@ -111,7 +111,6 @@ export default function MedicalList() {
                                                     aria-label='Call Sage'
                                                     fontSize='20px'
                                                     icon={<PhoneIcon />}
-
                                                 />
                                             </Link>
                                         </Flex>

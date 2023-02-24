@@ -61,6 +61,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     setisLoading(true);
     e.preventDefault()
+    setData({ profilepic: url })
     console.log(data)
     await dispatch(signUp(data));
     setData({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
