@@ -12,7 +12,7 @@ import {
   Center,
 } from '@chakra-ui/react'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from '../Component/Head'
 import styles from "./styles.module.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
@@ -23,7 +23,7 @@ import { useDispatch } from "react-redux"
 function SignUp() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666942312/Med%20Donner/Logo_pstfy6.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666942349/Med%20Donner/Logo_1_n8cjgq.svg')
-  const [data, setData] = useState({
+  const [userdata, setUserdata] = useState({
     firstname: "",
     lastname: "",
     profilepic: "",
@@ -33,9 +33,21 @@ function SignUp() {
   const [error, setError] = useState("");
   const [isLoading, setisLoading] = useState(false);
   // const { isOpen } = useDisclosure({isOpen})
-
-  const [images, setimage] = useState("");
+  const [images, setImages] = useState("");
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (images) {
+      uploadImage()
+      console.log("hello")
+    }
+  }, [images])
+  useEffect(() => {
+    if (url) {
+      setUserdata({ ...userdata, profilepic: url })
+      console.log("bye")
+    }
+  }, [url])
   const uploadImage = () => {
     const data = new FormData()
     data.append("file", images)
@@ -48,12 +60,13 @@ function SignUp() {
       .then(resp => resp.json())
       .then(data => {
         setUrl(data.url)
+
       })
       .catch(err => console.log(err))
   }
 
   const handleChange = ({ currentTarget: Input }) => {
-    setData({ ...data, [Input.name]: Input.value });
+    setUserdata({ ...userdata, [Input.name]: Input.value });
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,12 +74,15 @@ function SignUp() {
   const handleSubmit = async (e) => {
     setisLoading(true);
     e.preventDefault()
-    setData({ profilepic: url })
-    console.log(data)
-    await dispatch(signUp(data));
-    setData({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
-    setisLoading(false);
-    navigate("/")
+    if (url) {
+      console.log(userdata, url)
+      setUserdata({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
+      setisLoading(false);
+    }
+    // await dispatch(signUp(userdata));
+
+    // navigate("/")
+
   };
 
   return (
@@ -94,7 +110,7 @@ function SignUp() {
                   placeholder="First Name"
                   name="firstname"
                   onChange={handleChange}
-                  value={data.firstname}
+                  value={userdata.firstname}
                   required
                   variant='filled'
                   size='md'
@@ -105,7 +121,7 @@ function SignUp() {
                   placeholder="Last Name"
                   name="lastname"
                   onChange={handleChange}
-                  value={data.lastname}
+                  value={userdata.lastname}
                   required
                   className={styles.input}
                   variant='filled'
@@ -116,7 +132,7 @@ function SignUp() {
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
-                  value={data.email}
+                  value={userdata.email}
                   required
                   className={styles.input}
                   variant='filled'
@@ -127,16 +143,16 @@ function SignUp() {
                   placeholder="Password"
                   name="password"
                   onChange={handleChange}
-                  value={data.password}
+                  value={userdata.password}
                   required
                   className={styles.input}
                   variant='filled'
                   size='md'
                 />
 
-                <Input isReadOnly="true" type="file" onChange={(e) => setimage(e.target.files[0])}></Input>
-
+                <Input isReadOnly="true" type="file" onChange={(e) => setImages(e.target.files[0])}></Input>
                 {error && <div className={styles.error_msg}>{error}</div>}
+
                 <Button mt={[10, 5, 5]} isLoading={isLoading}
                   loadingText='SignUp...' rounded='lg' bg="#20BC7E" type="submit">
                   Sign Up
@@ -144,7 +160,7 @@ function SignUp() {
 
               </form>
               <HStack display={['flex', 'none', 'none']}>
-                <Text>alredy have account ?</Text>
+                <Text>already have an account ?</Text>
                 <Link href="/signin" >
                   <Button rounded='md' bg="#20BC7E"  > Sign In</Button>
                 </Link>
@@ -178,6 +194,6 @@ export default SignUp
     //     error.response.status >= 400 &&
     //     error.response.status <= 500
     //   ) {
-    //     setError(error.response.data.message);
+    //     setError(error.response.userdata.message);
     //   }
     // }
