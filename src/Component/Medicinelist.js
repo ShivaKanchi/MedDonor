@@ -67,11 +67,15 @@ export default function MedicineCard() {
                 <CardBody>
                   <Stack direction={["column", "column", "row"]}>
                     {/* event start date */}
-                    <Stack direction="row">
+                    <Stack direction="column">
                       <Heading
                         fontFamily="IBM Plex Sans" fontWeight="bold" fontSize="16px"
                         lineHeight="21px"
-                      > Quantity : {item.quantity}</Heading>
+                      > Category : {item.category}</Heading>
+                      <Heading
+                        fontFamily="IBM Plex Sans" fontWeight="bold" fontSize="16px"
+                        lineHeight="21px"
+                      > Description : {item.desc}</Heading>
                       <Heading
                         fontFamily="IBM Plex Sans" fontStyle="normal" fontWeight="500" fontSize="16px"
                         lineHeight="21px"
@@ -81,9 +85,9 @@ export default function MedicineCard() {
                 </CardBody>
               </Stack>
 
-              <Stack w={["100%", "50%", "30%"]}>
+              <Stack w={["100%", "50%", "20%"]} alignSelf="center">
                 <CardHeader>
-                  <Flex spacing='4' direction={["column", "column", "row"]}>
+                  <Flex spacing='4' direction={["column", "column", "row"]} >
                     <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
                       <Avatar name={item.donorname} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
                       <Box>
