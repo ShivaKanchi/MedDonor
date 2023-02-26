@@ -75,13 +75,11 @@ function SignUp() {
     setisLoading(true);
     e.preventDefault()
     if (url) {
-      console.log(userdata, url)
       setUserdata({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
       setisLoading(false);
+      await dispatch(signUp(userdata));
+      navigate("/")
     }
-    // await dispatch(signUp(userdata));
-
-    // navigate("/")
 
   };
 
