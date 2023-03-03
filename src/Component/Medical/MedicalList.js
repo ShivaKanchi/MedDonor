@@ -139,7 +139,7 @@ export default function MedicalList() {
                 )
                 )
             }
-            <Box id="map">
+            <Box className='map-box' border="3px solid white" display='flex' ml={5}>
 
                 {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>
                     <TileLayer
@@ -154,11 +154,12 @@ export default function MedicalList() {
                 </MapContainer> */}
 
 
+                <Text>Map SHOULD display here</Text>
                 <MapContainer
                     center={[19.203611, 72.848344]}//[medicals[0]?.coords]
                     zoom={14}
                     scrollWheelZoom={false}
-                    className="h-full"
+                    z-index={2}
                 >
                     <TileLayer
                         attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
@@ -174,6 +175,7 @@ export default function MedicalList() {
                     </Marker>
 
                 </MapContainer>
+
 
 
             </Box>
