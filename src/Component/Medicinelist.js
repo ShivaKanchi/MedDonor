@@ -89,9 +89,9 @@ export default function MedicineCard() {
                 <CardHeader>
                   <Flex spacing='4' direction={["column", "column", "row"]} >
                     <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                      <Avatar name={item.donorname} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
+                      <Avatar name={item.donorname} src={item.donorimage ? item.donorimage : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
                       <Box>
-                        <Heading size='sm'>{item.donorname}</Heading>
+                        <Heading size='sm'>{item.donorname ? item.donorname : "Shiva"}</Heading>
                         <Text>Donor</Text>
                       </Box>
                     </Flex>

@@ -8,9 +8,76 @@ import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+
 export default function DonationRegister() {
   const [startDate, setStartDate] = useState(new Date());
+  const [medicinedata, setMedicinedata] = useState({
+    medname: "",
+    medimage: "",
+    category: "",
+    desc: "",
+    donorname: "",
+    donorimage: "",
+    expiry: "",
+    quantity: "",
+    address: "",
+    phone: "",
+  });
+  const [isLoading, setisLoading] = useState(false);
+  const [images, setImages] = useState("");
+  const [url, setUrl] = useState("");
+  useEffect(() => {
+    if (images) {
+      uploadImage()
+      console.log("hello")
+    }
+  }, [images])
+  useEffect(() => {
+    if (url) {
+      setMedicinedata({ ...medicinedata, medpic: url })
+      console.log("bye")
+    }
+  }, [url])
+
+  const uploadImage = () => {
+    const data = new FormData()
+    data.append("file", images)
+    data.append("upload_preset", "Med_Donor")
+    data.append("cloud_name", "ssdeveloper")
+    fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        setUrl(data.url)
+
+      })
+      .catch(err => console.log(err))
+  }
+
+  const handleChange = ({ currentTarget: Input }) => {
+    setMedicinedata({ ...medicinedata, [Input.name]: Input.value });
+  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    console.log("MEdicine data", medicinedata)
+    setisLoading(true);
+    e.preventDefault()
+    if (url) {
+      //setMedicinedata({})
+      setisLoading(false);
+      //await dispatch();
+      // navigate("/")
+    }
+
+  };
+
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
 
   return (
@@ -40,8 +107,15 @@ export default function DonationRegister() {
                 >
                   Medicine name
                 </Heading>
-                <Input variant='flushed' placeholder="Enter name here"
-                  focusBorderColor="#ACACAC" />
+                <Input
+                  variant='flushed'
+                  placeholder="Enter Medicine name here"
+                  focusBorderColor="#ACACAC"
+                  name="medname"
+                  onChange={handleChange}
+                  value={medicinedata.medname}
+                  required
+                />
               </Flex >
               <FcExpired size="50px" />
               <Flex direction="column" p={["3", "0", "0"]}>
@@ -64,7 +138,14 @@ export default function DonationRegister() {
                 >
                   Phone
                 </Heading>
-                <Input variant='flushed' placeholder="Enter phone no. here" color="#ACACAC"
+                <Input
+                  variant='flushed'
+                  placeholder="9876543210"
+                  name="phone"
+                  onChange={handleChange}
+                  value={medicinedata.phone}
+                  required
+                  color="#ACACAC"
                   focusBorderColor="#ACACAC" />
               </Flex>
               <FaClinicMedical size="50px" p={["3", "0", "0"]} />
@@ -75,12 +156,19 @@ export default function DonationRegister() {
                 >
                   Address
                 </Heading>
-                <Input variant='flushed' placeholder="Enter your Address" color="#ACACAC"
+                <Input
+                  variant='flushed'
+                  placeholder="Enter your Address"
+                  name="address"
+                  onChange={handleChange}
+                  value={medicinedata.address}
+                  required
+                  color="#ACACAC"
                   focusBorderColor="#ACACAC" />
               </Flex>
             </Flex>
             <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicine Image</Button>
-            <Button background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
+            <Button onClick={handleSubmit} background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
             {/*second row end */}
           </Flex>
           <Flex w="30%" border="medium" h="fit-content" display={["none", "none", "flex"]}>

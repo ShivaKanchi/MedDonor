@@ -97,9 +97,9 @@ export default function MedicalList() {
                                     <CardHeader>
                                         <Flex spacing='4' direction={["column", "column", "row"]}>
                                             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                                                <Avatar name={item.owner} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
+                                                <Avatar name={item.owner} src={item.ownerimage ? item.ownerimage : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
                                                 <Box>
-                                                    <Heading size='sm'>{item.owner}</Heading>
+                                                    <Heading size='sm'>{item.ownername}</Heading>
                                                     <Text>Owner</Text>
                                                 </Box>
                                             </Flex>
@@ -139,7 +139,7 @@ export default function MedicalList() {
                 )
                 )
             }
-            <Stack id="map">
+            <Box id="map">
 
                 {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>
                     <TileLayer
@@ -154,29 +154,29 @@ export default function MedicalList() {
                 </MapContainer> */}
 
 
-                {/* <MapContainer
-                        center={[19.203611, 72.848344]}//[medicals[0]?.coords]
-                        zoom={14}
-                        scrollWheelZoom={false}
-                        className="h-full"
-                    >
-                        <TileLayer
-                            attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
+                <MapContainer
+                    center={[19.203611, 72.848344]}//[medicals[0]?.coords]
+                    zoom={14}
+                    scrollWheelZoom={false}
+                    className="h-full"
+                >
+                    <TileLayer
+                        attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
 
-                        < Marker position={[19.203611, 72.848344]} >
-                            <Popup>"Shiv Medical"</Popup>
-                        </Marker>
+                    < Marker position={[19.203611, 72.848344]} >
+                        <Popup>"Shiv Medical"</Popup>
+                    </Marker>
 
-                        < Marker position={[19.203202, 72.848688]} >
-                            <Popup>"Rudra Medical"</Popup>
-                        </Marker>
+                    < Marker position={[19.203202, 72.848688]} >
+                        <Popup>"Rudra Medical"</Popup>
+                    </Marker>
 
-                    </MapContainer> */}
+                </MapContainer>
 
 
-            </Stack>
+            </Box>
         </>
     );
 }

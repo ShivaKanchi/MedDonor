@@ -141,10 +141,10 @@ export default function EventCard() {
 
                     <Flex spacing='4' direction={["column", "column", "row"]}>
                       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                        <Avatar name={item.coordinator} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1" />
+                        <Avatar name={item.coordinatorname} src={item.coordinatorimage ? item.coordinatorimage : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
 
                         <Box>
-                          <Heading size='sm'>{item.coordinator}</Heading>
+                          <Heading size='sm'>{item.coordinatorname ? item.coordinatorname : "Shiva"}</Heading>
                           <Text>Co-ordinator</Text>
                         </Box>
                       </Flex>
