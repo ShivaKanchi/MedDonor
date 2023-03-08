@@ -4,22 +4,25 @@ import React from 'react'
 export default function Hero() {
     
   return (
-    <Stack>
+    <Flex>
         <Box
             backgroundImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665650294/Med%20Donner/hero_background_smo15x.svg)"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             w="full"
             h="fit-content"
+            zIndex={1}
             // border="2px solid red"
         >
             <Stack direction={['column','row','row']}>
                 <Flex direction="column" w={["100%","50%","50%"]} p="10">
                     <Image w="26px" h="26px"  align="flex-start" src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665683216/Med%20Donner/Rectangle_3_aajbgu.svg" />
-                    <Heading 
-                        pl="5" fontWeight="700" fontFamily="IBM Plex Sans" fontStyle="normal"
-                        fontSize={["4xl","5xl","6xl"]} line-height="88px" letterSpacing="0.023em"
-                    >Your Donations<br></br>can make one<br></br>breathe happily</Heading>
+                        
+                            <Heading 
+                                pl="5" fontWeight="700" fontFamily="IBM Plex Sans" fontStyle="normal"
+                                fontSize={["4xl","5xl","6xl"]} line-height="88px" letterSpacing="0.023em"
+                                >Your Donations<br></br>can make one<br></br>breathe happily
+                            </Heading>
                     <Text 
                         p="5" fontWeight="400" fontFamily="IBM Plex Sans" fontStyle="normal"
                         fontSize="21px" line-height="28px" letterSpacing="0.023em" color="#7C7C7C"
@@ -28,7 +31,7 @@ export default function Hero() {
                     <Flex direction="row-reverse">
                         <Image w="26px" h="26px"   src="https://res.cloudinary.com/ssdeveloper/image/upload/v1665685545/Med%20Donner/Rectangle_4_yafxif.svg" />
                     </Flex>
-                    <Link href='/signup' w="full" alignSelf="center" >
+                    <Link href='/donnor' w="full" alignSelf="center" >
                         <Button
                             size='lg' variant='solid' bg='#20BC7E' _hover="#FFB87A" color="white" transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                             borderRadius='47px' w={["80%","50%","40%"]} 
@@ -42,9 +45,7 @@ export default function Hero() {
                 </Flex>
             </Stack>
         </Box>
-    </Stack>
-        
-            
+    </Flex>
     // </Stack>
   )
 }

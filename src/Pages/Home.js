@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react'
+import { Stack , ScaleFade} from '@chakra-ui/react'
 import React from 'react'
 import About from '../Component/About'
 import BoxSection from '../Component/BoxSection'
@@ -17,17 +17,33 @@ function Home() {
   return (
     <>
       <Head />
-      <Hero />
-      <About />
-      <OurServices />
-      <BoxSection />
-      <Count />
-      <Stack display={["flex","none","none"]}>
-        <DonationRegister />
-      </Stack>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <Hero />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <About />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <OurServices />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <BoxSection />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <Count />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <Stack display={["flex","none","none"]}>
+          <DonationRegister />
+        </Stack>
+      </ScaleFade>
       {/* <MedicenDonateRegister /> */}
-      <GetOffer />
-      <Footer />
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <GetOffer />
+      </ScaleFade>
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        <Footer />
+      </ScaleFade>
     </>
   )
 }
