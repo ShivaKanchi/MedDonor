@@ -1,11 +1,25 @@
-import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, ScaleFade } from '@chakra-ui/react'
+import React,{ useState, useEffect, useRef } from 'react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 
-
 export default function About() {
+
+  const [inView, setInView] = useState(false);
+  const animatedBoxRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const rect = animatedBoxRef.current.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
+      setInView(isVisible);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <Stack >
+      <ScaleFade in={inView} initialScale={0.5}>
         <Box
             backgroundImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665815768/Med%20Donner/ic_outline-health-and-safety_qjy7fv.svg)"
             backgroundPosition="right"
@@ -13,6 +27,7 @@ export default function About() {
             w="full"
             h="fit-content"
             pt="5%"
+            ref={animatedBoxRef}
             // border="2px solid red"
         >
             <Stack direction={['column','row','row']}>
@@ -66,7 +81,8 @@ export default function About() {
               </Flex>
 
             </Stack>
-        </Box>
+          </Box>
+        </ScaleFade>
     </Stack>
   )
 }

@@ -1,10 +1,27 @@
-import { Stack, VStack, Heading, Divider } from '@chakra-ui/react'
-import React from 'react'
+import { Stack, VStack, Heading, Divider, ScaleFade } from '@chakra-ui/react'
+import React,{ useState, useEffect, useRef } from 'react'
 
 export default function OurServices() {
+
+    const [inView, setInView] = useState(false);
+    const animatedBoxRef = useRef(null);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        const rect = animatedBoxRef.current.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
+        setInView(isVisible);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
   return (
     <>
-    <Stack direction={['column','row','row']} pt="10">
+    {/* animation  */}
+    <ScaleFade in={inView} initialScale={0.5}>
+        {/* animationend  */}
+    <Stack ref={animatedBoxRef} direction={['column','row','row']} pt="10">
         <VStack w="full" alignSelf="center">
             <Heading 
                 color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 
@@ -23,6 +40,7 @@ export default function OurServices() {
         {/* </Stack> */}
         </VStack>
     </Stack>
+    </ScaleFade>
            
     </>
   )
