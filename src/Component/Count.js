@@ -1,5 +1,5 @@
-import { Box, Stack, Flex, Heading, Text, Image, Input, Button } from '@chakra-ui/react'
-import React, { useState, useEffect } from 'react'
+import { Box, Stack, Flex, Heading, Text, Image, Input, Button, ScaleFade } from '@chakra-ui/react'
+import React,{ useState, useEffect, useRef } from 'react'
 import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
@@ -10,15 +10,32 @@ import DonationRegister from "./DonationRegister"
 
 export default function Count() {
 
+    const [inView, setInView] = useState(false);
+    const animatedBoxRef = useRef(null);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        const rect = animatedBoxRef.current.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
+        setInView(isVisible);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <Stack >
             {/* firt layer of bg */}
+            {/* animation  */}
+                <ScaleFade in={inView} initialScale={0.5}>
+            {/* animationend  */}
             <Box
                 w="full"
                 h={["700", "", "633"]}
                 bgImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665842919/Med%20Donner/Frame_25_1_cblrry.svg)"
                 backgroundPosition="center"
                 backgroundRepeat="no-repeat"
+                ref={animatedBoxRef}
 
             >
                 {/* second layer for grdiant */}
@@ -68,6 +85,7 @@ export default function Count() {
                     </Stack>
                 </Box>
             </Box>
+            </ScaleFade>
         </Stack>
     )
 }

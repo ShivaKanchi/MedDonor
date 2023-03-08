@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{ useState, useEffect, useRef } from 'react'
 import {Heading, Flex, Text , InputGroup, Input, InputLeftAddon, InputRightAddon} from '@chakra-ui/react'
 import { GrMail } from "react-icons/gr";
 // GrMail
 
 export default function GetOffer() {
+
   return (
     <Flex w="full" justifyContent="center" mt={[10,10,"25%"]} >
-        <Flex w="80%" direction={['column','row','row']} boxShadow="0px 0px 2px" p="10" rounded="lg" >
+        <Flex  w="80%" direction={['column','row','row']} boxShadow="0px 0px 2px" p="10" rounded="lg" >
             <Flex w={["100%","50%","50%"]} direction="column" >
                 <Heading
                     fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 

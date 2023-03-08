@@ -1,9 +1,9 @@
-import { Flex, Heading, Image, Input, Button, Box, Stack } from '@chakra-ui/react'
+import { Flex, Heading, Image, Input, Button, Box, ScaleFade } from '@chakra-ui/react'
 import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
 import DatePicker from "react-datepicker";
-import React, { useState, useEffect } from 'react'
+import React,{ useState, useEffect, useRef } from 'react'
 import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
@@ -80,9 +80,26 @@ export default function DonationRegister() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
 
+  const [inView, setInView] = useState(false);
+    const animatedBoxRef = useRef(null);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        const rect = animatedBoxRef.current.getBoundingClientRect();
+        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
+        setInView(isVisible);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
   return (
     <>
-      <Flex w="full" justifyContent="center" mt="50"  >
+      <ScaleFade in={inView} initialScale={0.5}>
+      <Flex w="full" justifyContent="center" mt="50" ref={animatedBoxRef} >
+        {/* animation  */}
+        {/* animationend  */}
         <Flex w="80%" borderRadius="lg" boxShadow="0px 0px 5px" h="fit-content"    >
           <Flex w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
             alignSelf={["center", "none", "none"]}
@@ -176,6 +193,7 @@ export default function DonationRegister() {
           </Flex>
         </Flex>
       </Flex>
+      </ScaleFade>
       {/* Meddoner register */}
     </>
   )

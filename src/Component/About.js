@@ -10,7 +10,7 @@ export default function About() {
   useEffect(() => {
     const handleScroll = () => {
       const rect = animatedBoxRef.current.getBoundingClientRect();
-      const isVisible = rect.top <= window.innerHeight * 0.10 && rect.bottom >= 0;
+      const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
       setInView(isVisible);
     };
     window.addEventListener("scroll", handleScroll);
@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     <Stack >
-      <ScaleFade in={inView} initialScale={0.9}>
+      <ScaleFade in={inView} initialScale={0.5}>
         <Box
             backgroundImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665815768/Med%20Donner/ic_outline-health-and-safety_qjy7fv.svg)"
             backgroundPosition="right"
