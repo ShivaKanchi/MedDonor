@@ -18,7 +18,7 @@ export default function MedicalList() {
     const [mapmarker, setMapmarker] = useState([]);
     //Pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const [cardsPerPage] = useState(5)
+    const [cardsPerPage] = useState(10)
 
     //Get current pots
     const indexOfLastCard = currentPage * cardsPerPage;                    // 1*5=5  

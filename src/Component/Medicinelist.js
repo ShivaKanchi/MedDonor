@@ -14,7 +14,7 @@ export default function MedicineCard() {
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1)
-  const [cardsPerPage] = useState(5)
+  const [cardsPerPage] = useState(10)
 
   // token 
   const token = localStorage.getItem("Donor");
