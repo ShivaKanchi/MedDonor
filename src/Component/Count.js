@@ -4,24 +4,17 @@ import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 import DonationRegister from "./DonationRegister"
+import { useInView } from "react-intersection-observer";
 // GrGallery 
 // FcExpired
 // GiMedicines
 
 export default function Count() {
 
-    const [inView, setInView] = useState(false);
-    const animatedBoxRef = useRef(null);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const rect = animatedBoxRef.current.getBoundingClientRect();
-        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
-        setInView(isVisible);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const { ref, inView } = useInView({
+        threshold: 0.9, // Trigger animation when the component is 50% in view
+        triggerOnce: true, // Only trigger the animation once
+      });
 
     return (
         <Stack >
@@ -35,7 +28,7 @@ export default function Count() {
                 bgImage="url(https://res.cloudinary.com/ssdeveloper/image/upload/v1665842919/Med%20Donner/Frame_25_1_cblrry.svg)"
                 backgroundPosition="center"
                 backgroundRepeat="no-repeat"
-                ref={animatedBoxRef}
+                ref={ref}
 
             >
                 {/* second layer for grdiant */}

@@ -202,7 +202,7 @@ export default function EventCard() {
           )
           )
           }
-          <Pagination cardsPerPage={cardsPerPage} totalCards={events.length} paginate={paginate} />
+          <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={events.length} paginate={paginate} />
 
         </p> :
           // if no data spinner

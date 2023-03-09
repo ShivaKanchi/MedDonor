@@ -15,13 +15,22 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
+    ScaleFade
 } from '@chakra-ui/react'
 import { MinusIcon, AddIcon } from '@chakra-ui/icons'
+import { useInView } from "react-intersection-observer";
 
 
 export default function ChooseUs() {
+
+    const { ref, inView } = useInView({
+        threshold: 0.9, // Trigger animation when the component is 50% in view
+        triggerOnce: true, // Only trigger the animation once
+      });
+      
   return (
-    <Stack direction="column" w="full" h="fit-content" pt="5%">
+    <ScaleFade in={inView} initialScale={0.5}>
+        <Stack direction="column" w="full" h="fit-content" pt="5%" ref={ref}>
         <Heading 
             fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600" 
             fontSize={["4xl","5xl","6xl"]} lineHeight={["4xl","5xl","6xl"]} 
@@ -144,6 +153,7 @@ export default function ChooseUs() {
               </Flex>
             </Stack>
         {/* </Box> */}
-    </Stack>
+        </Stack>
+    </ScaleFade>
   )
 }

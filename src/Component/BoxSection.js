@@ -1,28 +1,20 @@
 import { Flex,Heading, ScaleFade} from '@chakra-ui/react'
-import React,{ useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { GiMedicines, GiMedicinePills, GiPlagueDoctorProfile } from "react-icons/gi";
 import { MdDeliveryDining } from "react-icons/md";
-// GiMedicines
-// MdDeliveryDining
+import { useInView } from "react-intersection-observer";
+
 
 export default function BoxSection() {
 
-    const [inView, setInView] = useState(false);
-    const animatedBoxRef = useRef(null);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const rect = animatedBoxRef.current.getBoundingClientRect();
-        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
-        setInView(isVisible);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.9, // Trigger animation when the component is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+  });
 
   return (
     <ScaleFade in={inView} initialScale={0.5}>
-      <Flex ref={animatedBoxRef} direction={["column","row","row"]} p={["10","10","5"]} justifyContent="space-between" >
+      <Flex ref={ref} direction={["column","row","row"]} p={["10","10","5"]} justifyContent="space-between" >
 
         {/* first  */}
         <Flex

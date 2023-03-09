@@ -1,21 +1,14 @@
 import { Box, Stack,Text, VStack, Flex, Image, Heading, Button, Link, ScaleFade } from '@chakra-ui/react'
-import React,{ useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { useInView } from "react-intersection-observer";
 
 export default function About() {
 
-  const [inView, setInView] = useState(false);
-  const animatedBoxRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const rect = animatedBoxRef.current.getBoundingClientRect();
-      const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
-      setInView(isVisible);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.9, // Trigger animation when the component is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+  });
 
   return (
     <Stack >
@@ -27,7 +20,7 @@ export default function About() {
             w="full"
             h="fit-content"
             pt="5%"
-            ref={animatedBoxRef}
+            ref={ref}
             // border="2px solid red"
         >
             <Stack direction={['column','row','row']}>

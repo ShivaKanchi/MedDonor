@@ -19,33 +19,22 @@ function Home() {
   return (
     <>
       <Head />
+      {/* animation  */}
       <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
+        {/* component */}
         <Hero />
+        {/* component */}
       </ScaleFade>
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <About />
-      {/* </ScaleFade> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <OurServices />
-      {/* </ScaleFade> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <BoxSection />
-      {/* </ScaleFade> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <Count />
-      {/* </ScaleFade> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <Stack display={["flex","none","none"]}>
-          <DonationRegister />
-        </Stack>
-      {/* </ScaleFade> */}
-      {/* <MedicenDonateRegister /> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <GetOffer />
-      {/* </ScaleFade> */}
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
-        <Footer />
-      {/* </ScaleFade> */}
+      {/* animation end */}
+      <About />
+      <OurServices />
+      <BoxSection />
+      <Count />      
+      <Stack display={["flex","none","none"]}>
+        <DonationRegister />
+      </Stack>   
+      <GetOffer />
+      <Footer />
     </>
   )
 }

@@ -13,7 +13,7 @@ export default function Filter() {
                 </InputGroup>
                 <Link href="/eventregister" w="15%" alignSelf="end">
                     <Button
-                        background="#20BC7E" boxShadow="0px 2px 10px" rounded="47px"
+                        background="#20BC7E"  rounded="47px"
                         display={['none', "flex", "flex"]}
                     >
                         Donate

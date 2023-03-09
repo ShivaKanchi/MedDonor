@@ -1,27 +1,20 @@
 import { Stack, VStack, Heading, Divider, ScaleFade } from '@chakra-ui/react'
-import React,{ useState, useEffect, useRef } from 'react'
+import React from 'react'
+import { useInView } from "react-intersection-observer";
 
 export default function OurServices() {
 
-    const [inView, setInView] = useState(false);
-    const animatedBoxRef = useRef(null);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const rect = animatedBoxRef.current.getBoundingClientRect();
-        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
-        setInView(isVisible);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  const { ref, inView } = useInView({
+    threshold: 0.9, // Trigger animation when the component is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+  });
 
   return (
     <>
     {/* animation  */}
     <ScaleFade in={inView} initialScale={0.5}>
         {/* animationend  */}
-    <Stack ref={animatedBoxRef} direction={['column','row','row']} pt="10">
+    <Stack ref={ref} direction={['column','row','row']} pt="10">
         <VStack w="full" alignSelf="center">
             <Heading 
                 color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700" 

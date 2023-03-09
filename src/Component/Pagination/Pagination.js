@@ -1,6 +1,7 @@
-import { Box, Button, Center, Flex } from '@chakra-ui/react';
+import { Box, Button, Center, Flex, Heading } from '@chakra-ui/react';
 import React from 'react'
 import './Pagination.css'
+import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
 
 
 const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
@@ -12,13 +13,18 @@ const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
     return (<>
 
         <Box >
-            <Flex >
+            <Flex justifyContent="center" flexDirection="row">
+                {/* <ArrowBackIcon  alignSelf="center"/> */}
                 {pageNumbers.map((number) => (
-                    < Button onClick={() => { paginate(number) }} >
-                        {number}
-                    </Button>
-
+                    <>
+                        {/* <Button leftIcon={<ArrowBackIcon />} onClick={() => { paginate(number) }} variant='ghost' size="lg" >
+                            Previous Page
+                        </Button>
+                        <Button rightIcon={<ArrowForwardIcon />} onClick={() => { paginate(number) }} variant="ghost" size="lg">Next Page</Button> */}
+                    </>
+                    // <Button mb={10}  ml={5} mr={5} alignSelf="center" onClick={() => { paginate(number) }} >
                 ))}
+                {/* <ArrowForwardIcon alignSelf="center" /> */}
             </Flex >
         </Box>
     </>

@@ -11,6 +11,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import logo from '../assest/logo.png'
+import { useInView } from "react-intersection-observer";
 
 export default function DonationRegister() {
   const textColor = useColorModeValue("black","white")
@@ -82,24 +83,15 @@ export default function DonationRegister() {
 
   const image = useColorModeValue('https://res.cloudinary.com/ssdeveloper/image/upload/v1666944220/Med%20Donner/doctorBackLogo_1_otk1lt.svg', 'https://res.cloudinary.com/ssdeveloper/image/upload/v1666944108/Med%20Donner/doctorBackLogo_q2si8u.svg')
 
-  const [inView, setInView] = useState(false);
-    const animatedBoxRef = useRef(null);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const rect = animatedBoxRef.current.getBoundingClientRect();
-        const isVisible = rect.top <= window.innerHeight * 0.9 && rect.bottom >= 0;
-        setInView(isVisible);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
+  const { ref, inView } = useInView({
+    threshold: 0.9, // Trigger animation when the component is 50% in view
+    triggerOnce: true, // Only trigger the animation once
+  });
 
   return (
     <>
       <ScaleFade in={inView} initialScale={0.5}>
-      <Flex w="full" justifyContent="center" mt="50" ref={animatedBoxRef} >
+      <Flex w="full" justifyContent="center" mt="50" ref={ref} >
         {/* animation  */}
         {/* animationend  */}
         {/* box */}

@@ -148,7 +148,7 @@ export default function MedicineCard() {
       )
       )
       }
-      <Pagination cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} />
+      <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} />
     </>
   );
 }
