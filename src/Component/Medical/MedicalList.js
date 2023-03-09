@@ -8,6 +8,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMedicals } from "../../Redux/Reducers/Medical/medical.action.js";
 import MapView from '../MapView/MapView.js';
+import Pagination from '../Pagination/Pagination.js';
 
 export default function MedicalList() {
     // const map = useMap()
@@ -15,6 +16,18 @@ export default function MedicalList() {
     const [medicals, setMedicals] = useState([])
     const [currentlocation, setCurrentlocation] = useState([]);
     const [mapmarker, setMapmarker] = useState([]);
+    //Pagination
+    const [currentPage, setCurrentPage] = useState(1)
+    const [cardsPerPage] = useState(10)
+
+    //Get current pots
+    const indexOfLastCard = currentPage * cardsPerPage;                    // 1*5=5  
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;               // 5-5=0
+    const currentCards = medicals.slice(indexOfFirstCard, indexOfLastCard)    // 
+    //Change page
+    const paginate = (pageNumber) => { setCurrentPage(pageNumber) }
+
+
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const medicalData = useSelector(state => state.medical.medicals)
@@ -44,7 +57,9 @@ export default function MedicalList() {
     //     .catch((error) => {
     //       console.error(error);
     //     });
-    // console.log("set mediciens worked",medicines)
+    // console.log("set medicals worked",medicines)
+    console.log("set medicals worked", medicals, currentCards)
+
     return (
         <>
             {loading ?
@@ -60,7 +75,7 @@ export default function MedicalList() {
                 </Stack> : <></>
             }
             {
-                medicals.map((item, index) => (
+                currentCards.map((item, index) => (
                     <Stack p="10" w="100%">
                         <Card key={index}>
                             <Stack direction={['column', "row", "row"]}>
@@ -139,9 +154,11 @@ export default function MedicalList() {
                 )
                 )
             }
-            <Box id="map">
+            <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} />
 
-                {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>
+            {/* <Box className='map-box' border="3px solid white" display='flex' ml={5}> */}
+
+            {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -154,11 +171,12 @@ export default function MedicalList() {
                 </MapContainer> */}
 
 
+            {/* <Text>Map SHOULD display here</Text>
                 <MapContainer
                     center={[19.203611, 72.848344]}//[medicals[0]?.coords]
                     zoom={14}
                     scrollWheelZoom={false}
-                    className="h-full"
+                    z-index={2}
                 >
                     <TileLayer
                         attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
@@ -173,10 +191,11 @@ export default function MedicalList() {
                         <Popup>"Rudra Medical"</Popup>
                     </Marker>
 
-                </MapContainer>
+                </MapContainer> */}
 
 
-            </Box>
+
+            {/* </Box> */}
         </>
     );
 }

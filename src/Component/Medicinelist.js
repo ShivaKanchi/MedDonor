@@ -6,10 +6,16 @@ import { BsWhatsapp } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { getMedicines } from "../Redux/Reducers/Medicine/medicine.action.js";
 import { SlUser } from "react-icons/sl";
+import Pagination from './Pagination/Pagination.js';
 
 export default function MedicineCard() {
   const [medicines, setMedicines] = useState([])
   const [loading, setLoading] = useState(true)
+
+  //Pagination
+  const [currentPage, setCurrentPage] = useState(1)
+  const [cardsPerPage] = useState(10)
+
   // token 
   const token = localStorage.getItem("Donor");
   const dispatch = useDispatch()
@@ -24,6 +30,13 @@ export default function MedicineCard() {
       setMedicines(medData);
     }
   }, [medData]);
+  //Get current pots
+  const indexOfLastCard = currentPage * cardsPerPage;                    // 1*5=5  
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;               // 5-5=0
+  const currentCards = medicines.slice(indexOfFirstCard, indexOfLastCard)    // 
+  //Change page
+  const paginate = (pageNumber) => { setCurrentPage(pageNumber) }
+
   //   fetch(`${process.env.REACT_APP_CLIENT_URL
   //     }/medicine`)
   //     .then((response) => response.json())
@@ -33,7 +46,8 @@ export default function MedicineCard() {
   //     .catch((error) => {
   //       console.error(error);
   //     });
-  // console.log("set mediciens worked",medicines)
+  console.log("set mediciens worked", medicines, currentCards)
+
   return (
     <>
       {loading ?
@@ -48,7 +62,7 @@ export default function MedicineCard() {
           />
         </Stack> : <></>
       }
-      {medicines.map((item, index) => (
+      {currentCards.map((item, index) => (
         <Stack p="10" w="100%">
           <Card key={index}>
             <Stack direction={['column', "row", "row"]}>
@@ -134,6 +148,7 @@ export default function MedicineCard() {
       )
       )
       }
+      <Pagination cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} />
     </>
   );
 }
