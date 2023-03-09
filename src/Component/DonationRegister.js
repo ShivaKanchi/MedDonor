@@ -1,4 +1,4 @@
-import { Flex, Heading, Image, Input, Button, Box, ScaleFade } from '@chakra-ui/react'
+import { Flex, Heading, Image, Input, Button, Stack, ScaleFade } from '@chakra-ui/react'
 import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
@@ -10,9 +10,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import logo from '../assest/logo.png'
 
 export default function DonationRegister() {
+  const textColor = useColorModeValue("black","white")
+  const bgcolor = useColorModeValue("white",'#1A202C')
   const [startDate, setStartDate] = useState(new Date());
   const [medicinedata, setMedicinedata] = useState({
     medname: "",
@@ -100,8 +102,10 @@ export default function DonationRegister() {
       <Flex w="full" justifyContent="center" mt="50" ref={animatedBoxRef} >
         {/* animation  */}
         {/* animationend  */}
+        {/* box */}
         <Flex w="80%" borderRadius="lg" boxShadow="0px 0px 5px" h="fit-content"    >
-          <Flex w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
+          {/* boxend */}
+          <Flex bgColor={bgcolor} w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
             alignSelf={["center", "none", "none"]}
           >
             <Heading
@@ -188,8 +192,9 @@ export default function DonationRegister() {
             <Button onClick={handleSubmit} background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
             {/*second row end */}
           </Flex>
-          <Flex w="30%" border="medium" h="fit-content" display={["none", "none", "flex"]}>
-            <Image opacity="100%" objectFit='cover' h="full" src={image} />
+          <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>
+             <Image alignSelf="center"  src={logo}/> 
+             <Heading fontWeight="bold" alignSelf="center" textColor={textColor} fontSize="lg" >MedDonor</Heading>
           </Flex>
         </Flex>
       </Flex>

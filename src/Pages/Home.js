@@ -19,9 +19,9 @@ function Home() {
   return (
     <>
       <Head />
-      {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
+      <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}>
         <Hero />
-      {/* </ScaleFade> */}
+      </ScaleFade>
       {/* <ScaleFade in={true} direction="bottom" duration={0.3} easing="ease-out" position="fixed" zIndex={1}> */}
         <About />
       {/* </ScaleFade> */}
