@@ -13,14 +13,15 @@ const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
     return (<>
 
         <Box >
-            <Flex justifyContent="center" flexDirection="row">
+            <Flex justifyContent="center" flexDirection="row" padding="15px">
                 {/* <ArrowBackIcon  alignSelf="center"/> */}
                 {pageNumbers.map((number) => (
                     <>
-                        {/* <Button leftIcon={<ArrowBackIcon />} onClick={() => { paginate(number) }} variant='ghost' size="lg" >
-                            Previous Page
-                        </Button>
-                        <Button rightIcon={<ArrowForwardIcon />} onClick={() => { paginate(number) }} variant="ghost" size="lg">Next Page</Button> */}
+                        &nbsp;
+                        < button onClick={() => { paginate(number) }} href='!#' className='page-link' >
+                            {number}
+                        </button>
+                        &nbsp;
                     </>
                     // <Button mb={10}  ml={5} mr={5} alignSelf="center" onClick={() => { paginate(number) }} >
                 ))}
