@@ -46,11 +46,11 @@ export default function MedicineCard() {
   //     .catch((error) => {
   //       console.error(error);
   //     });
-  console.log("set mediciens worked", medicines, currentCards)
+  // console.log("set mediciens worked", medicines, currentCards)
 
   return (
     <>
-      {loading ?
+      {loading &&
         <Stack w="100%" align={"center"}>
           <Spinner
             thickness='4px'
@@ -60,7 +60,7 @@ export default function MedicineCard() {
             size='xl'
             mb={5}
           />
-        </Stack> : <></>
+        </Stack>
       }
       {currentCards.map((item, index) => (
         <Stack p="10" w="100%">
@@ -148,7 +148,7 @@ export default function MedicineCard() {
       )
       )
       }
-      <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} />
+      <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} currentnumber={currentPage} />
     </>
   );
 }
