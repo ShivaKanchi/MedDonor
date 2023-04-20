@@ -202,8 +202,7 @@ export default function EventCard() {
           )
           )
           }
-          <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={events.length} paginate={paginate} />
-
+          <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={events.length} paginate={paginate} currentnumber={currentPage} />
         </p> :
           // if no data spinner
           <Stack w="100%" align={"center"}>

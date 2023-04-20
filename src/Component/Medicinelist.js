@@ -46,7 +46,7 @@ export default function MedicineCard() {
   //     .catch((error) => {
   //       console.error(error);
   //     });
-  console.log("set mediciens worked", medicines, currentCards)
+  // console.log("set mediciens worked", medicines, currentCards)
 
   return (
     <>
@@ -148,7 +148,7 @@ export default function MedicineCard() {
       )
       )
       }
-      <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} />
+      <Pagination mb={10} cardsPerPage={cardsPerPage} totalCards={medicines.length} paginate={paginate} currentnumber={currentPage} />
     </>
   );
 }
