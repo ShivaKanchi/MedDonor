@@ -154,7 +154,7 @@ export default function MedicalList() {
                 )
                 )
             }
-            <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} />
+            <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} currentnumber={currentPage} />
 
             {/* <Box className='map-box' border="3px solid white" display='flex' ml={5}> */}
 
