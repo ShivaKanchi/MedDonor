@@ -4,7 +4,7 @@ import './Pagination.css'
 import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
 
 
-const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber, maxpages }) => {
+const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
         pageNumbers.push(i);
@@ -12,34 +12,37 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber, maxpage
     // console.log(pageNumbers, "----", currentnumber, "----", pageNumbers.length)
     return (
         <>
-            <Box >
-                <Flex justifyContent="center" flexDirection="row" padding="15px">
-                    <HStack spacing={4} overflowX="auto">
-                        {
-                            currentnumber == 1 ?
-                                <Button disabled>Previous</Button>
-                                :
-                                <Button onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
-                        }
-
-                        {pageNumbers.map((number) => (
-                            <>
-                                {currentnumber == number ?
-                                    <Button border='2px' borderColor='green.500' key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
+            {
+                totalCards &&
+                <Box >
+                    <Flex justifyContent="center" flexDirection="row" padding="15px">
+                        <HStack spacing={4} overflowX="auto">
+                            {
+                                currentnumber == 1 ?
+                                    <Button disabled>Previous</Button>
                                     :
-                                    <Button key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
-                                }
-                            </>
-                        ))}
-                        {
-                            currentnumber == pageNumbers.length ?
-                                <Button disabled>Next</Button>
-                                :
-                                <Button onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
-                        }
-                    </HStack>
-                </Flex >
-            </Box >
+                                    <Button onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
+                            }
+
+                            {pageNumbers.map((number) => (
+                                <>
+                                    {currentnumber == number ?
+                                        <Button border='2px' borderColor='green.500' key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
+                                        :
+                                        <Button key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
+                                    }
+                                </>
+                            ))}
+                            {
+                                currentnumber == pageNumbers.length ?
+                                    <Button disabled>Next</Button>
+                                    :
+                                    <Button onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
+                            }
+                        </HStack>
+                    </Flex >
+                </Box >
+            }
         </>
     )
 }
