@@ -18,7 +18,7 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                     <Flex justifyContent="center" flexDirection="row" padding="15px">
                         <HStack spacing={4} overflowX="auto">
                             {
-                                currentnumber == 1 ?
+                                currentnumber === 1 ?
                                     <Button disabled>Previous</Button>
                                     :
                                     <Button onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
@@ -26,7 +26,7 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
 
                             {pageNumbers.map((number) => (
                                 <>
-                                    {currentnumber == number ?
+                                    {currentnumber === number ?
                                         <Button border='2px' borderColor='green.500' key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
                                         :
                                         <Button key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
@@ -34,7 +34,7 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                                 </>
                             ))}
                             {
-                                currentnumber == pageNumbers.length ?
+                                currentnumber === pageNumbers.length ?
                                     <Button disabled>Next</Button>
                                     :
                                     <Button onClick={() => { paginate(currentnumber + 1) }}>Next</Button>

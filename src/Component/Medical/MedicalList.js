@@ -62,7 +62,7 @@ export default function MedicalList() {
 
     return (
         <>
-            {loading ?
+            {loading &&
                 <Stack w="100%" align={"center"}>
                     <Spinner
                         thickness='4px'
@@ -72,7 +72,7 @@ export default function MedicalList() {
                         size='xl'
                         mb={5}
                     />
-                </Stack> : <></>
+                </Stack>
             }
             {
                 currentCards.map((item, index) => (

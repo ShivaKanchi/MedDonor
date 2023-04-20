@@ -39,7 +39,7 @@ export default function EventCard() {
     <>
       <div>
         {loading
-          ?
+          &&
           <Stack w="100%" align={"center"}>
             <Spinner
               thickness='4px'
@@ -49,7 +49,7 @@ export default function EventCard() {
               size='xl'
               mb={5}
             />
-          </Stack> : <></>
+          </Stack>
         }
         {
           currentCards
