@@ -1,4 +1,4 @@
-import { Stack , ScaleFade} from '@chakra-ui/react'
+import { Stack, ScaleFade } from '@chakra-ui/react'
 import React from 'react'
 import About from '../Component/About'
 import BoxSection from '../Component/BoxSection'
@@ -29,10 +29,10 @@ function Home() {
       <About />
       <OurServices />
       <BoxSection />
-      <Count />      
-      <Stack display={["flex","none","none"]}>
+      <Count id="medicinedonate" />
+      <Stack display={["flex", "none", "none"]}>
         <DonationRegister />
-      </Stack>   
+      </Stack>
       <GetOffer />
       <Footer />
     </>

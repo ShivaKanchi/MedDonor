@@ -3,7 +3,7 @@ import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
 import DatePicker from "react-datepicker";
-import React,{ useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,8 +14,8 @@ import logo from '../assest/logo.png'
 import { useInView } from "react-intersection-observer";
 
 export default function DonationRegister() {
-  const textColor = useColorModeValue("black","white")
-  const bgcolor = useColorModeValue("white",'#1A202C')
+  const textColor = useColorModeValue("black", "white")
+  const bgcolor = useColorModeValue("white", '#1A202C')
   const [startDate, setStartDate] = useState(new Date());
   const [medicinedata, setMedicinedata] = useState({
     medname: "",
@@ -91,105 +91,105 @@ export default function DonationRegister() {
   return (
     <>
       <ScaleFade in={inView} initialScale={0.5}>
-      <Flex w="full" justifyContent="center" mt="50" ref={ref} >
-        {/* animation  */}
-        {/* animationend  */}
-        {/* box */}
-        <Flex w="80%" borderRadius="lg" boxShadow="0px 0px 5px" h="fit-content"    >
-          {/* boxend */}
-          <Flex bgColor={bgcolor} w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
-            alignSelf={["center", "none", "none"]}
-          >
-            <Heading
-              color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-              fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
-              Want to donate medicine ?
-            </Heading>
-            <Heading
-              fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
-              fontSize={["4xl", "5xl", "6xl"]} lineHeight={["4xl", "5xl", "6xl"]} letterSpacing="0.023em" >
-              Get Yourself Register
-            </Heading>
-            {/* first row */}
-            <Flex direction={["column", "row", "row"]} p="10" justifyContent={["center", "space-between", "space-between"]} >
-              <GiMedicines size="60px" />
-              <Flex direction="column" p={["3", "0", "0"]}>
-                <Heading
-                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                  fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                >
-                  Medicine name
-                </Heading>
-                <Input
-                  variant='flushed'
-                  placeholder="Enter Medicine name here"
-                  focusBorderColor="#ACACAC"
-                  name="medname"
-                  onChange={handleChange}
-                  value={medicinedata.medname}
-                  required
-                />
-              </Flex >
-              <FcExpired size="50px" />
-              <Flex direction="column" p={["3", "0", "0"]}>
-                <Heading
-                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                  fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                >
-                  Medicine expire date
-                </Heading>
-                <DatePicker pt="10" selected={startDate} onChange={(date) => setStartDate(date)} />
+        <Flex w="full" justifyContent="center" mt="50" ref={ref} >
+          {/* animation  */}
+          {/* animationend  */}
+          {/* box */}
+          <Flex w="80%" borderRadius="lg" boxShadow="0px 0px 5px" h="fit-content"    >
+            {/* boxend */}
+            <Flex bgColor={bgcolor} w={["100%", "80%", "80%"]} p={["5", "10", "10"]} direction="column" justifyContent={["center", "none", "none"]}
+              alignSelf={["center", "none", "none"]}
+            >
+              <Heading
+                color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
+                fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
+                Want to donate medicine ?
+              </Heading>
+              <Heading
+                fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
+                fontSize={["4xl", "5xl", "6xl"]} lineHeight={["4xl", "5xl", "6xl"]} letterSpacing="0.023em" >
+                Get Yourself Register
+              </Heading>
+              {/* first row */}
+              <Flex direction={["column", "row", "row"]} p="10" justifyContent={["center", "space-between", "space-between"]} >
+                <GiMedicines size="60px" />
+                <Flex direction="column" p={["3", "0", "0"]}>
+                  <Heading
+                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
+                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
+                  >
+                    Medicine name
+                  </Heading>
+                  <Input
+                    variant='flushed'
+                    placeholder="Enter Medicine name here"
+                    focusBorderColor="#ACACAC"
+                    name="medname"
+                    onChange={handleChange}
+                    value={medicinedata.medname}
+                    required
+                  />
+                </Flex >
+                <FcExpired size="50px" />
+                <Flex direction="column" p={["3", "0", "0"]}>
+                  <Heading
+                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
+                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
+                  >
+                    Medicine expire date
+                  </Heading>
+                  <DatePicker pt="10" selected={startDate} onChange={(date) => setStartDate(date)} />
+                </Flex>
               </Flex>
+              {/* second row */}
+              <Flex direction={["column", "row", "row"]} mt={["-14", "0", "0"]} p={["10", "10", "10"]} justifyContent="space-between" >
+                <BsTelephoneFill size="50px" />
+                <Flex direction="column">
+                  <Heading
+                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
+                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
+                  >
+                    Phone
+                  </Heading>
+                  <Input
+                    variant='flushed'
+                    placeholder="9876543210"
+                    name="phone"
+                    onChange={handleChange}
+                    value={medicinedata.phone}
+                    required
+                    color="#ACACAC"
+                    focusBorderColor="#ACACAC" />
+                </Flex>
+                <FaClinicMedical size="50px" p={["3", "0", "0"]} />
+                <Flex direction="column">
+                  <Heading
+                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
+                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
+                  >
+                    Address
+                  </Heading>
+                  <Input
+                    variant='flushed'
+                    placeholder="Enter your Address"
+                    name="address"
+                    onChange={handleChange}
+                    value={medicinedata.address}
+                    required
+                    color="#ACACAC"
+                    focusBorderColor="#ACACAC" />
+                </Flex>
+              </Flex>
+              <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicine Image</Button>
+              <Button onClick={handleSubmit} background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
+              {/*second row end */}
             </Flex>
-            {/* second row */}
-            <Flex direction={["column", "row", "row"]} mt={["-14", "0", "0"]} p={["10", "10", "10"]} justifyContent="space-between" >
-              <BsTelephoneFill size="50px" />
-              <Flex direction="column">
-                <Heading
-                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                  fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                >
-                  Phone
-                </Heading>
-                <Input
-                  variant='flushed'
-                  placeholder="9876543210"
-                  name="phone"
-                  onChange={handleChange}
-                  value={medicinedata.phone}
-                  required
-                  color="#ACACAC"
-                  focusBorderColor="#ACACAC" />
-              </Flex>
-              <FaClinicMedical size="50px" p={["3", "0", "0"]} />
-              <Flex direction="column">
-                <Heading
-                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                  fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                >
-                  Address
-                </Heading>
-                <Input
-                  variant='flushed'
-                  placeholder="Enter your Address"
-                  name="address"
-                  onChange={handleChange}
-                  value={medicinedata.address}
-                  required
-                  color="#ACACAC"
-                  focusBorderColor="#ACACAC" />
-              </Flex>
+            <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>
+              <Image alignSelf="center" src={logo} />
+              <Heading fontWeight="bold" alignSelf="center" textColor={textColor} fontSize="lg" >MedDonor</Heading>
             </Flex>
-            <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicine Image</Button>
-            <Button onClick={handleSubmit} background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
-            {/*second row end */}
-          </Flex>
-          <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>
-             <Image alignSelf="center"  src={logo}/> 
-             <Heading fontWeight="bold" alignSelf="center" textColor={textColor} fontSize="lg" >MedDonor</Heading>
           </Flex>
         </Flex>
-      </Flex>
       </ScaleFade>
       {/* Meddoner register */}
     </>

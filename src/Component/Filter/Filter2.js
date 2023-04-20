@@ -1,19 +1,21 @@
 import { Stack, Select, InputGroup, Input, Link, Button, InputRightElement, Heading } from '@chakra-ui/react'
 import React from 'react'
-import { ImLocation2, ImSearch } from "react-icons/im";
+import { FaNotesMedical } from 'react-icons/fa';
+import { ImSearch } from "react-icons/im";
+// import { HashLink } from 'react-router-hash-link';
 export default function Filter() {
     //MedicineFilter
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
             <Stack direction="row" spacing={10}>
-                <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Cough' />
+                <Select icon={< FaNotesMedical />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Cough' />
                 <InputGroup w={["50%", "50%", "85%"]} alignSelf="center">
-                    <Input placeholder='Search Medicine' />
+                    <Input placeholder='Search Medicines' />
                     <InputRightElement children={<ImSearch />} />
                 </InputGroup>
-                <Link href="/eventregister" w="15%" alignSelf="end">
+                <Link href="/home/#medicinedonate" w="15%" alignSelf="end">
                     <Button
-                        background="#20BC7E"  rounded="47px"
+                        background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
                     >
                         Donate
