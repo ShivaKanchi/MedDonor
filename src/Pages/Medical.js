@@ -4,6 +4,7 @@ import Head from '../Component/Head';
 import Count from '../Component/Count'
 import Footer from '../Component/Footer/Footer2'
 import MedicalList from '../Component/Medical/MedicalList';
+import MapView from '../Component/MapView/MapView';
 
 export default function Medical() {
 
@@ -12,6 +13,7 @@ export default function Medical() {
         <>
             <Head />
             <Filter />
+            <MapView />
             <MedicalList />
             <Count />
             <Footer />

@@ -1,29 +1,31 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-//import { useSelector } from 'react-redux';
-//import { useState } from 'react';
+import GoogleMapReact from 'google-map-react';
 
-const MapView = (props) => {
-    console.log("props", props)
-    const position = props.coords
-    return (
-        <div >
-            <MapContainer
-                center={position}
-                zoom={13}
-                scrollWheelZoom={false}
-                className="h-full"
-            >
-                <TileLayer
-                    attribution='<a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={position}>
-                    <Popup>{props.medicalname}</Popup>
-                </Marker>
-            </MapContainer>
-        </div>
-    )
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+export default function MapView(){
+  const defaultProps = {
+    center: {
+      lat: 10.99835602,
+      lng: 77.01502627
+    },
+    zoom: 11
+  };
+
+  return (
+    // Important! Always set the container height explicitly
+    <div style={{ height: '100vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.google_map }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+      >
+        <AnyReactComponent
+          lat={59.955413}
+          lng={30.337844}
+          text="My Marker"
+        />
+      </GoogleMapReact>
+    </div>
+  );
 }
-
-export default MapView

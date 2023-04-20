@@ -1,0 +1,16 @@
+.popup-container .leaflet-popup-content-wrapper {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .popup-container .leaflet-popup-tip-container {
+    display: none;
+  }
+
+  .leaflet-marker-icon {
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+  }
+  
