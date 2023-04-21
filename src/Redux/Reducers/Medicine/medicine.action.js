@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_MEDICINES, GET_MEDICINE } from "./medicine.type";
+import { GET_ALL_MEDICINES, GET_MEDICINE, SEARCH_MEDICINE } from "./medicine.type";
 
 export const getMedicines = () => async (dispatch) => {
     try {
@@ -23,7 +23,7 @@ export const getMedicine = () => async (dispatch) => {
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/medicine`,
         });
-        console.log(medicine, "From action medicine")
+        // console.log(medicine, "From action medicine")
         return dispatch({
             type: GET_MEDICINE,
             payload: medicine
@@ -34,3 +34,18 @@ export const getMedicine = () => async (dispatch) => {
 
     }
 }
+
+
+export const seardhMedicine = (medicine) => async (dispatch) => {
+    try {
+        const Medicineslist = await axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_CLIENT_URL}/medicine/${medicine}`,
+        });
+        console.log(Medicineslist, "From action medicine")
+        return dispatch({ type: SEARCH_MEDICINE, payload: Medicineslist.data });
+    } catch (error) {
+        dispatch({ type: "ERROR", payload: error });
+    }
+};
+
