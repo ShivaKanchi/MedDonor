@@ -16,7 +16,7 @@ export default function Filter() {
                         background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
                     >
-                        Register 
+                        Register
                     </Button>
                 </Link>
             </Stack>

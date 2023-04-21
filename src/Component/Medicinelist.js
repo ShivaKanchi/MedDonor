@@ -134,7 +134,7 @@ export default function MedicineCard() {
 
                     <Link href={token ? "/talknow" : "/signin"}>
                       <Button leftIcon={token ? <PhoneIcon /> : <SlUser />} align="center" rounded="20" bgColor="#20BC7E" variant='solid'>
-                        {token ? "Talk Now" : "Sigin"}
+                        {token ? "Talk Now" : "Signin"}
                       </Button>
                     </Link>
 
