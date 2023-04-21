@@ -5,6 +5,7 @@ import Count from '../Component/Count'
 import Footer from '../Component/Footer/Footer2'
 import MedicalList from '../Component/Medical/MedicalList';
 import MapView from '../Component/MapView/MapView';
+import MapG from '../Component/MapView/GoogleMap/MapG';
 
 export default function Medical() {
 
@@ -13,8 +14,9 @@ export default function Medical() {
         <>
             <Head />
             <Filter />
-            <MapView />
             <MedicalList />
+            <MapView />
+            {/* <MapG /> */}
             <Count />
             <Footer />
         </>
