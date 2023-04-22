@@ -16,7 +16,7 @@ const medicineReducer = (state = intialState, action) => {
             medicine: action.payload
         };
         case SEARCH_MEDICINE: return {
-            medicinelist: [...action.payload]
+            medicinelist: action.payload
         };
         default: return {
             ...state

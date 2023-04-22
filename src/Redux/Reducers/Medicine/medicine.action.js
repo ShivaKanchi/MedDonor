@@ -35,17 +35,16 @@ export const getMedicine = () => async (dispatch) => {
     }
 }
 
-
-export const seardhMedicine = (medicine) => async (dispatch) => {
+export const seardhMedicine = (searchtext) => async (dispatch) => {
     try {
+        console.log(searchtext, "From action medicine")
         const Medicineslist = await axios({
             method: "GET",
-            url: `${process.env.REACT_APP_CLIENT_URL}/medicine/${medicine}`,
+            url: `${process.env.REACT_APP_CLIENT_URL}/medicine/search/${searchtext}`,
         });
         console.log(Medicineslist, "From action medicine")
-        return dispatch({ type: SEARCH_MEDICINE, payload: Medicineslist.data });
+        return dispatch({ type: SEARCH_MEDICINE, payload: Medicineslist.data.data });
     } catch (error) {
         dispatch({ type: "ERROR", payload: error });
     }
 };
-
