@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import MedicineCard from '../Component/Medicinelist'
 import { getMedicines } from '../Redux/Reducers/Medicine/medicine.action'
 
 export default function Donnor() {
+  const ref = useRef(null);
   // const [medicines, setMedicines] = useState([])
   // const dispatch = useDispatch()
   // const reduxState = useSelector(state => state.medicines);
@@ -23,8 +24,10 @@ export default function Donnor() {
     <>
       <Head />
       <Filter />
+      {/* scrollToRef={ref} */}
       <MedicineCard />
       <Count />
+      {/* ref={ref}  */}
       <GetOffer />
       <Footer />
     </>

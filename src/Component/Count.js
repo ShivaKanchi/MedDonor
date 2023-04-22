@@ -10,12 +10,12 @@ import { useInView } from "react-intersection-observer";
 // GiMedicines
 
 export default function Count() {
-
+    // const reference = useRef(null);
     const { ref, inView } = useInView({
         threshold: 0.9, // Trigger animation when the component is 50% in view
         triggerOnce: true, // Only trigger the animation once
     });
-
+    // ref={(ref) => { this.scrollTarget = ref; }}
     return (
         <Stack >
             {/* firt layer of bg */}
@@ -74,11 +74,14 @@ export default function Count() {
                         </Flex>
                         {/* Meddoner Regiseter */}
                         <Stack display={["none", "flex", "flex"]}>
+
                             <DonationRegister />
                         </Stack>
                     </Box>
                 </Box>
             </ScaleFade>
-        </Stack>
+
+        </Stack >
+
     )
 }

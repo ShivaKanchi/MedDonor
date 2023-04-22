@@ -1,17 +1,29 @@
 import { Stack, Select, InputGroup, Input, Link, Button, InputRightElement, Heading } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
 export default function Filter() {
     //MedicalFilter
+    const [searchtext, setSearchtext] = useState("");
+    const handleChange = (e) => {
+        e.preventDefault();
+        setSearchtext(e.target.value);
+    };
+    const search = () => {
+        console.log(searchtext)
+
+    }
+    console.log(searchtext)
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
             <Stack direction="row" spacing={10}>
                 <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]} alignSelf="flex-start" placeholder='Mumbai' />
                 <InputGroup w={["50%", "50%", "85%"]} alignSelf="center">
-                    <Input placeholder='Search Medical' />
-                    <InputRightElement children={<ImSearch />} />
+                    <Input placeholder='Search Medical' onChange={handleChange} />
+                    <Button onClick={() => search()}>
+                        <ImSearch />
+                    </Button>
                 </InputGroup>
-                <Link href="/medicalregister" w="15%" alignSelf="end">
+                <Link href="/home" w="15%" alignSelf="end">
                     <Button
                         background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
