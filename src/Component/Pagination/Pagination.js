@@ -19,9 +19,9 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                         <HStack spacing={4} overflowX="auto">
                             {
                                 currentnumber === 1 ?
-                                    <Button disabled>Previous</Button>
+                                    <Button disabled key={currentnumber}>Previous</Button>
                                     :
-                                    <Button onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
+                                    <Button key={currentnumber} onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
                             }
 
                             {pageNumbers.map((number) => (
@@ -35,9 +35,9 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                             ))}
                             {
                                 currentnumber === pageNumbers.length ?
-                                    <Button disabled>Next</Button>
+                                    <Button disabled key={currentnumber}>Next</Button>
                                     :
-                                    <Button onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
+                                    <Button key={currentnumber} onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
                             }
                         </HStack>
                     </Flex >
