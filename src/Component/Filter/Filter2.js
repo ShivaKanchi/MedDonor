@@ -1,10 +1,10 @@
-import { Stack, Select, InputGroup, Input, Button, InputRightElement, Heading } from '@chakra-ui/react'
+import { Stack, Select, InputGroup, Input, Button, InputRightElement, Heading, Link } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { FaNotesMedical } from 'react-icons/fa';
 import { ImSearch } from "react-icons/im";
 import { getMedicines, seardhMedicine } from '../../Redux/Reducers/Medicine/medicine.action';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
 import { animateScroll } from 'react-scroll';
 
 // import { HashLink } from 'react-router-hash-link';
@@ -43,15 +43,15 @@ export default function Filter() {
                         <ImSearch />
                     </Button>
                 </InputGroup>
-                {/* <Link to="DonationRegister" smooth={true} duration={500}> */}
-                <Button
-                    background="#20BC7E" rounded="47px"
-                    display={['none', "flex", "flex"]}
-                    onClick={handleClick}
-                >
-                    Donate
-                </Button>
-                {/* </Link> */}
+                <Link href='/donnorregister' >
+                    <Button
+                        background="#20BC7E" rounded="47px"
+                        display={['none', "flex", "flex"]}
+                        // onClick={handleClick}
+                    >
+                        Donate
+                    </Button>
+                </Link>
             </Stack>
             {/* for mobile  */}
             {/* <Button

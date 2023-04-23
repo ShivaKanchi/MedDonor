@@ -777,9 +777,9 @@ export default function EventRegister(props) {
 
                         <FormControl isInvalid={formik.errors.certificate && formik.touched.certificate} >
                             <FormLabel>Certificate</FormLabel>
-                            <RadioGroup name="certificate" onChange={formik.handleChange} value={value} >
+                            <RadioGroup name="certificate" onChange={formik.handleChange} value={formik.values.certificate} >
                                 <Stack direction='row'>
-                                    <Radio colour="" value="Yes">yes</Radio>
+                                    <Radio value="Yes">yes</Radio>
                                     <Radio value="No">no</Radio>
                                 </Stack>
                             </RadioGroup>

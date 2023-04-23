@@ -76,15 +76,15 @@ export default function MedicalList() {
             }
             {
                 currentCards.map((item, index) => (
-                    <Stack p="10" w="100%">
-                        <Card key={index}>
-                            <Stack direction={['column', "row", "row"]}>
-                                <Stack w={["100%", "25%", "25%"]} >
+                    <Stack p="10" w="100%" >
+                        <Card key={index} >
+                            <Stack direction={['column', "row", "row"]}  >
+                                <Stack w={["100%", "25%", "25%"]}  >
                                     <Image
-                                        objectFit='cover'
+                                        objectFit='fill'
                                         src={item.medicalimage}
                                         alt="Medical image"
-                                        height="fit-content" w="auto"
+                                         w="auto"
                                     />
                                 </Stack>
                                 <Stack w={["100%", "50%", "80%"]}>
