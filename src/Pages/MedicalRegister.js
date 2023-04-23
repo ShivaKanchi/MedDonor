@@ -21,6 +21,7 @@ import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
 import ImageUpload from '../Component/ImageUpload'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import { addMedical } from '../Redux/Reducers/Medical/medical.action'
 
 
@@ -64,7 +65,7 @@ export default function MedicalRegister(props) {
     // if (response) {
     // alert("Register done");
     // }
-    //  const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // useEffect(() => {
     //     console.log("USEeffect")
@@ -76,8 +77,17 @@ export default function MedicalRegister(props) {
     const onSubmit = () => {
         if (url && !formik.values.medicalimage) {
             formik.values.medicalimage = url
-            console.log(formik.values)
-            dispatch(addMedical(formik.values));
+            // console.log(formik.values)
+            dispatch(addMedical(formik.values)).then(data => {
+                // console.log(data.payload._id)
+                if (data.payload._id) {
+                    alert("Medical Registered Successfuly !")
+                    navigate("/medical")
+                } else {
+                    alert("Error while Registration, try again !")
+                    navigate("/medicalregister")
+                }
+            })
         }
         // console.log("yaaaaaaaaaaaaa", value)
         // console.log("naaaaaaaaaaaaa", url)
@@ -757,7 +767,12 @@ export default function MedicalRegister(props) {
 
                         <FormControl isInvalid={formik.errors.state && formik.touched.state}>
                             <FormLabel>State</FormLabel>
-                            <Select placeholder='Maharashtra' name="state" value={formik.values.state} onChange={formik.handleChange}>
+                            <Select
+                                placeholder='Maharashtra'
+                                name="state"
+                                value={formik.values.state}
+                                onChange={formik.handleChange}
+                            >
                                 <option value='Andhra Pradesh'>Andhra Pradesh</option>
                                 <option value='Arunachal Pradesh'>Arunachal Pradesh</option>
                                 <option value='Assam'>Assam</option>

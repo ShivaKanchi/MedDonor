@@ -13,6 +13,10 @@ const intialState = {
 
 const medicalReducer = (state = intialState, action) => {
     switch (action.type) {
+        case ADD_MEDICAL: return {
+            ...state,
+            selectedMedical: action.payload
+        };
         case GET_ALL_MEDICALS: return {
             ...state,
             medicals: action.payload
@@ -20,10 +24,6 @@ const medicalReducer = (state = intialState, action) => {
         case GET_MEDICAL: return {
             ...state,
             selectedMedical: [...action.payload]
-        };
-        case ADD_MEDICAL: return {
-            ...state,
-            ...action.payload
         };
         case UPDATE_MEDICAL: return {
             ...state,

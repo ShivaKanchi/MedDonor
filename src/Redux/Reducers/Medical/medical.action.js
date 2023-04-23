@@ -33,14 +33,16 @@ export const getMedical = (_id) => async (dispatch) => {
 
     }
 }
-export const addMedical = (medicalData) => async (dispatch) => {
+export const addMedical = (data) => async (dispatch) => {
     try {
-        await axios({
+        const uploadedmedical = await axios({
             method: "POST",
-            url: `${process.env.REACT_APP_CLIENT_URL}/medical/add`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
-            data: { credentials: medicalData }
+            url: `${process.env.REACT_APP_CLIENT_URL}/medical/new`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            data: { data }
         });
-        return dispatch({ type: ADD_MEDICAL, payload: medicalData });
+        console.log(uploadedmedical)
+
+        return dispatch({ type: ADD_MEDICAL, payload: uploadedmedical.data.data });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });
