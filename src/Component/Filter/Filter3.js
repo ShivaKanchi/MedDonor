@@ -23,7 +23,7 @@ export default function Filter() {
                         <ImSearch />
                     </Button>
                 </InputGroup>
-                <Link href="/home" w="15%" alignSelf="end">
+                <Link href="/medicalregister" w="15%" alignSelf="end">
                     <Button
                         background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}

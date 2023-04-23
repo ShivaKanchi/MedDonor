@@ -52,8 +52,7 @@ export default function EventRegister(props) {
             formik.values.eventimage = url
             console.log(formik.values)
             dispatch(addEvent(formik.values));
-        }
-       
+        }  
     }
 
     const formik = useFormik({
@@ -102,7 +101,6 @@ export default function EventRegister(props) {
             <Box boxShadow='dark-lg' w="full" pb={["20", "0", "0"]} rounded='md'  >
                 <Stack direction={["column", "row", "row"]} w="full" h="full" >
                     <VStack w={["full", "50%", "50%"]} alignSelf="center" justifyContent="center" h="full" display={["none", "flex", "flex"]} bg="#FFB87A" spacing="5vh" >
-
                         <Lottie
                             options={defaultOptions}
                             height={400}
@@ -130,7 +128,7 @@ export default function EventRegister(props) {
                         <Heading>Event Registration</Heading>
 
                         <FormControl isInvalid={formik.errors.eventname && formik.touched.eventname}>
-                            <FormLabel>Collage Name</FormLabel>
+                            <FormLabel>College Name</FormLabel>
                             <Input
                                 name="eventname"
                                 onChange={formik.handleChange}

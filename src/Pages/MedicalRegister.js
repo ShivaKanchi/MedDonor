@@ -20,27 +20,26 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
 import ImageUpload from '../Component/ImageUpload'
-import { addEvent } from '../Redux/Reducers/Event/event.action'
 import { useDispatch } from 'react-redux'
+import { addMedical } from '../Redux/Reducers/Medical/medical.action'
 
 
 export default function MedicalRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState({
-        medicalname: "",
-        medicalimage: "",
-        type: true,
-        landmark: "",
-        address: "",
-        city: "",
-        state: "",
-        pincode: "",
-        holiday: "",
-        workinghour: "",
-        coords: ""
-    })
+    const [value, setValue] = React.useState("")
+    // medicalname: "",
+    //     medicalimage: "",
+    //         type: true,
+    //             landmark: "",
+    //                 address: "",
+    //                     city: "",
+    //                         state: "",
+    //                             pincode: "",
+    //                                 holiday: "",
+    //                                     workinghour: "",
+    //                                         coords: ""
     const [setError] = useState("");
     const uploadImage = () => {
         const data = new FormData()
@@ -66,16 +65,21 @@ export default function MedicalRegister(props) {
     // alert("Register done");
     // }
     //  const navigate = useNavigate();
-    useEffect(() => {
-        console.log("USEeffect")
-        setValue({ ...value, eventimage: url });
-        setValue({ ...value, ...formik.values });
-    }, [url])
+
+    // useEffect(() => {
+    //     console.log("USEeffect")
+    //     setValue({ ...value, medicalimage: url });
+    //     setValue({ ...value, ...formik.values });
+    // }, [url])
+
     const dispatch = useDispatch();
-
     const onSubmit = () => {
-
-        console.log("yaaaaaaaaaaaaa", value)
+        if (url && !formik.values.medicalimage) {
+            formik.values.medicalimage = url
+            console.log(formik.values)
+            dispatch(addMedical(formik.values));
+        }
+        // console.log("yaaaaaaaaaaaaa", value)
         // console.log("naaaaaaaaaaaaa", url)
         // dispatch(addEvent(formik.values));
         // setValue({})
@@ -102,7 +106,7 @@ export default function MedicalRegister(props) {
     const formik = useFormik({
         initialValues: {
             medicalname: "",
-            // medicalimage: "",
+            medicalimage: "",
             type: "",
             landmark: "",
             address: "",
