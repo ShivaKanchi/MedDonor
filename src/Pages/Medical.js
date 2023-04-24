@@ -15,7 +15,7 @@ export default function Medical() {
             <Head />
             <Filter />
             <MedicalList />
-            <MapView />
+            {/* <MapView /> */}
             {/* <MapG /> */}
             <Count />
             <Footer />

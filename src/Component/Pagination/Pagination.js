@@ -3,7 +3,6 @@ import React from 'react'
 import './Pagination.css'
 import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
 
-
 const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
@@ -19,9 +18,9 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                         <HStack spacing={4} overflowX="auto">
                             {
                                 currentnumber === 1 ?
-                                    <Button disabled key={currentnumber}>Previous</Button>
+                                    <Button disabled >Previous</Button>
                                     :
-                                    <Button key={currentnumber} onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
+                                    <Button onClick={() => { paginate(currentnumber - 1) }}>Previous</Button>
                             }
 
                             {pageNumbers.map((number) => (
@@ -35,9 +34,9 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                             ))}
                             {
                                 currentnumber === pageNumbers.length ?
-                                    <Button disabled key={currentnumber}>Next</Button>
+                                    <Button disabled >Next</Button>
                                     :
-                                    <Button key={currentnumber} onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
+                                    <Button onClick={() => { paginate(currentnumber + 1) }}>Next</Button>
                             }
                         </HStack>
                     </Flex >
@@ -50,7 +49,6 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
 export default Pagination
 
 // {if(currentnumber==totalCards){disabled}}
-
 //   {/* <Box>
 //             <Flex p={2}>
 //                 <Spacer />
@@ -76,20 +74,13 @@ export default Pagination
 //                 </Paginator>
 //             </Flex>
 //         </Box> */}
-
-
-
-
 //     {/* <div className="pagination">
 //             {p.map((number) => (
 //                 < button onClick={() => { paginate(number) }} href='!#' className='page-link' >
 //                     {number}
 //                 </button>
-
-
 //             ))}
 //         </div > */}
-
 // {/* <Flex justifyContent="center" flexDirection="row" padding="15px">
 // {/* <ArrowBackIcon  alignSelf="center"/> */}
 // {pageNumbers.map((number) => (

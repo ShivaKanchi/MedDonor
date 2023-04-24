@@ -12,7 +12,7 @@ export default function Filter() {
         console.log(searchtext)
 
     }
-    console.log(searchtext)
+    // console.log(searchtext)
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
             <Stack direction="row" spacing={10}>
