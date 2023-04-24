@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { Flex } from "@chakra-ui/react";
 import { ImLocation } from "react-icons/im";
 
-const AnyReactComponent = ({ text }) => <ImLocation size={40} color="#0B63C7" />;
+const AnyReactComponent = ({ text }) => <ImLocation size={50} color="#0B63C7" />;
 const Marker = ({ text }) => <ImLocation size={40} color="red" />;
 
 const MapView = ({ data }) => {
@@ -18,23 +18,21 @@ const MapView = ({ data }) => {
     });
   }, []);
 
-
-  useEffect(() => {
-    data.map((value) => {
-      console.log(...value[0])
-      mappoint.push(...value[0])
-    })
-  }, [])
-
   // console.log(data)
-  console.log(mappoint)
+  // useEffect(() => {
+  //   data.map((value) => {
+  //     console.log(value[0])
+  //     mappoint.push([value[0][0], value[0][1]])
+  //   })
+  // }, [])
+  // console.log(mappoint)
 
   const defaultProps = {
     center: {
       lat: 19.3505971,// ? latitude : 19.2118784,19.207471, 72.978321
       lng: 72.9142051//? longitude : 72.8563712,19.3505971,72.9142051
     },
-    zoom: 9
+    zoom: 11
   };
 
   return (
@@ -52,15 +50,26 @@ const MapView = ({ data }) => {
             text="Your Here"
           />
 
+          < Marker
+            lat={19.203611}
+            lng={72.848344}
+          />
+          < Marker
+            lat={19.203202}
+            lng={72.848688}
+          />
+
           {
-            mappoint?.map((medical) =>
-              console.log(medical[0], medical[1], "Hello")
-              // <Marker
-              //   lat={medical[0]}
-              //   lng={medical[1]}
-              // // text={medical[2]}
-              // />
-            )
+            data.map((medical) => {
+              {
+                medical[0][0] &&
+                  < Marker
+                    lat={medical[0][0]}
+                    lng={medical[0][1]}
+                    text={medical[1]}
+                  />
+              }
+            })
           }
 
 

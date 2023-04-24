@@ -48,7 +48,7 @@ export default function MedicalList({ currentlocation }) {
             setLoading(false)
             // console.log(data.payload)
             const mappoint = [];
-            data.payload?.map(({ coords, medicalname, _id }) => mappoint.push([[coords.split(",")], medicalname, _id]));
+            data.payload?.map(({ coords, medicalname, _id }) => mappoint.push([[parseFloat(coords.split(",")[0]), parseFloat(coords.split(",")[1])], medicalname, _id]));
             // console.log(mappoint)
             setMapmarker(mappoint);
             // console.log("mapmarker", mapmarker, currentlocation)
