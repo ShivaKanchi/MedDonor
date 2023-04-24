@@ -4,7 +4,9 @@ import {
     GET_MEDICAL,
     ADD_MEDICAL,
     UPDATE_MEDICAL,
-    DELETE_MEDICAL
+    DELETE_MEDICAL,
+    SEARCH_MEDICAL,
+    GET_MEDICALS_CITY
 } from './medical.type'
 
 export const getAllMedicals = () => async (dispatch) => {
@@ -27,6 +29,34 @@ export const getMedical = (_id) => async (dispatch) => {
             url: `${process.env.REACT_APP_CLIENT_URL}/medical/`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
         });
         return dispatch({ type: GET_MEDICAL, payload: onemedical });
+    }
+    catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+
+    }
+}
+export const getMedicalsByCity = (city) => async (dispatch) => {
+    try {
+        const medicallist = await axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_CLIENT_URL}/medical/city/${city}`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+        });
+        return dispatch({ type: GET_MEDICALS_CITY, payload: medicallist });
+    }
+    catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+
+    }
+}
+export const searchMedical = (searchtext) => async (dispatch) => {
+    try {
+        const medicallist = await axios({
+            method: "GET",
+            url: `${process.env.REACT_APP_CLIENT_URL}/medical/search/${searchtext}`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+        });
+        console.log(searchtext, medicallist)
+
+        return dispatch({ type: SEARCH_MEDICAL, payload: medicallist.data.data });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });

@@ -82,17 +82,18 @@ export const deleteEvent = (_id) => async (dispatch) => {
     }
 }
 
-export const getCityEvents = () => async (dispatch) => {
+export const getCityEvents = (city) => async (dispatch) => {
     try {
+        console.log(city)
         const events = await axios({
             method: "GET",
-            url: `${process.env.REACT_APP_CLIENT_URL}/event/`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            url: `${process.env.REACT_APP_CLIENT_URL}/event/city/${city}`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
         });
+        console.log("from event acion", events)
         return dispatch({ type: GET_CITY_EVENTS, payload: events.data.message });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });
-
     }
 }
 

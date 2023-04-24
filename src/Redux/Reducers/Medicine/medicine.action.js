@@ -35,9 +35,9 @@ export const getMedicine = () => async (dispatch) => {
     }
 }
 
-export const seardhMedicine = (searchtext) => async (dispatch) => {
+export const searchMedicine = (searchtext) => async (dispatch) => {
     try {
-        console.log(searchtext, "From action medicine")
+        // console.log(searchtext, "From action medicine")
         const Medicineslist = await axios({
             method: "GET",
             url: `${process.env.REACT_APP_CLIENT_URL}/medicine/search/${searchtext}`,

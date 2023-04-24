@@ -1,6 +1,8 @@
 import { Stack, Select, InputGroup, Input, Link, Button, InputRightElement, Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
+import { useDispatch } from 'react-redux';
+import { getAllMedicals, searchMedical } from '../../Redux/Reducers/Medical/medical.action';
 export default function Filter() {
     //MedicalFilter
     const [searchtext, setSearchtext] = useState("");
@@ -8,9 +10,17 @@ export default function Filter() {
         e.preventDefault();
         setSearchtext(e.target.value);
     };
-    const search = () => {
-        console.log(searchtext)
+    const dispatch = useDispatch()
 
+    const search = async () => {
+        console.log(searchtext)
+        if (searchtext.length === 0) {
+            await dispatch(getAllMedicals())
+        }
+        else {
+            console.log("Searched")
+            await dispatch(searchMedical(searchtext))
+        }
     }
     // console.log(searchtext)
     return (
@@ -28,7 +38,7 @@ export default function Filter() {
                         background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
                     >
-                        Register
+                        Register Your Medical
                     </Button>
                 </Link>
             </Stack>

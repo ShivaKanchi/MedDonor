@@ -25,7 +25,15 @@ const MapG = ({ data }) => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP
     })
     const containerStyle = { height: '70vh', width: '80%' };
-
+    const divStyle = {
+        background: `white`,
+    }
+    const info = {
+        color: `black`,
+    }
+    const onLoad = infoWindow => {
+        console.log('infoWindow: ', infoWindow)
+    }
     const center = {
         lat: latitude,
         lng: longitude
@@ -59,7 +67,7 @@ const MapG = ({ data }) => {
                 >
                     { /* Child components, such as markers, info windows, etc. */}
                     <div>
-                        <Marker position={center} options={{}} />
+                        <Marker position={center} onClick={() => { setSelectedMarker({ location: center, medicalname: "Your Location" }); }} />
 
                     </div>
 
@@ -67,30 +75,23 @@ const MapG = ({ data }) => {
                         data?.map((marker) => {
                             return (
                                 <div key={marker.id}>
-                                    < Marker position={marker.location} onClick={() => {
-                                        // console.log(marker)
-                                        setSelectedMarker(marker);
-                                    }} />
+                                    < Marker position={marker.location} onClick={() => { setSelectedMarker(marker); }} />
                                 </div>
                             )
                         })
                     }
-                    {console.log(selectedMarker)}
 
                     {
 
                         selectedMarker && (
                             < InfoWindow
+                                onLoad={onLoad}
                                 position={selectedMarker.location}
-                                options={{
-                                    pixelOffset: new window.google.maps.Size(0, -40),
-                                }}
                             >
-                                <div >
-                                    <h1>Name -{selectedMarker.medicalname}</h1>
-                                    <h2>id - {selectedMarker.id}</h2>
-                                    {/* <h2>location - {selectedMarker.location}</h2> */}
-                                    <button onClick={() => setSelectedMarker("")}>close</button>
+                                <div style={divStyle}>
+                                    <h1 style={info}>Name -{selectedMarker.medicalname ? selectedMarker.medicalname : "Shiv Medical"}</h1>
+                                    <h2 style={info}>id - {selectedMarker.id ? selectedMarker.id : "Thank You"}</h2>
+                                    <button style={info} onClick={() => setSelectedMarker("")}>close</button>
                                 </div>
                             </InfoWindow>
                         )

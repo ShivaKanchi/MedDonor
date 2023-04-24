@@ -2,7 +2,7 @@ import { Stack, Select, InputGroup, Input, Button, InputRightElement, Heading, L
 import React, { useState } from 'react'
 import { FaNotesMedical } from 'react-icons/fa';
 import { ImSearch } from "react-icons/im";
-import { getMedicines, seardhMedicine } from '../../Redux/Reducers/Medicine/medicine.action';
+import { getMedicines, searchMedicine } from '../../Redux/Reducers/Medicine/medicine.action';
 import { useDispatch } from 'react-redux';
 // import { Link } from 'react-scroll';
 import { animateScroll } from 'react-scroll';
@@ -16,6 +16,7 @@ export default function Filter() {
         e.preventDefault();
         setSearchtext(e.target.value);
     };
+
     const dispatch = useDispatch()
 
     const search = async () => {
@@ -24,7 +25,7 @@ export default function Filter() {
             await dispatch(getMedicines())
         }
         else {
-            await dispatch(seardhMedicine(searchtext))
+            await dispatch(searchMedicine(searchtext))
         }
     }
 
@@ -47,9 +48,9 @@ export default function Filter() {
                     <Button
                         background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
-                        // onClick={handleClick}
+                    // onClick={handleClick}
                     >
-                        Donate
+                        Donate Medicines
                     </Button>
                 </Link>
             </Stack>
