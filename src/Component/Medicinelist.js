@@ -71,7 +71,7 @@ export default function MedicineCard() {
                   objectFit='cover'
                   src={item.medimage}
                   alt="Medicine image"
-                  height="fit-content" w="auto"
+                  height="auto" w="auto"
                 />
               </Stack>
               <Stack w={["100%", "50%", "50%"]}>

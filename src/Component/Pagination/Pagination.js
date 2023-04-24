@@ -26,7 +26,7 @@ const Pagination = ({ cardsPerPage, totalCards, paginate, currentnumber }) => {
                             {pageNumbers.map((number) => (
                                 <>
                                     {currentnumber === number ?
-                                        <Button border='2px' borderColor='green.500' key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
+                                        <Button  border='2px' borderColor='green.500' key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
                                         :
                                         <Button key={number} onClick={() => { paginate(number) }} href='!#' x>{number}</Button>
                                     }

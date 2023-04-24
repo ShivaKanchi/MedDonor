@@ -13,7 +13,7 @@ export default function GetOffer() {
 
   return (
     <ScaleFade in={inView} initialScale={0.5}>
-        <Flex w="full" justifyContent="center" mt={[10,10,"25%"]} >
+        <Flex w="full" justifyContent="center" mt={[10,10,"30%"]} >
             <Flex ref={ref} w="80%" direction={['column','row','row']} boxShadow="0px 0px 2px" p="10" rounded="lg" >
                     <Flex w={["100%","50%","50%"]} direction="column" >
                         <Heading

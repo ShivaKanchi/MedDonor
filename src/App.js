@@ -17,6 +17,7 @@ import MedicalRegister from "./Pages/MedicalRegister";
 //redux
 import { useDispatch } from "react-redux";
 import { getMySelf } from "./Redux/Reducers/User/user.action";
+import DonnerRegister from "./Pages/DonnorRegister";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/donnor" element={<Donnor />} />
+        <Route path="/donnorregister" element={<DonnerRegister />} />
         <Route path="/medical" element={<Medical />} />
         <Route path="/event" element={<Event />} />
         <Route path="/about" element={<About />} />
