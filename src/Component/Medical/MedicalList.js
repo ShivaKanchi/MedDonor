@@ -10,12 +10,13 @@ import { getAllMedicals } from "../../Redux/Reducers/Medical/medical.action.js";
 import MapView from '../MapView/MapView.js';
 import Pagination from '../Pagination/Pagination.js';
 import geolib from 'geolib';
+import MapG from '../MapView/GoogleMap/MapG.jsx';
 export default function MedicalList({ currentlocation }) {
     // const map = useMap()
     // console.log('map center:', map.getCenter())
     const [medicals, setMedicals] = useState([])
     // const [currentlocation, setCurrentlocation] = useState({});
-    const [mapmarker, setMapmarker] = useState([]);
+    const [mapmarker, setMapmarker] = useState();
     const [nearby, setNearby] = useState([]);
 
     //Pagination
@@ -48,7 +49,15 @@ export default function MedicalList({ currentlocation }) {
             setLoading(false)
             // console.log(data.payload)
             const mappoint = [];
-            data.payload?.map(({ coords, medicalname, _id }) => mappoint.push([[parseFloat(coords.split(",")[0]), parseFloat(coords.split(",")[1])], medicalname, _id]));
+            data.payload?.map(({ coords, medicalname, _id }) => mappoint.push(
+
+                {
+                    id: _id,
+                    medicalname: medicalname,
+                    location: { lat: parseFloat(coords.split(",")[0]), lng: parseFloat(coords.split(",")[1]) },
+                }
+
+            ));
             // console.log(mappoint)
             setMapmarker(mappoint);
             // console.log("mapmarker", mapmarker, currentlocation)
@@ -128,7 +137,7 @@ export default function MedicalList({ currentlocation }) {
                                         objectFit='fill'
                                         src={item.medicalimage}
                                         alt="Medical image"
-                                         w="auto"
+                                        w="auto"
                                     />
                                 </Stack>
                                 <Stack w={["100%", "50%", "80%"]}>
@@ -199,7 +208,8 @@ export default function MedicalList({ currentlocation }) {
                 )
             }
             <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} currentnumber={currentPage} />
-            <MapView data={mapmarker} />
+            {/* <MapView data={mapmarker} /> */}
+            <MapG data={mapmarker} />
             {/* <Box className='map-box' border="3px solid white" display='flex' ml={5}> */}
 
             {/* <MapContainer center={[19.203611, 72.848344]} zoom={13} scrollWheelZoom={false}>

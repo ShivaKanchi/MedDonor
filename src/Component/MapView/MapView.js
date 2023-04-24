@@ -3,11 +3,13 @@ import GoogleMapReact from 'google-map-react';
 import { Flex } from "@chakra-ui/react";
 import { ImLocation } from "react-icons/im";
 
-const AnyReactComponent = ({ text }) => <ImLocation size={50} color="#0B63C7" />;
-const Marker = ({ text }) => <ImLocation size={40} color="red" />;
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <ImLocation size={50} color="#0B63C7" />;
+// const Marker = ({ text }) => <ImLocation size={40} color="red" />;
 
 const MapView = ({ data }) => {
   const mappoint = [];
+  const [mapmarker, setMapmarker] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongtitude] = useState();
 
@@ -18,14 +20,15 @@ const MapView = ({ data }) => {
     });
   }, []);
 
-  // console.log(data)
-  // useEffect(() => {
-  //   data.map((value) => {
-  //     console.log(value[0])
-  //     mappoint.push([value[0][0], value[0][1]])
-  //   })
-  // }, [])
-  // console.log(mappoint)
+  console.log(data)
+  useEffect(() => {
+    // data.map((value) => {
+    //   console.log(value[0])
+    //   mappoint.push([value[0]])
+    // })
+    setMapmarker(data)
+  }, [data])
+  console.log("okay", mapmarker)
 
   const defaultProps = {
     center: {
@@ -50,30 +53,28 @@ const MapView = ({ data }) => {
             text="Your Here"
           />
 
-          < Marker
+          {/* < Marker
             lat={19.203611}
             lng={72.848344}
           />
           < Marker
             lat={19.203202}
             lng={72.848688}
-          />
+          /> */}
 
           {
-            data.map((medical) => {
+            mapmarker.map((medical) => {
               {
-                medical[0][0] &&
-                  < Marker
-                    lat={medical[0][0]}
-                    lng={medical[0][1]}
-                    text={medical[1]}
+                console.log(medical[0])
+                medical[0] &&
+                  < AnyReactComponent
+                    lat={medical[0]}
+                    lng={medical[1]}
+                    text={medical[2]}
                   />
               }
             })
           }
-
-
-
         </GoogleMapReact>
       </div>
     </Flex >
