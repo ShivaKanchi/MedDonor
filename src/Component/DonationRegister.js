@@ -1,9 +1,16 @@
-import { Flex, Heading, Image, Input, Button, Stack, ScaleFade } from '@chakra-ui/react'
+import { Flex, Heading, Image, Input, Button, Stack, ScaleFade, HStack, Card , CardHeader, CardBody, Avatar, Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,useDisclosure, FormControl, FormLabel, } from '@chakra-ui/react'
 import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
 import DatePicker from "react-datepicker";
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, used } from 'react'
 import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,8 +19,36 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import logo from '../assest/logo.png'
 import { useInView } from "react-intersection-observer";
+import { PhoneIcon } from "@chakra-ui/icons"
+import { BsWhatsapp } from "react-icons/bs";
+
+
 
 export default function DonationRegister() {
+
+  const OverlayOne = () => (
+    <ModalOverlay
+      bg='blackAlpha.300'
+      backdropFilter='blur(10px) hue-rotate(90deg)'
+    />
+  )
+
+  const OverlayTwo = () => (
+    <ModalOverlay
+      bg='none'
+      backdropFilter='auto'
+      backdropInvert='80%'
+      backdropBlur='2px'
+    />
+  )
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [overlay, setOverlay] = React.useState(<OverlayOne />)
+
+  const initialRef = React.useRef(null)
+  const finalRef = React.useRef(null)
+  
+  //model code end
   const textColor = useColorModeValue("black", "white")
   const bgcolor = useColorModeValue("white", '#1A202C')
   const [startDate, setStartDate] = useState(new Date());
@@ -91,7 +126,7 @@ export default function DonationRegister() {
   return (
     <>
       <ScaleFade in={inView} initialScale={0.5}>
-        <Flex w="full" justifyContent="center" mt="50" ref={ref} >
+        <Flex w="full" justifyContent="center" mt="50"  ref={ref} >
           {/* animation  */}
           {/* animationend  */}
           {/* box */}
@@ -105,84 +140,110 @@ export default function DonationRegister() {
                 fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
                 Want to donate medicine ?
               </Heading>
-              <Heading
-                fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
-                fontSize={["4xl", "5xl", "6xl"]} lineHeight={["4xl", "5xl", "6xl"]} letterSpacing="0.023em" >
-                Get Yourself Register
-              </Heading>
+              <HStack justifyContent="space-between" >
+                <Heading
+                  fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
+                  fontSize={["4xl", "5xl", "6xl"]} lineHeight={["4xl", "5xl", "6xl"]} letterSpacing="0.023em" >
+                  Urgent Medicen need
+                </Heading>
+                <Button
+                   onClick={() => {
+                    setOverlay(<OverlayOne />)
+                    onOpen()
+                  }}
+                > Get Token </Button>
+              </HStack>
+              <Modal isCentered isOpen={isOpen} onClose={onClose}>
+                {overlay}
+                <ModalContent>
+                <ModalHeader>Create your account</ModalHeader>
+                  <ModalCloseButton />
+                    <ModalBody pb={6}>
+                      <FormControl>
+                        <FormLabel>First name</FormLabel>
+                        <Input ref={initialRef} placeholder='First name' />
+                      </FormControl>
+
+                      <FormControl mt={4}>
+                        <FormLabel>Last name</FormLabel>
+                        <Input placeholder='Last name' />
+                      </FormControl>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button colorScheme='blue' mr={3}>
+                        Save
+                      </Button>
+                      <Button onClick={onClose}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+              </Modal>
               {/* first row */}
-              <Flex direction={["column", "row", "row"]} p="10" justifyContent={["center", "space-between", "space-between"]} >
-                <GiMedicines size="60px" />
-                <Flex direction="column" p={["3", "0", "0"]}>
-                  <Heading
-                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                  >
-                    Medicine name
-                  </Heading>
-                  <Input
-                    variant='flushed'
-                    placeholder="Enter Medicine name here"
-                    focusBorderColor="#ACACAC"
-                    name="medname"
-                    onChange={handleChange}
-                    value={medicinedata.medname}
-                    required
-                  />
-                </Flex >
-                <FcExpired size="50px" />
-                <Flex direction="column" p={["3", "0", "0"]}>
-                  <Heading
-                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                  >
-                    Medicine expire date
-                  </Heading>
-                  <DatePicker pt="10" selected={startDate} onChange={(date) => setStartDate(date)} />
-                </Flex>
+              <Flex direction={"column"} p="10" justifyContent={["center", "space-between", "space-between"]} >
+                <></>
+                <Card  mb={10}>
+                 <Stack direction={['column', "row", "row"]}>
+
+                   <Stack alignSelf="center"   alignItems="center" w={["100%", "25%", "25%"]} >
+                      <Avatar 
+                       h="50%" w="50%" size='xs'
+                      src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
+                   </Stack>
+                   <Stack w={["100%", "50%", "50%"]}>
+                    <CardHeader >
+                      <Heading as={"h4"} >Organization or person name</Heading>
+                    </CardHeader>
+                    <CardBody >
+                     <Text>Medicine Name</Text>
+                    </CardBody>
+                    </Stack>
+                      <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                              {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
+                        <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                            Call Us
+                        </Button>
+                              {/* </Link> */}
+                              {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
+                        <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                            Whatsapp Now
+                        </Button>
+                              {/* </Link> */}
+                      </Stack>
+                    </Stack>
+                            
+                  </Card>
+                <Card >
+                 <Stack direction={['column', "row", "row"]}>
+
+                   <Stack alignSelf="center"   alignItems="center" w={["100%", "25%", "25%"]} >
+                      <Avatar 
+                       h="50%" w="50%" size='xs'
+                      src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
+                   </Stack>
+                   <Stack w={["100%", "50%", "50%"]}>
+                    <CardHeader >
+                      <Heading as={"h4"} >Organization or person name</Heading>
+                    </CardHeader>
+                    <CardBody >
+                     <Text>Medicine Name</Text>
+                    </CardBody>
+                    </Stack>
+                      <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                              {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
+                        <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                            Call Us
+                        </Button>
+                              {/* </Link> */}
+                              {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
+                        <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                            Whatsapp Now
+                        </Button>
+                              {/* </Link> */}
+                      </Stack>
+                    </Stack>
+                            
+                  </Card>
               </Flex>
-              {/* second row */}
-              <Flex direction={["column", "row", "row"]} mt={["-14", "0", "0"]} p={["10", "10", "10"]} justifyContent="space-between" >
-                <BsTelephoneFill size="50px" />
-                <Flex direction="column">
-                  <Heading
-                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                  >
-                    Phone
-                  </Heading>
-                  <Input
-                    variant='flushed'
-                    placeholder="9876543210"
-                    name="phone"
-                    onChange={handleChange}
-                    value={medicinedata.phone}
-                    required
-                    color="#ACACAC"
-                    focusBorderColor="#ACACAC" />
-                </Flex>
-                <FaClinicMedical size="50px" p={["3", "0", "0"]} />
-                <Flex direction="column">
-                  <Heading
-                    fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
-                    fontSize="21px" lineHeight="28px" letterSpacing="0.023em"
-                  >
-                    Address
-                  </Heading>
-                  <Input
-                    variant='flushed'
-                    placeholder="Enter your Address"
-                    name="address"
-                    onChange={handleChange}
-                    value={medicinedata.address}
-                    required
-                    color="#ACACAC"
-                    focusBorderColor="#ACACAC" />
-                </Flex>
-              </Flex>
-              <Button rightIcon={<GrGallery />} w="full" background="#FFB87A" varient="soild" p="5"  >Upload Medicine Image</Button>
-              <Button onClick={handleSubmit} background="#20BC7E" varient="soild" p="5" w="20%" mt="10" alignSelf="center" >Submit</Button>
-              {/*second row end */}
             </Flex>
             <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>
               <Image alignSelf="center" src={logo} />

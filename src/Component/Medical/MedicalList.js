@@ -125,10 +125,10 @@ export default function MedicalList({ currentlocation }) {
                             <Stack direction={['column', "row", "row"]}>
                                 <Stack w={["100%", "25%", "25%"]} >
                                     <Image
-                                        objectFit='cover'
+                                        objectFit='fill'
                                         src={item.medicalimage}
                                         alt="Medical image"
-                                        height="fit-content" w="auto"
+                                         w="auto"
                                     />
                                 </Stack>
                                 <Stack w={["100%", "50%", "80%"]}>
