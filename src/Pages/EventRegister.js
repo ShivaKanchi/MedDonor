@@ -56,7 +56,7 @@ export default function EventRegister(props) {
                 //  console.log(data.payload.data.data)
                 if (data.payload.data.data._id) {
                     alert("Event Registered Successfuly !")
-                    navigate("/event")
+                    // navigate("/event")
                 } else {
                     alert("Error while Registration, try again !")
                     navigate("/eventregister")

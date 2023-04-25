@@ -39,13 +39,12 @@ export const getEvent = (_id) => async (dispatch) => {
 }
 export const addEvent = (data) => async (dispatch) => {
     try {
-        console.log("Data recev in event add action ", data)
         const addedEvent = await axios({
             method: "POST",
             url: `${process.env.REACT_APP_CLIENT_URL}/event/new`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
-            data: { eventData: data }
+            data: { data }
         });
-        return dispatch({ type: ADD_EVENT, payload: addedEvent });
+        return dispatch({ type: ADD_EVENT, payload: addedEvent.data.data });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });
