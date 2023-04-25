@@ -92,7 +92,7 @@ export default function MedicalRegister() {
             console.log(formik.values)
             dispatch(addMedical(formik.values)).then(data => {
                 // console.log(data.payload._id)
-                if (data.payload.name) {
+                if (data.payload._id) {
                     alert("Medical Registered Successfuly !")
                     navigate("/medical")
                 } else {

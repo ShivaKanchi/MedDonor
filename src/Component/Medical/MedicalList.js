@@ -135,14 +135,14 @@ export default function MedicalList({ currentlocation }) {
                         <Card key={index}>
                             <Stack direction={['column', "row", "row"]}>
                                 <Stack w={["100%", "25%", "25%"]} >
-                                    <Flex maxWidth="300px" maxHeight="300px" alignItems="center" justifyContent="center">
+                                    <Box >
                                         <Image
                                             src={item.medicalimage}
                                             alt="Medical image"
                                             objectFit="cover"
                                             objectPosition="center"
                                         />
-                                    </Flex>
+                                    </Box>
                                 </Stack>
                                 <Stack w={["100%", "50%", "80%"]}>
                                     <CardHeader>
