@@ -25,11 +25,22 @@ import { useNavigate } from "react-router-dom";
 import { addMedical } from '../Redux/Reducers/Medical/medical.action'
 
 
-export default function MedicalRegister(props) {
+export default function MedicalRegister() {
+    const [latitude, setLatitude] = useState("");
+    const [longitude, setLongtitude] = useState("");
+    const [location, setLocation] = useState()
+    const [selectedMarker, setSelectedMarker] = useState("");
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState("")
+    const [value, setValue] = React.useState("");
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            // console.log(position.coords.latitude, "1")
+            // console.log(position.coords.longitude, "2")
+            setLocation(position.coords.latitude + ", " + position.coords.longitude)
+        });
+    }, []);
     // medicalname: "",
     //     medicalimage: "",
     //         type: true,
@@ -74,10 +85,13 @@ export default function MedicalRegister(props) {
     // }, [url])
 
     const dispatch = useDispatch();
+
+    // console.log(location)
     const onSubmit = () => {
         if (url && !formik.values.medicalimage) {
+            formik.values.coords = location
             formik.values.medicalimage = url
-            // console.log(formik.values)
+            console.log(formik.values)
             dispatch(addMedical(formik.values)).then(data => {
                 // console.log(data.payload._id)
                 if (data.payload._id) {

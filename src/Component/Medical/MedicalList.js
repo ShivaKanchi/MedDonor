@@ -49,11 +49,13 @@ export default function MedicalList({ currentlocation }) {
             setLoading(false)
             // console.log(data.payload)
             const mappoint = [];
-            data.payload?.map(({ coords, medicalname, _id }) => mappoint.push(
+            data.payload?.map(({ coords, medicalname, address, _id, ownerphone }) => mappoint.push(
 
                 {
                     id: _id,
                     medicalname: medicalname,
+                    address: address,
+                    phone: ownerphone,
                     location: { lat: parseFloat(coords.split(",")[0]), lng: parseFloat(coords.split(",")[1]) },
                 }
 
@@ -210,7 +212,7 @@ export default function MedicalList({ currentlocation }) {
             <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} currentnumber={currentPage} />
             {/* <MapView data={mapmarker} /> */}
 
-            {/* <MapG data={mapmarker} /> */}
+            <MapG data={mapmarker} />
 
             {/* <Box className='map-box' border="3px solid white" display='flex' ml={5}> */}
 

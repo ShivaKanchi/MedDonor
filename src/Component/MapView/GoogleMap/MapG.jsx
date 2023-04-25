@@ -90,7 +90,9 @@ const MapG = ({ data }) => {
                             >
                                 <div style={divStyle}>
                                     <h1 style={info}>Name -{selectedMarker.medicalname ? selectedMarker.medicalname : "Shiv Medical"}</h1>
-                                    <h2 style={info}>id - {selectedMarker.id ? selectedMarker.id : "Thank You"}</h2>
+                                    <h3 style={info}>{selectedMarker.address ? selectedMarker.address : "Mumbai"}</h3>
+                                    <h3 style={info}>{selectedMarker.phone ? selectedMarker.phone[0] : "9876543210"}</h3>
+                                    <h3 style={info}>id - {selectedMarker.id ? selectedMarker.id : "Thank You"}</h3>
                                     <button style={info} onClick={() => setSelectedMarker("")}>close</button>
                                 </div>
                             </InfoWindow>
