@@ -214,7 +214,7 @@ export default function MedicalList({ currentlocation }) {
             <Pagination cardsPerPage={cardsPerPage} totalCards={medicals.length} paginate={paginate} currentnumber={currentPage} />
             {/* <MapView data={mapmarker} /> */}
 
-            {/* <MapG data={mapmarker} /> */}
+            <MapG data={mapmarker} />
 
             {/* <Box className='map-box' border="3px solid white" display='flex' ml={5}> */}
 
