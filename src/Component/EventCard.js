@@ -71,7 +71,7 @@ export default function EventCard() {
                                 src={item.eventimage ? item.eventimage : "https://images.shiksha.com/mediadata/images/1627553136phphvAxM1.jpeg"}
                                 alt="https://images.shiksha.com/mediadata/images/1627553136phphvAxM1.jpeg"
                                 height="auto" w="auto"
-                                
+
                               />
                             </Stack>
 
@@ -150,7 +150,7 @@ export default function EventCard() {
                                     > Certificate :
                                     </Heading>
                                     <Text >
-                                      {item.certificate.toString()}
+                                      {item.certificate?.toString()}
                                     </Text>
                                   </Stack>
                                 </Stack>

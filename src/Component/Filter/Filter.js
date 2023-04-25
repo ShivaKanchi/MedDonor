@@ -1,17 +1,60 @@
 import { Stack, Select, InputGroup, Input, InputRightElement, Link, Button, Heading, Flex, Image, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { ImLocation2, ImSearch } from "react-icons/im";
-import MedicineCard from '../Medicinelist';
+import { useDispatch } from 'react-redux';
+import { getAllEvents, getCityEvents } from '../../Redux/Reducers/Event/event.action';
 // ImLocation2
 
 export default function Filter() {
     //EventFilter
-    const [event, setEvent] = useState('')
+    const [searchtext, setSearchtext] = useState("");
+    const [selectedcity, setSelectedcity] = useState("City")
+
+    const dispatch = useDispatch()
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setSearchtext(e.target.value);
+    };
+
+    const handleChangeSelect = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        searchCity(e.target.value)
+        setSelectedcity(e.target.value);
+    };
+
+    const searchCity = async (selectedcity) => {
+        if (selectedcity == "City") {
+            await dispatch(getAllEvents())
+        }
+        else {
+            await dispatch(getCityEvents(selectedcity)).then(data => {
+                if (data.type == "ERROR")
+                    alert(data.payload.response.data.message)
+            })
+        }
+    }
+    const search = async () => {
+        console.log(searchtext)
+        if (searchtext.length === 0) {
+            await dispatch(getAllEvents())
+        }
+        else {
+            console.log("Searched")
+            await dispatch(getCityEvents(searchtext)).then(data => {
+                if (data.type == "ERROR")
+                    alert(data.payload.response.data.message)
+                setSearchtext("")
+            })
+        }
+    }
+
     return (
         <Stack p={["5", "10", "10"]} w="full" spacing={10}>
             <Stack direction="row" spacing={10}>
                 <Select icon={< ImLocation2 />} w={["30%", "30%", "10%"]}
-                    alignSelf="flex-start" placeholder='Mumbai'>
+                    alignSelf="flex-start" placeholder='City' defaultValue={"Mumbai"} onChange={handleChangeSelect}>
                     <option value='Andhra Pradesh'>Andhra Pradesh</option>
                     <option value='Abu'>Abu</option>
                     <option value='Adoni'>Adoni</option>
@@ -517,15 +560,17 @@ export default function Filter() {
                 </Select>
 
                 <InputGroup w={["50%", "50%", "85%"]} alignSelf="center">
-                    <Input placeholder='Search College Name' />
-                    <InputRightElement children={<ImSearch />} />
+                    <Input placeholder='Search events in your city' onChange={handleChange} />
+                    <Button onClick={() => search()}>
+                        <ImSearch />
+                    </Button>
                 </InputGroup>
                 <Link href="/eventregister" w="15%" alignSelf="end">
                     <Button
-                        background="#20BC7E"  rounded="47px"
+                        background="#20BC7E" rounded="47px"
                         display={['none', "flex", "flex"]}
                     >
-                        Register Now
+                        Register Your Events
                     </Button>
                 </Link>
             </Stack>

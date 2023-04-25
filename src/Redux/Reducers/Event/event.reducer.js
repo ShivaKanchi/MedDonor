@@ -37,7 +37,7 @@ const eventReducer = (state = intialState, action) => {
         };
         case GET_CITY_EVENTS: return {
             ...state,
-            events: [...action.payload]
+            events: action.payload
         };
         case GET_CERTIFICATE_EVENT: return {
             ...state,

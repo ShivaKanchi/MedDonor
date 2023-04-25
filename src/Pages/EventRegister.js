@@ -22,6 +22,7 @@ import register from './../lotties/register.json';
 import ImageUpload from '../Component/ImageUpload'
 import { addEvent } from '../Redux/Reducers/Event/event.action'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function EventRegister(props) {
@@ -45,13 +46,22 @@ export default function EventRegister(props) {
             })
             .catch(err => console.log(err))
     }
-   
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = () => {
         if (url && !formik.values.eventimage) {
             formik.values.eventimage = url
             console.log(formik.values)
-            dispatch(addEvent(formik.values));
+            dispatch(addEvent(formik.values)).then(data => {
+                //  console.log(data.payload.data.data)
+                if (data.payload.data.data._id) {
+                    alert("Event Registered Successfuly !")
+                    navigate("/event")
+                } else {
+                    alert("Error while Registration, try again !")
+                    navigate("/eventregister")
+                }
+            })
         }  
     }
 
