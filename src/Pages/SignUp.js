@@ -71,6 +71,7 @@ function SignUp() {
   const handleChange = ({ currentTarget: Input }) => {
     setUserdata({ ...userdata, [Input.name]: Input.value });
   };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

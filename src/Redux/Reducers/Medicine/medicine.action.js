@@ -56,9 +56,7 @@ export const addMedicine = (data) => async (dispatch) => {
             url: `${process.env.REACT_APP_CLIENT_URL}/medicine/new`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
             data: { data }
         });
-        console.log(uploadedmedicine)
-
-        return dispatch({ type: ADD_MEDICINE, payload: uploadedmedicine.data.data });
+        return dispatch({ type: ADD_MEDICINE, payload: uploadedmedicine.data.Medicine });
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error });

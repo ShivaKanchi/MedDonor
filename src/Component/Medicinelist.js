@@ -67,12 +67,15 @@ export default function MedicineCard() {
           <Card key={index}>
             <Stack direction={['column', "row", "row"]}>
               <Stack w={["100%", "25%", "25%"]} >
-                <Image
-                  objectFit='cover'
-                  src={item.medimage}
-                  alt="Medicine image"
-                  height="auto" w="auto"
-                />
+                <Box >
+                  <Image
+                    maxWidth="300px" maxHeight="300px"
+                    objectFit="cover"
+                    objectPosition="center"
+                    src={item.medimage}
+                    alt="Medicine image"
+                  />
+                </Box>
               </Stack>
               <Stack w={["100%", "50%", "50%"]}>
                 <CardHeader>

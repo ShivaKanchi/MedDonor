@@ -20,25 +20,35 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
 import ImageUpload from '../Component/ImageUpload'
-import { add } from '../Redux/Reducers/Medicine/medicine.action'
+import { addMedicine } from '../Redux/Reducers/Medicine/medicine.action'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
 export default function DonnerRegister(props) {
 
+    const [selectedcategory, setSelectedcategory] = useState("City")
+
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [value, setValue] = React.useState({
-        medname: "",
-        medimage: "",
-        category: "",
-        desc: "",
-        expiry: "",
-        quantity: "",
-        address: "",
-        phone: "",
-    })
+
+    // const [value, setValue] = React.useState({
+    //     medname: "",
+    //     medimage: "",
+    //     category: "",
+    //     desc: "",
+    //     expiry: "",
+    //     quantity: "",
+    //     address: "",
+    //     phone: "",
+    // })
+
     const [setError] = useState("");
+    const handleChangeSelect = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        setSelectedcategory(e.target.value);
+    };
+
     const uploadImage = () => {
         const data = new FormData()
         data.append("file", image)
@@ -63,16 +73,32 @@ export default function DonnerRegister(props) {
     // alert("Register done");
     // }
     //  const navigate = useNavigate();
-    useEffect(() => {
-        console.log("USEeffect")
-        setValue({ ...value, eventimage: url });
-        setValue({ ...value, ...formik.values });
-    }, [url])
+    // useEffect(() => {
+    //     console.log("USEeffect")
+    //     setValue({ ...value, eventimage: url });
+    //     setValue({ ...value, ...formik.values });
+    // }, [url])
+
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = () => {
 
-        console.log("yaaaaaaaaaaaaa", value)
+        if (url && !formik.values.medimage) {
+            formik.values.medimage = url
+            formik.values.category = selectedcategory
+            console.log(formik.values)
+            dispatch(addMedicine(formik.values)).then(data => {
+                console.log(data.payload._id)
+                if (data.payload._id) {
+                    alert("Medicine Registered Successfuly !")
+                    navigate("/donnor")
+                } else {
+                    alert("Error while Registration, try again !")
+                    navigate("/donnorregister")
+                }
+            })
+        }
         // console.log("naaaaaaaaaaaaa", url)
         // dispatch(addEvent(formik.values));
         // setValue({})
@@ -98,7 +124,7 @@ export default function DonnerRegister(props) {
 
     const formik = useFormik({
         initialValues: {
-            donorname: "",
+            // donorname: "",
             medname: "",
             medimage: "",
             category: "",
@@ -109,7 +135,7 @@ export default function DonnerRegister(props) {
             phone: "",
         },
         validationSchema: Yup.object({
-            donorname: Yup.string(),
+            // donorname: Yup.string(),
             medname: Yup.string(),
             category: Yup.string(),
             desc: Yup.string(),
@@ -178,9 +204,9 @@ export default function DonnerRegister(props) {
                         spacing="5"
                         padding={["5", "10", "20"]}
                     >
-                        <Heading>Donnor Registration</Heading>
+                        <Heading>Medicine Registration</Heading>
 
-                        <FormControl isInvalid={formik.errors.donorname && formik.touched.donorname}>
+                        {/* <FormControl isInvalid={formik.errors.donorname && formik.touched.donorname}>
                             <FormLabel> Donor name</FormLabel>
                             <Input
                                 name="donorname"
@@ -189,32 +215,34 @@ export default function DonnerRegister(props) {
                                 placeholder="Suske Uchiha"
                             />
                             <FormErrorMessage>{formik.errors.donorname}</FormErrorMessage>
-                        </FormControl>
-                        <FormControl isInvalid={formik.errors.phone && formik.touched.phone}>
-                            <FormLabel>Contact Number</FormLabel>
-                            <Input
-                                name="phone"
-                                onChange={formik.handleChange}
-                                value={formik.values.phone}
-                                placeholder="8928656498"
-                                size="md"
-                                type="number"
-                            />
-                            <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
-                        </FormControl>
+                        </FormControl> */}
                         <FormControl isInvalid={formik.errors.medname && formik.touched.medname}>
                             <FormLabel>Medicine Name</FormLabel>
                             <Input
                                 name="medname"
                                 onChange={formik.handleChange}
                                 value={formik.values.medname}
-                                placeholder="DOlo 65"
+                                placeholder="Dolo 65"
                             />
                             <FormErrorMessage>{formik.errors.medname}</FormErrorMessage>
                         </FormControl>
+
+                        <FormControl isInvalid={formik.errors.desc && formik.touched.desc}>
+                            <FormLabel>Description</FormLabel>
+                            <Input
+                                name="desc"
+                                onChange={formik.handleChange}
+                                value={formik.values.desc}
+                                placeholder="It is used to treat headaches"
+                                size="md"
+                            />
+                            <FormErrorMessage>{formik.errors.desc}</FormErrorMessage>
+                        </FormControl>
+
                         <FormControl isInvalid={formik.errors.category && formik.touched.category}>
                             <FormLabel>Medicine Category</FormLabel>
-                            <Select placeholder='Select Category' name="" value={formik.values.category} onChange={formik.handleChange}>
+                            <Select placeholder='Select Category' name="" value={selectedcategory} onChange={handleChangeSelect}>
+                                <option value='Pain Killers'>Pain Killers</option>
                                 <option value='Analgesics'>Analgesics</option>
                                 <option value='Antacids'>Antacids</option>
                                 <option value='Antianxiety Drugs'>Antianxiety Drugs</option>
@@ -256,17 +284,8 @@ export default function DonnerRegister(props) {
                             </Select>
                             <FormErrorMessage>{formik.errors.category}</FormErrorMessage>
                         </FormControl>
-                        <FormControl isInvalid={formik.errors.desc && formik.touched.desc}>
-                            <FormLabel>Description</FormLabel>
-                            <Input
-                                name="desc"
-                                onChange={formik.handleChange}
-                                value={formik.values.desc}
-                                placeholder=""
-                                size="md"
-                            />
-                            <FormErrorMessage>{formik.errors.desc}</FormErrorMessage>
-                        </FormControl>
+
+
 
                         <FormControl isInvalid={formik.errors.expiry && formik.touched.expiry}>
                             <FormLabel>Expiry</FormLabel>
@@ -293,6 +312,19 @@ export default function DonnerRegister(props) {
                             <FormErrorMessage>{formik.errors.quantity}</FormErrorMessage>
                         </FormControl>
 
+                        <FormControl isInvalid={formik.errors.phone && formik.touched.phone}>
+                            <FormLabel>Contact Number</FormLabel>
+                            <Input
+                                name="phone"
+                                onChange={formik.handleChange}
+                                value={formik.values.phone}
+                                placeholder="8928656498"
+                                size="md"
+                                type="number"
+                            />
+                            <FormErrorMessage>{formik.errors.pincode}</FormErrorMessage>
+                        </FormControl>
+
                         <FormControl isInvalid={formik.errors.address && formik.touched.address}>
                             <FormLabel>Address</FormLabel>
                             <Input
@@ -306,9 +338,11 @@ export default function DonnerRegister(props) {
                             <FormErrorMessage>{formik.errors.address}</FormErrorMessage>
                         </FormControl>
 
-                        <FormLabel>Upload Medical Photo</FormLabel>
-                        <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
-                        <button onClick={uploadImage}>Upload</button>
+                        <FormControl isInvalid={formik.errors.medimage && formik.touched.medimage}>
+                            <FormLabel>Upload Medical Photo</FormLabel>
+                            <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
+                            <button onClick={uploadImage}>Upload</button>
+                        </FormControl>
 
                         <Button type="submit" variant="outline" >
                             Submit
