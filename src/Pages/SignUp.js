@@ -26,11 +26,13 @@ function SignUp() {
   const [userdata, setUserdata] = useState({
     firstname: "",
     lastname: "",
+    phone: "",
     profilepic: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
+  const [isLoadingPic, setisLoadingPic] = useState();
   const [isLoading, setisLoading] = useState(false);
   // const { isOpen } = useDisclosure({isOpen})
   const [images, setImages] = useState("");
@@ -39,13 +41,14 @@ function SignUp() {
   useEffect(() => {
     if (images) {
       uploadImage()
-      console.log("hello")
+      setisLoadingPic(true)
     }
   }, [images])
+
   useEffect(() => {
     if (url) {
       setUserdata({ ...userdata, profilepic: url })
-      console.log("bye")
+      setisLoadingPic(false)
     }
   }, [url])
   const uploadImage = () => {
@@ -75,12 +78,25 @@ function SignUp() {
     setisLoading(true);
     e.preventDefault()
     if (url) {
-      setUserdata({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
-      setisLoading(false);
-      await dispatch(signUp(userdata));
-      navigate("/")
+      // setUserdata({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
+      // setisLoading(false);
+      await dispatch(signUp(userdata)).then(data => {
+        // console.log(data)
+        // console.log(data.payload.data.status)
+        if (data.payload.data.status == "Registered") {
+          setisLoading(false);
+          setUserdata({ email: "", password: "", firstname: "", lastname: "", profilepic: "" })
+          alert("User Registered Successfuly !")
+          navigate("/")
+        } else {
+          setisLoading(false);
+          alert("Error while Registration, try again !")
+          navigate("/signup")
+        }
+      })
+    } else {
+      alert("Waiting for image")
     }
-
   };
 
   return (
@@ -127,6 +143,17 @@ function SignUp() {
                 />
                 <Input
                   type="text"
+                  placeholder="Phone"
+                  name="phone"
+                  onChange={handleChange}
+                  value={userdata.phone}
+                  required
+                  className={styles.input}
+                  variant='filled'
+                  size='md'
+                />
+                <Input
+                  type="text"
                   placeholder="Email"
                   name="email"
                   onChange={handleChange}
@@ -148,7 +175,8 @@ function SignUp() {
                   size='md'
                 />
 
-                <Input isReadOnly="true" type="file" onChange={(e) => setImages(e.target.files[0])}></Input>
+                <Input isReadOnly="true" type="file" onChange={(e) => setImages(e.target.files[0])} />
+                {isLoadingPic ? <>uploading</> : " "}
                 {error && <div className={styles.error_msg}>{error}</div>}
 
                 <Button mt={[10, 5, 5]} isLoading={isLoading}

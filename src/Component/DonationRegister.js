@@ -1,11 +1,13 @@
-import { Flex, Heading, Image, Input, Button, Stack, ScaleFade, HStack, Card , CardHeader, CardBody, Avatar, Text,
+import {
+  Flex, Heading, Image, Input, Button, Stack, ScaleFade, HStack, Card, CardHeader, CardBody, Avatar, Text,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,useDisclosure, FormControl, FormLabel, } from '@chakra-ui/react'
+  ModalCloseButton, useDisclosure, FormControl, FormLabel,
+} from '@chakra-ui/react'
 import { FcExpired } from "react-icons/fc";
 import { GiMedicines } from "react-icons/gi";
 import { GrGallery } from "react-icons/gr";
@@ -47,7 +49,7 @@ export default function DonationRegister() {
 
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
-  
+
   //model code end
   const textColor = useColorModeValue("black", "white")
   const bgcolor = useColorModeValue("white", '#1A202C')
@@ -126,7 +128,7 @@ export default function DonationRegister() {
   return (
     <>
       <ScaleFade in={inView} initialScale={0.5}>
-        <Flex w="full" justifyContent="center" mt="50"  ref={ref} >
+        <Flex w="full" justifyContent="center" mt="50" ref={ref} >
           {/* animation  */}
           {/* animationend  */}
           {/* box */}
@@ -147,7 +149,7 @@ export default function DonationRegister() {
                   Urgent Medicen need
                 </Heading>
                 <Button
-                   onClick={() => {
+                  onClick={() => {
                     setOverlay(<OverlayOne />)
                     onOpen()
                   }}
@@ -156,93 +158,93 @@ export default function DonationRegister() {
               <Modal isCentered isOpen={isOpen} onClose={onClose}>
                 {overlay}
                 <ModalContent>
-                <ModalHeader>Create your account</ModalHeader>
+                  <ModalHeader>Create your account</ModalHeader>
                   <ModalCloseButton />
-                    <ModalBody pb={6}>
-                      <FormControl>
-                        <FormLabel>First name</FormLabel>
-                        <Input ref={initialRef} placeholder='First name' />
-                      </FormControl>
+                  <ModalBody pb={6}>
+                    <FormControl>
+                      <FormLabel>First name</FormLabel>
+                      <Input ref={initialRef} placeholder='First name' />
+                    </FormControl>
 
-                      <FormControl mt={4}>
-                        <FormLabel>Last name</FormLabel>
-                        <Input placeholder='Last name' />
-                      </FormControl>
-                    </ModalBody>
+                    <FormControl mt={4}>
+                      <FormLabel>Last name</FormLabel>
+                      <Input placeholder='Last name' />
+                    </FormControl>
+                  </ModalBody>
 
-                    <ModalFooter>
-                      <Button colorScheme='blue' mr={3}>
-                        Save
-                      </Button>
-                      <Button onClick={onClose}>Cancel</Button>
-                    </ModalFooter>
+                  <ModalFooter>
+                    <Button colorScheme='blue' mr={3}>
+                      Save
+                    </Button>
+                    <Button onClick={onClose}>Cancel</Button>
+                  </ModalFooter>
                 </ModalContent>
               </Modal>
               {/* first row */}
               <Flex direction={"column"} p="10" justifyContent={["center", "space-between", "space-between"]} >
                 <></>
-                <Card  mb={10}>
-                 <Stack direction={['column', "row", "row"]}>
+                <Card mb={10}>
+                  <Stack direction={['column', "row", "row"]}>
 
-                   <Stack alignSelf="center"   alignItems="center" w={["100%", "25%", "25%"]} >
-                      <Avatar 
-                       h="50%" w="50%" size='xs'
-                      src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
-                   </Stack>
-                   <Stack w={["100%", "50%", "50%"]}>
-                    <CardHeader >
-                      <Heading as={"h4"} >Organization or person name</Heading>
-                    </CardHeader>
-                    <CardBody >
-                     <Text>Medicine Name</Text>
-                    </CardBody>
+                    <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
+                      <Avatar
+                        h="50%" w="50%" size='xs'
+                        src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
                     </Stack>
-                      <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                              {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
-                        <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                            Call Us
-                        </Button>
-                              {/* </Link> */}
-                              {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
-                        <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                            Whatsapp Now
-                        </Button>
-                              {/* </Link> */}
-                      </Stack>
+                    <Stack w={["100%", "50%", "50%"]}>
+                      <CardHeader >
+                        <Heading as={"h4"} >Organization or person name</Heading>
+                      </CardHeader>
+                      <CardBody >
+                        <Text>Medicine Name</Text>
+                      </CardBody>
                     </Stack>
-                            
-                  </Card>
+                    <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                      {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
+                      <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                        Call Us
+                      </Button>
+                      {/* </Link> */}
+                      {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
+                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                        Whatsapp Now
+                      </Button>
+                      {/* </Link> */}
+                    </Stack>
+                  </Stack>
+
+                </Card>
                 <Card >
-                 <Stack direction={['column', "row", "row"]}>
+                  <Stack direction={['column', "row", "row"]}>
 
-                   <Stack alignSelf="center"   alignItems="center" w={["100%", "25%", "25%"]} >
-                      <Avatar 
-                       h="50%" w="50%" size='xs'
-                      src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
-                   </Stack>
-                   <Stack w={["100%", "50%", "50%"]}>
-                    <CardHeader >
-                      <Heading as={"h4"} >Organization or person name</Heading>
-                    </CardHeader>
-                    <CardBody >
-                     <Text>Medicine Name</Text>
-                    </CardBody>
+                    <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
+                      <Avatar
+                        h="50%" w="50%" size='xs'
+                        src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
                     </Stack>
-                      <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                              {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
-                        <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                            Call Us
-                        </Button>
-                              {/* </Link> */}
-                              {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
-                        <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                            Whatsapp Now
-                        </Button>
-                              {/* </Link> */}
-                      </Stack>
+                    <Stack w={["100%", "50%", "50%"]}>
+                      <CardHeader >
+                        <Heading as={"h4"} >Organization or person name</Heading>
+                      </CardHeader>
+                      <CardBody >
+                        <Text>Medicine Name</Text>
+                      </CardBody>
                     </Stack>
-                            
-                  </Card>
+                    <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                      {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
+                      <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                        Call Us
+                      </Button>
+                      {/* </Link> */}
+                      {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
+                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                        Whatsapp Now
+                      </Button>
+                      {/* </Link> */}
+                    </Stack>
+                  </Stack>
+
+                </Card>
               </Flex>
             </Flex>
             <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>

@@ -1,4 +1,4 @@
-import { GET_ALL_MEDICINES, GET_MEDICINE, SEARCH_MEDICINE } from "./medicine.type";
+import { GET_ALL_MEDICINES, GET_MEDICINE, SEARCH_MEDICINE, ADD_MEDICINE } from "./medicine.type";
 const intialState = {
     medicinelist: [],
     medicine: {}
@@ -6,6 +6,10 @@ const intialState = {
 
 const medicineReducer = (state = intialState, action) => {
     switch (action.type) {
+        case ADD_MEDICINE: return {
+            ...state,
+            medicine: action.payload
+        };
         case GET_ALL_MEDICINES:
             return {
                 ...state,

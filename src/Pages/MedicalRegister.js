@@ -26,8 +26,6 @@ import { addMedical } from '../Redux/Reducers/Medical/medical.action'
 
 
 export default function MedicalRegister() {
-    const [latitude, setLatitude] = useState("");
-    const [longitude, setLongtitude] = useState("");
     const [location, setLocation] = useState()
     const [selectedMarker, setSelectedMarker] = useState("");
 
@@ -94,7 +92,7 @@ export default function MedicalRegister() {
             console.log(formik.values)
             dispatch(addMedical(formik.values)).then(data => {
                 // console.log(data.payload._id)
-                if (data.payload._id) {
+                if (data.payload.name) {
                     alert("Medical Registered Successfuly !")
                     navigate("/medical")
                 } else {

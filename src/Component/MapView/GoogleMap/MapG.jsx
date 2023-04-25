@@ -74,7 +74,7 @@ const MapG = ({ data }) => {
                     {
                         data?.map((marker) => {
                             return (
-                                <div key={marker.id}>
+                                marker.location && <div key={marker.id}>
                                     < Marker position={marker.location} onClick={() => { setSelectedMarker(marker); }} />
                                 </div>
                             )

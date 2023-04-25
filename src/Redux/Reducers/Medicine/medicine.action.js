@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_MEDICINES, GET_MEDICINE, SEARCH_MEDICINE } from "./medicine.type";
+import { ADD_MEDICINE, GET_ALL_MEDICINES, GET_MEDICINE, SEARCH_MEDICINE } from "./medicine.type";
 
 export const getMedicines = () => async (dispatch) => {
     try {
@@ -48,3 +48,20 @@ export const searchMedicine = (searchtext) => async (dispatch) => {
         dispatch({ type: "ERROR", payload: error });
     }
 };
+
+export const addMedicine = (data) => async (dispatch) => {
+    try {
+        const uploadedmedicine = await axios({
+            method: "POST",
+            url: `${process.env.REACT_APP_CLIENT_URL}/medicine/new`,//http://localhost:4000  ${process.env.REACT_APPCLIENT_URL}
+            data: { data }
+        });
+        console.log(uploadedmedicine)
+
+        return dispatch({ type: ADD_MEDICINE, payload: uploadedmedicine.data.data });
+    }
+    catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+
+    }
+}

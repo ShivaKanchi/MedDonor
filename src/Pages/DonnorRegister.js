@@ -20,18 +20,17 @@ import { useColorModeValue } from "@chakra-ui/color-mode"
 import Lottie from 'react-lottie';
 import register from './../lotties/register.json';
 import ImageUpload from '../Component/ImageUpload'
-import { addEvent } from '../Redux/Reducers/Event/event.action'
+import { add } from '../Redux/Reducers/Medicine/medicine.action'
 import { useDispatch } from 'react-redux'
-
+import { useNavigate } from "react-router-dom";
 
 export default function DonnerRegister(props) {
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
     const [value, setValue] = React.useState({
-        donorname: "",
         medname: "",
-        //medimage: "",
+        medimage: "",
         category: "",
         desc: "",
         expiry: "",
@@ -101,7 +100,7 @@ export default function DonnerRegister(props) {
         initialValues: {
             donorname: "",
             medname: "",
-            //medimage: "",
+            medimage: "",
             category: "",
             desc: "",
             expiry: "",
@@ -279,7 +278,7 @@ export default function DonnerRegister(props) {
                                 size="md"
                                 type="datetime-local"
                             />
-                        </FormControl> 
+                        </FormControl>
 
                         <FormControl isInvalid={formik.errors.quantity && formik.touched.quantity}>
                             <FormLabel>Quantity</FormLabel>
@@ -306,7 +305,7 @@ export default function DonnerRegister(props) {
                             />
                             <FormErrorMessage>{formik.errors.address}</FormErrorMessage>
                         </FormControl>
-                        
+
                         <FormLabel>Upload Medical Photo</FormLabel>
                         <Input isReadOnly="true" type="file" onChange={(e) => setImage(e.target.files[0])}></Input>
                         <button onClick={uploadImage}>Upload</button>

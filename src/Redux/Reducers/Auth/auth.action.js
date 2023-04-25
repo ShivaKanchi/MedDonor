@@ -17,16 +17,16 @@ export const signIn = (data) => async (dispatch) => {
     }
 }
 
-export const signUp = (data) => async (dispatch) => {
+export const signUp = (userdata) => async (dispatch) => {
     try {
         const User = await axios({
             method: "POST",
             url: `${process.env.REACT_APP_CLIENT_URL}/user/register`,
-            data: { credentials: data }
+            data: { credentials: userdata }
         })
         localStorage.setItem("Donor", JSON.stringify({ token: User.data.token }));
         axios.defaults.headers.common["Authorization"] = `Bearer${User.data.token}`;
-        return dispatch({ type: SIGN_UP, payload: data })
+        return dispatch({ type: SIGN_UP, payload: User })
     }
     catch (error) {
         return dispatch({ type: "ERROR", payload: error })
