@@ -17,16 +17,30 @@ import { BsEmojiSmile, BsTelephoneFill } from "react-icons/bs";
 import { FaHandsHelping, FaClinicMedical } from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
 import { useColorModeValue } from "@chakra-ui/color-mode"
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../assest/logo.png'
 import { useInView } from "react-intersection-observer";
 import { PhoneIcon } from "@chakra-ui/icons"
 import { BsWhatsapp } from "react-icons/bs";
-
-
+import { getRequests, addRequest } from '../Redux/Reducers/Request/request.action';
 
 export default function DonationRegister() {
+  const [requests, setRequests] = useState([])
+
+  const dispatch = useDispatch()
+  const requestdatagot = useSelector((state) => state.request.requestlist)
+  useEffect(() => {
+    dispatch(getRequests())
+  }, [])
+
+  useEffect(() => {
+    if (requestdatagot) {
+      setRequests(requestdatagot);
+    }
+  }, [requestdatagot]);
+
+  console.log("MEdicine data", requests)
 
   const OverlayOne = () => (
     <ModalOverlay
@@ -53,68 +67,60 @@ export default function DonationRegister() {
   //model code end
   const textColor = useColorModeValue("black", "white")
   const bgcolor = useColorModeValue("white", '#1A202C')
-  const [startDate, setStartDate] = useState(new Date());
-  const [medicinedata, setMedicinedata] = useState({
-    medname: "",
-    medimage: "",
-    category: "",
+  // const [startDate, setStartDate] = useState(new Date());
+  const [requestdata, setRequestdata] = useState({
+    request: "",
     desc: "",
-    donorname: "",
-    donorimage: "",
-    expiry: "",
-    quantity: "",
-    address: "",
     phone: "",
+    username: "",
   });
-  const [isLoading, setisLoading] = useState(false);
-  const [images, setImages] = useState("");
-  const [url, setUrl] = useState("");
-  useEffect(() => {
-    if (images) {
-      uploadImage()
-      console.log("hello")
-    }
-  }, [images])
-  useEffect(() => {
-    if (url) {
-      setMedicinedata({ ...medicinedata, medpic: url })
-      console.log("bye")
-    }
-  }, [url])
+  // const [isLoading, setisLoading] = useState(false);
+  // const [images, setImages] = useState("");
+  // const [url, setUrl] = useState("");
+  // useEffect(() => {
+  //   if (images) {
+  //     uploadImage()
+  //     console.log("hello")
+  //   }
+  // }, [images])
+  // useEffect(() => {
+  //   if (url) {
+  //     setMedicinedata({ ...medicinedata, medpic: url })
+  //     console.log("bye")
+  //   }
+  // }, [url])
 
-  const uploadImage = () => {
-    const data = new FormData()
-    data.append("file", images)
-    data.append("upload_preset", "Med_Donor")
-    data.append("cloud_name", "ssdeveloper")
-    fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload", {
-      method: "post",
-      body: data
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        setUrl(data.url)
+  // const uploadImage = () => {
+  //   const data = new FormData()
+  //   data.append("file", images)
+  //   data.append("upload_preset", "Med_Donor")
+  //   data.append("cloud_name", "ssdeveloper")
+  //   fetch("  https://api.cloudinary.com/v1_1/ssdeveloper/image/upload", {
+  //     method: "post",
+  //     body: data
+  //   })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       setUrl(data.url)
 
-      })
-      .catch(err => console.log(err))
-  }
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   const handleChange = ({ currentTarget: Input }) => {
-    setMedicinedata({ ...medicinedata, [Input.name]: Input.value });
+    setRequestdata({ ...requestdata, [Input.name]: Input.value });
   };
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    console.log("MEdicine data", medicinedata)
-    setisLoading(true);
-    e.preventDefault()
-    if (url) {
-      //setMedicinedata({})
-      setisLoading(false);
-      //await dispatch();
-      // navigate("/")
-    }
+    console.log("MEdicine data", requestdata)
+    // e.preventDefault()
+    // if (url) {
+    //   //setMedicinedata({})
+    //   setisLoading(false);
+    //   //await dispatch();
+    //   // navigate("/")
+    // }
 
   };
 
@@ -140,111 +146,133 @@ export default function DonationRegister() {
               <Heading
                 color="#FFB87A" fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="700"
                 fontSize="21px" lineHeight="28px" letterSpacing="0.023em" >
-                Want to donate medicine ?
+                Urgent medicine need ?
               </Heading>
               <HStack justifyContent="space-between" >
                 <Heading
                   fontFamily='IBM Plex Sans' fontStyle="normal" fontWeight="600"
                   fontSize={["4xl", "5xl", "6xl"]} lineHeight={["4xl", "5xl", "6xl"]} letterSpacing="0.023em" >
-                  Urgent Medicen need
+                  Add your medicine request
                 </Heading>
                 <Button
                   onClick={() => {
                     setOverlay(<OverlayOne />)
                     onOpen()
                   }}
-                > Get Token </Button>
+                > Add </Button>
               </HStack>
               <Modal isCentered isOpen={isOpen} onClose={onClose}>
                 {overlay}
                 <ModalContent>
-                  <ModalHeader>Create your account</ModalHeader>
+                  <ModalHeader>Add your request</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody pb={6}>
                     <FormControl>
-                      <FormLabel>First name</FormLabel>
-                      <Input ref={initialRef} placeholder='First name' />
+                      <FormLabel>Medicine name</FormLabel>
+                      <Input ref={initialRef} placeholder='Medicine' value={requestdata.request} onChange={() => handleChange()} />
                     </FormControl>
 
                     <FormControl mt={4}>
-                      <FormLabel>Last name</FormLabel>
-                      <Input placeholder='Last name' />
+                      <FormLabel>Description</FormLabel>
+                      <Input placeholder='Description' value={requestdata.desc} onChange={() => handleChange()} />
+                    </FormControl>
+                    <FormControl mt={4}>
+                      <FormLabel>Contact</FormLabel>
+                      <Input placeholder='9876543210' value={requestdata.phone} onChange={() => handleChange()} />
+                    </FormControl>
+                    <FormControl mt={4}>
+                      <FormLabel>Name</FormLabel>
+                      <Input placeholder='Shiva Kanchi' value={requestdata.username} onChange={() => handleChange()} />
                     </FormControl>
                   </ModalBody>
 
                   <ModalFooter>
-                    <Button colorScheme='blue' mr={3}>
+                    <Button colorScheme='blue' mr={3} onSubmit={handleSubmit}>
                       Save
                     </Button>
                     <Button onClick={onClose}>Cancel</Button>
                   </ModalFooter>
                 </ModalContent>
               </Modal>
+
+
               {/* first row */}
               <Flex direction={"column"} p="10" justifyContent={["center", "space-between", "space-between"]} >
                 <></>
-                <Card mb={10}>
-                  <Stack direction={['column', "row", "row"]}>
+                {
+                  requests.map((data) => { console.log(data) })
+                }
+                {
+                  requests ? (
+                    requests.map((onerequest) => (
+                      < Card mb={10} >
+                        <Stack direction={['column', "row", "row"]}>
 
-                    <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
-                      <Avatar
-                        h="50%" w="50%" size='xs'
-                        src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
-                    </Stack>
-                    <Stack w={["100%", "50%", "50%"]}>
-                      <CardHeader >
-                        <Heading as={"h4"} >Organization or person name</Heading>
-                      </CardHeader>
-                      <CardBody >
-                        <Text>Medicine Name</Text>
-                      </CardBody>
-                    </Stack>
-                    <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                      {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
-                      <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                        Call Us
-                      </Button>
-                      {/* </Link> */}
-                      {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
-                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                        Whatsapp Now
-                      </Button>
-                      {/* </Link> */}
-                    </Stack>
-                  </Stack>
+                          <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
+                            <Avatar
+                              h="50%" w="50%" size='xs'
+                              src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
+                          </Stack>
+                          <Stack w={["100%", "50%", "50%"]}>
+                            <CardHeader >
+                              <Heading as={"h4"} >{onerequest.username ? onerequest.username : "Shiva Kanchi"}</Heading>
+                            </CardHeader>
+                            <CardBody >
+                              <Text>{onerequest.request ? onerequest.request : "Humulin"}</Text>
+                            </CardBody>
+                          </Stack>
+                          <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                            <Link display={["flex", "none", "none"]} href={`tel:${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                              <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                                Call Us
+                              </Button>
+                            </Link>
+                            <Link href={`https://wa.me/${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                              <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                                Whatsapp Now
+                              </Button>
+                            </Link>
+                          </Stack>
+                        </Stack>
+                      </Card>
 
-                </Card>
-                <Card >
-                  <Stack direction={['column', "row", "row"]}>
 
-                    <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
-                      <Avatar
-                        h="50%" w="50%" size='xs'
-                        src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
-                    </Stack>
-                    <Stack w={["100%", "50%", "50%"]}>
-                      <CardHeader >
-                        <Heading as={"h4"} >Organization or person name</Heading>
-                      </CardHeader>
-                      <CardBody >
-                        <Text>Medicine Name</Text>
-                      </CardBody>
-                    </Stack>
-                    <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                      {/* <Link display={["flex", "none", "none"]} href={`tel:${item.coordinatorphno}`}> */}
-                      <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                        Call Us
-                      </Button>
-                      {/* </Link> */}
-                      {/* <Link href={`https://wa.me/${item.coordinatorphno}`}> */}
-                      <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                        Whatsapp Now
-                      </Button>
-                      {/* </Link> */}
-                    </Stack>
-                  </Stack>
+                    ))
+                  ) : (
+                    <Card mb={10}>
+                      <Stack direction={['column', "row", "row"]}>
 
-                </Card>
+                        <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
+                          <Avatar
+                            h="50%" w="50%" size='xs'
+                            src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
+                        </Stack>
+                        <Stack w={["100%", "50%", "50%"]}>
+                          <CardHeader >
+                            <Heading as={"h4"} >{onerequest.username ? onerequest.username : "Shiva Kanchi"}</Heading>
+                          </CardHeader>
+                          <CardBody >
+                            <Text>{onerequest.request ? onerequest.request : "Humulin"}</Text>
+                          </CardBody>
+                        </Stack>
+                        <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                          <Link display={["flex", "none", "none"]} href={`tel:${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                            <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                              Call Us
+                            </Button>
+                          </Link>
+                          <Link href={`https://wa.me/${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                            <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                              Whatsapp Now
+                            </Button>
+                          </Link>
+                        </Stack>
+                      </Stack>
+                    </Card>
+
+                  )
+                }
+
               </Flex>
             </Flex>
             <Flex flexDirection="column" justifyContent="center" Position="relative" bgColor="#FFB87A" w="30%" display={["none", "none", "flex"]}>
@@ -253,7 +281,7 @@ export default function DonationRegister() {
             </Flex>
           </Flex>
         </Flex>
-      </ScaleFade>
+      </ScaleFade >
       {/* Meddoner register */}
     </>
   )
