@@ -61,7 +61,7 @@ export default function MedicalList() {
             ));
 
             setMapmarker(mappoint);
-            // console.log(mappoint)
+            console.log(mappoint)
             // console.log("mapmarker", mapmarker, currentlocation)S
         })
     }, [])

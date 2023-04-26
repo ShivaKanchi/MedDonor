@@ -9,7 +9,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 // const Marker = ({ text }) => <ImLocation size={40} color="red" />;
 
 const MapG = ({ data }) => {
-    console.log(data.location)
+    console.log(data)
     const [latitude, setLatitude] = useState();
     const [longitude, setLongtitude] = useState();
     const [selectedMarker, setSelectedMarker] = useState("");
@@ -38,6 +38,9 @@ const MapG = ({ data }) => {
         lat: latitude,
         lng: longitude
     };
+    console.log("Your Location", center)
+
+
     // const mappoint = [];
     // const [mapmarker, setMapmarker] = useState([]);
     // useEffect(() => {
