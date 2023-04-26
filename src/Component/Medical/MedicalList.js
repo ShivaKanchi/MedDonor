@@ -11,7 +11,7 @@ import MapView from '../MapView/MapView.js';
 import Pagination from '../Pagination/Pagination.js';
 import geolib from 'geolib';
 import MapG from '../MapView/GoogleMap/MapG.jsx';
-export default function MedicalList({ currentlocation }) {
+export default function MedicalList() {
     // const map = useMap()
     // console.log('map center:', map.getCenter())
     const [medicals, setMedicals] = useState([])
@@ -50,7 +50,6 @@ export default function MedicalList({ currentlocation }) {
             // console.log(data.payload)
             const mappoint = [];
             data.payload?.map(({ coords, medicalname, address, _id, ownerphone }) => mappoint.push(
-
                 {
                     id: _id,
                     medicalname: medicalname,
@@ -60,9 +59,10 @@ export default function MedicalList({ currentlocation }) {
                 }
 
             ));
-            // console.log(mappoint)
+
             setMapmarker(mappoint);
-            // console.log("mapmarker", mapmarker, currentlocation)
+            // console.log(mappoint)
+            // console.log("mapmarker", mapmarker, currentlocation)S
         })
     }, [])
 
@@ -71,6 +71,7 @@ export default function MedicalList({ currentlocation }) {
             setMedicals(medicalData);
         }
     }, [medicalData]);
+
     //   fetch(`${process.env.REACT_APP_CLIENT_URL
     //     }/medicine`)
     //     .then((response) => response.json())

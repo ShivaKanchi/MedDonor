@@ -33,7 +33,6 @@ export default function DonationRegister() {
   useEffect(() => {
     dispatch(getRequests())
   }, [])
-
   useEffect(() => {
     if (requestdatagot) {
       setRequests(requestdatagot);
@@ -199,13 +198,11 @@ export default function DonationRegister() {
               {/* first row */}
               <Flex direction={"column"} p="10" justifyContent={["center", "space-between", "space-between"]} >
                 <></>
-                {
-                  requests.map((data) => { console.log(data) })
-                }
+
                 {
                   requests ? (
-                    requests.map((onerequest) => (
-                      < Card mb={10} >
+                    requests.map((item) => (
+                      < Card mb={10} key={item._id}>
                         <Stack direction={['column', "row", "row"]}>
 
                           <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
@@ -215,19 +212,22 @@ export default function DonationRegister() {
                           </Stack>
                           <Stack w={["100%", "50%", "50%"]}>
                             <CardHeader >
-                              <Heading as={"h4"} >{onerequest.username ? onerequest.username : "Shiva Kanchi"}</Heading>
+                              <Heading as={"h4"} >{item.username ? item.username : "Shiva Kanchi"}</Heading>
                             </CardHeader>
                             <CardBody >
-                              <Text>{onerequest.request ? onerequest.request : "Humulin"}</Text>
+                              <Text>{item.request ? item.request : "Humulin"}</Text>
+                            </CardBody>
+                            <CardBody >
+                              <Text>{item.desc ? item.desc : "Urgent need for old homage"}</Text>
                             </CardBody>
                           </Stack>
                           <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                            <Link display={["flex", "none", "none"]} href={`tel:${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                            <Link display={["flex", "none", "none"]} href={`tel:${item.phone ? item.phone : 8928656498}`}>
                               <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
                                 Call Us
                               </Button>
                             </Link>
-                            <Link href={`https://wa.me/${onerequest.phone ? onerequest.phone : 8928656498}`}>
+                            <Link href={`https://wa.me/${item.phone ? item.phone : 8928656498}`}>
                               <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
                                 Whatsapp Now
                               </Button>
@@ -239,37 +239,37 @@ export default function DonationRegister() {
 
                     ))
                   ) : (
-                    <Card mb={10}>
-                      <Stack direction={['column', "row", "row"]}>
+                    // <Card mb={10} key={item._id}>
+                    //   <Stack direction={['column', "row", "row"]}>
 
-                        <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
-                          <Avatar
-                            h="50%" w="50%" size='xs'
-                            src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
-                        </Stack>
-                        <Stack w={["100%", "50%", "50%"]}>
-                          <CardHeader >
-                            <Heading as={"h4"} >{onerequest.username ? onerequest.username : "Shiva Kanchi"}</Heading>
-                          </CardHeader>
-                          <CardBody >
-                            <Text>{onerequest.request ? onerequest.request : "Humulin"}</Text>
-                          </CardBody>
-                        </Stack>
-                        <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
-                          <Link display={["flex", "none", "none"]} href={`tel:${onerequest.phone ? onerequest.phone : 8928656498}`}>
-                            <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                              Call Us
-                            </Button>
-                          </Link>
-                          <Link href={`https://wa.me/${onerequest.phone ? onerequest.phone : 8928656498}`}>
-                            <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
-                              Whatsapp Now
-                            </Button>
-                          </Link>
-                        </Stack>
-                      </Stack>
-                    </Card>
-
+                    //     <Stack alignSelf="center" alignItems="center" w={["100%", "25%", "25%"]} >
+                    //       <Avatar
+                    //         h="50%" w="50%" size='xs'
+                    //         src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png1"} />
+                    //     </Stack>
+                    //     <Stack w={["100%", "50%", "50%"]}>
+                    //       <CardHeader >
+                    //         <Heading as={"h4"} >{item.username ? item.username : "Shiva Kanchi"}</Heading>
+                    //       </CardHeader>
+                    //       <CardBody >
+                    //         <Text>{item.request ? item.request : "Humulin"}</Text>
+                    //       </CardBody>
+                    //     </Stack>
+                    //     <Stack w={["100%", "25%", "25%"]} alignSelf="center" pr={5}>
+                    //       <Link display={["flex", "none", "none"]} href={`tel:${item.phone ? item.phone : 8928656498}`}>
+                    //         <Button leftIcon={<PhoneIcon />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                    //           Call Us
+                    //         </Button>
+                    //       </Link>
+                    //       <Link href={`https://wa.me/${item.phone ? item.phone : 8928656498}`}>
+                    //         <Button leftIcon={<BsWhatsapp />} align="center" rounded="20" colorScheme='teal' variant='solid'>
+                    //           Whatsapp Now
+                    //         </Button>
+                    //       </Link>
+                    //     </Stack>
+                    //   </Stack>
+                    // </Card>
+                    <></>
                   )
                 }
 
