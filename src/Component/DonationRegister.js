@@ -39,7 +39,7 @@ export default function DonationRegister() {
     }
   }, [requestdatagot]);
 
-  console.log("MEdicine data", requests)
+  // console.log("MEdicine data", requests)
 
   const OverlayOne = () => (
     <ModalOverlay
