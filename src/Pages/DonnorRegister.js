@@ -26,7 +26,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function DonnerRegister(props) {
 
-    const [selectedcategory, setSelectedcategory] = useState("City")
+    const [selectedcategory, setSelectedcategory] = useState("")
 
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
